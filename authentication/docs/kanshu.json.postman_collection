@@ -6,7 +6,8 @@
 		"cfceedb3-efc3-3029-e163-e8f011c72e5a",
 		"057dea20-97a7-088e-ca17-f61966d130cf",
 		"f105d4dd-35f0-3b4a-0c14-301c01fa2324",
-		"b4b08257-b658-a3af-c126-e7093f43cdce"
+		"b4b08257-b658-a3af-c126-e7093f43cdce",
+		"6543def0-86fb-df2f-e554-bf7efb3b4a08"
 	],
 	"folders": [],
 	"timestamp": 1422406993195,
@@ -31,6 +32,34 @@
 			"description": "",
 			"collectionId": "b9a53efe-8401-5cf1-331f-11a99e4a84f6",
 			"responses": [],
+			"synced": false
+		},
+		{
+			"id": "6543def0-86fb-df2f-e554-bf7efb3b4a08",
+			"headers": "Content-Type: application/json\nsessionid: c9e43543-982c-4134-8c27-754d887f6677\n",
+			"url": "http://localhost:8080/validate",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"data": [
+				{
+					"key": "userid",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "validate",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1422549191497,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionId": "b9a53efe-8401-5cf1-331f-11a99e4a84f6",
 			"synced": false
 		},
 		{
