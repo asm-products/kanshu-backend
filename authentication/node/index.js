@@ -35,6 +35,7 @@ server.get('/login', userService.login);
 server.post('/createUser', userService.createUser);
 server.post('/updateUser', userService.updateUser);
 server.get('/logout', userService.logout);
+server.get('/validate', userService.validate);
 
 /**
     This code will start the http server.

@@ -25,6 +25,8 @@ module.exports = {
 
     updateUser: internalUpdateUser,
 
+    validate: internalValidate,
+
     setLogger: function(value) { log = value; data.setLogger(value); },
 
     setConnectionString: function(value) { connectionString = value; },
@@ -218,9 +220,9 @@ function internalAuthenticate(req, res, next) {
 
 /**
  * This function will get the user's sessionid.
- * @param req
- * @param res
- * @param next
+ * @param req - restify request object
+ * @param res - restify response object
+ * @param next - restify next callback
  */
 function internalGetSessionId(req, res, next) {
 
@@ -284,4 +286,40 @@ function internalUpdateUser(req, res, next) {
     // NOTE: If you change the hash size you need to make sure the database column can accommodate the hash size * 3.
     crypto.pbkdf2(req.body.password, salt, 65535, 128, cryptoComplete);
 
+}
+
+/**
+ * This function will validate the sessionid passed in to the header.
+ * @param req - restify request object
+ * @param res - restify response object
+ * @param next - restify next callback
+ */
+function internalValidate(req, res, next) {
+    var sessionId = req.headers.sessionid;
+
+    if (typeof sessionId === 'undefined') {
+        res.send(401, { message: 'No sessionid header supplied.'});
+        return next();
+    }
+
+    var errorHandler = function(err) {
+        var msg = 'An error occurred validating session.';
+
+        res.send(500, {message: msg });
+        log.error(msg, err);
+
+        return next();
+    };
+
+    var completeHandler = function(isValid) {
+        if (isValid) {
+            res.send(200, { mesage: 'Session validates ok.' });
+            return next();
+        }
+
+        res.send(401, { mesage: 'Invalid session.' });
+        return next();
+    };
+
+    data.validateSession(errorHandler, sessionId, completeHandler);
 }
