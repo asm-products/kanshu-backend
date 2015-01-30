@@ -1,0 +1,5 @@
+{
+  "connectionString": "postgres://localhost/kanshu",
+  "initialSessionExpirationMinutes": 10080,
+  "apiServicePort": 8080
+}
