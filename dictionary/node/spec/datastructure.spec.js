@@ -6,8 +6,9 @@
  * JS Trie example: http://jsfiddle.net/4Yttq/
  */
 
-var feed = require('feed-read'),
-    ce   = require('node-cc-cedict');
+var feed      = require('feed-read'),
+    ce        = require('node-cc-cedict'),
+    async     = require('async');
 
 feed("http://www.hwjyw.com/rss/zhwh.xml", function(err, articles) {
     if (err) throw err;
@@ -22,6 +23,8 @@ feed("http://www.hwjyw.com/rss/zhwh.xml", function(err, articles) {
     //
     console.log('articles: %j', articles);
 
+    var startDate = Date.now();
+
     parseSegments(articles[0].content);
 
     console.log('parsed article[0], segments: %s, segmentSeparators: %s', segments.length, segmentSeparators.length);
@@ -29,22 +32,35 @@ feed("http://www.hwjyw.com/rss/zhwh.xml", function(err, articles) {
     console.log('segments: %j', segments);
     console.log('segmentSeparators: %j', segmentSeparators);
 
-    getAnnotatedSegment(segments[3], function(result) {
-        console.log('result: %j', result);
+    async.each(segments, function(segment, complete) {
+        getAnnotatedSegment(segment, function(result) {
+            //console.log('result: %j', result);
 
-        var phrase = '';
+            var phrase = '';
 
-        for(var i=0; i < result.length; i++) {
-            phrase += result[i].segment;
-            if (typeof result[i].words != 'undefined' && result[i].words.length >= 1) {
-                phrase += ' (' + result[i].words[0].pronunciation + ') ';
-            } else {
-                phrase += ' (??) ';
+            for(var i=0; i < result.length; i++) {
+                phrase += result[i].segment;
+                if (typeof result[i].words != 'undefined' && result[i].words.length >= 1) {
+                    phrase += ' (' + result[i].words[0].pronunciation + ') ';
+                } else {
+                    phrase += ' (??) ';
+                }
             }
-        }
 
-        console.log('phrase: %s', phrase);
+            //console.log('phrase: %s', phrase);
+            complete();
+        });
+    },
+    function(err) {
+
+        if (err)
+            console.log('ERROR: %s', err);
+        else {
+            var completeDate = Date.now();
+            console.log('Complete % seconds', (completeDate - startDate) / 1000 );
+        }
     });
+
 
     console.log('done.');
 });
