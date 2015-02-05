@@ -6,9 +6,15 @@
  * JS Trie example: http://jsfiddle.net/4Yttq/
  */
 
-var feed      = require('feed-read'),
-    ce        = require('node-cc-cedict'),
-    async     = require('async');
+var feed        = require('feed-read'),
+    ce          = require('node-cc-cedict'),
+    async       = require('async'),
+    NodeCache   = require('node-cache'),
+    typechecker = require('typechecker');
+
+var cache = new NodeCache();
+var articleIndex = 0, articleCount = 0;
+var stats = [];
 
 feed("http://www.hwjyw.com/rss/zhwh.xml", function(err, articles) {
     if (err) throw err;
@@ -23,47 +29,67 @@ feed("http://www.hwjyw.com/rss/zhwh.xml", function(err, articles) {
     //
     console.log('articles: %j', articles);
 
-    var startDate = Date.now();
+    articleCount = articles.length;
 
-    parseSegments(articles[0].content);
+    for(articleIndex=0;articleIndex < articleCount; articleIndex++)
+    {
+        processArticle(articles[articleIndex], function() {
+            console.log('finished processing article.');
 
-    console.log('parsed article[0], segments: %s, segmentSeparators: %s', segments.length, segmentSeparators.length);
-
-    console.log('segments: %j', segments);
-    console.log('segmentSeparators: %j', segmentSeparators);
-
-    async.each(segments, function(segment, complete) {
-        getAnnotatedSegment(segment, function(result) {
-            //console.log('result: %j', result);
-
-            var phrase = '';
-
-            for(var i=0; i < result.length; i++) {
-                phrase += result[i].segment;
-                if (typeof result[i].words != 'undefined' && result[i].words.length >= 1) {
-                    phrase += ' (' + result[i].words[0].pronunciation + ') ';
-                } else {
-                    phrase += ' (??) ';
-                }
+            for (var i = 0; i < stats.length; i++) {
+                console.log('%j', stats[i]);
             }
 
-            //console.log('phrase: %s', phrase);
-            complete();
         });
-    },
-    function(err) {
-
-        if (err)
-            console.log('ERROR: %s', err);
-        else {
-            var completeDate = Date.now();
-            console.log('Complete % seconds', (completeDate - startDate) / 1000 );
-        }
-    });
-
-
-    console.log('done.');
+    }
 });
+
+function processArticle(article, completeProcessArticle) {
+
+
+    var segmentParserCompleteHander = function(segments, segmentSeparators) {
+        var startDate = Date.now();
+        console.log('parsed article[%s], segments: %s, segmentSeparators: %s', articleIndex, segments.length, segmentSeparators.length);
+
+        console.log('segments: %j', segments);
+        console.log('segmentSeparators: %j', segmentSeparators);
+
+        async.each(segments, function(segment, complete) {
+                getAnnotatedSegment(segment, function(result) {
+
+                    var phrase = '';
+
+                    for(var i=0; i < result.length; i++) {
+                        phrase += result[i].segment;
+                        if (typeof result[i].words != 'undefined' && result[i].words.length >= 1) {
+                            phrase += ' (' + result[i].words[0].pronunciation + ') ';
+                        } else {
+                            phrase += ' (??) ';
+                        }
+                    }
+
+                    //console.log('phrase: %s', phrase);
+                    complete();
+                });
+            },
+            function(err) {
+
+                if (err)
+                    console.log('ERROR: %s', err);
+                else {
+                    var completeDate = Date.now();
+                    stats.push( { totalSeconds: (completeDate - startDate) / 1000 })
+                    console.log('Complete % seconds', (completeDate - startDate) / 1000 );
+                    completeProcessArticle();
+                }
+            });
+
+    };
+
+    parseSegments(article.content, segmentParserCompleteHander);
+
+
+}
 
 // Go through the content one char at a time.  Concat a string until hit punctuation or end.
 // When hit punctuation or end push this string to an array.
@@ -73,14 +99,15 @@ feed("http://www.hwjyw.com/rss/zhwh.xml", function(err, articles) {
 // keep parsing next set of chars until all of segment processed.
 // start outputting text.  processed words end in punctuation at array element of same index until end.
 
-var segments = [];
-var segmentSeparators = [];
+
 
 // Find segments.  Start at left and copy all chars until hit a punctuation.
 // then take all punctuation or space until you hit a non punctuation or space or end.  This is the segment separator for the same index as the segment.
 
-function parseSegments(content) {
+function parseSegments(content, complete) {
     var tempSegment = '';
+    var segments = [];
+    var segmentSeparators = [];
 
     for(var i=0; i < content.length; i++)
     {
@@ -104,6 +131,8 @@ function parseSegments(content) {
            segmentSeparators.push(punctuationSegment);
         }
     }
+
+    complete(segments, segmentSeparators);
 }
 
 function isPunctuation(character) {
@@ -163,7 +192,15 @@ function getAnnotatedSubSegment(subSegment, complete) {
 }
 
 function ceSearch(searchTerm, result) {
-    ce.searchByChinese(searchTerm, function(words) {
-        result(words);
-    });
+    var cacheResult = cache.get(searchTerm);
+
+    if (typechecker.isEmptyObject(cacheResult)) {
+
+        ce.searchByChinese(searchTerm, function (words) {
+            result(words);
+            cache.set(searchTerm, words);
+        });
+    } else {
+        result(cacheResult);
+    }
 }
