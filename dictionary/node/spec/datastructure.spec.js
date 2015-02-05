@@ -141,7 +141,7 @@ function getAnnotatedSegment(segment, complete) {
 
 function getAnnotatedSubSegment(subSegment, complete) {
 
-    ce.searchByChinese(subSegment, function(words){
+    ceSearch(subSegment, function(words){
         if (words.length == 0) {
 
             if (subSegment.length == 1) {
@@ -151,115 +151,19 @@ function getAnnotatedSubSegment(subSegment, complete) {
             var shortenedSegment = subSegment.substr(0, subSegment.length-1);
 
             getAnnotatedSubSegment(shortenedSegment, function(result) {
-               if (typeof result != 'undefined') {
-                   return complete(result);
-               }
+                if (typeof result != 'undefined') {
+                    return complete(result);
+                }
             });
         } else {
             return complete({ segment: subSegment, words: words });
         }
     });
+
 }
 
-/*
-var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('../node_modules/node-cc-cedict/db/cc-cedict.sqlite');
-var trie = new Trie();
-
-db.serialize(function(){
-
-    db.each('select * from words order by length(traditional) desc;',
-        function(err, row) {
-            if (!err) {
-                trie.put(row.traditional, row);
-            }
-        },
-        function(err, numRows) {
-            console.log('numRows: %s', numRows);
-        }
-    )
-
-});
-
-function Trie(parent, prev, key, value) {
-    if (key !== void 0)
-        this.key = key;      // single-character key
-    if (value !== void 0)
-        this.value = value;  // user-defined value
-    if (prev)
-        prev.next = this;    // next sibling node
-    else if (parent)
-        parent.child = this; // first child node
+function ceSearch(searchTerm, result) {
+    ce.searchByChinese(searchTerm, function(words) {
+        result(words);
+    });
 }
-
-// put a key/value pair in the trie
-Trie.prototype.put = function(name, value) {
-    var i = 0, t = this, len = name.length, prev, parent;
-    down: while (t.child) {
-        parent = t;
-        t = t.child;
-        // if first child didn't match, get next sibling
-        while (t.key != name[i]) {
-            if (!t.next) {
-                prev = t;
-                t = parent;
-                break down;
-            }
-            t = t.next;
-        }
-        // key already exists, update the value
-        if (++i > len) {
-            t.value = value;
-            return;
-        }
-    }
-    // found any existing parts of the key, add the rest
-    t = new this.constructor(t, prev, name[i]);
-    while (++i <= len)
-        t = new this.constructor(t, null, name[i]);
-    t.name = name;
-    t.value = value;
-};
-
-// get a value from the trie at the given key
-Trie.prototype.get = function(name) {
-    var i = 0, t = this.child, len = name.length;
-    while (t) {
-        if (t.key == name[i]) {
-            if (i == len)
-                return t.value;
-            t = t.child;
-            ++i;
-        } else {
-            t = t.next;
-        }
-    }
-};
-
-*/
-
-/*
-
-
- var dict = new Trie();
-
- dict.put("true", "yes");
- dict.put("truck", "vehicle");
- dict.put("trowel", "dig");
- dict.put("hat", "head");
- dict.put("halt", "stop");
- dict.put("ham", "pig");
- dict.put("hammer", "nail");
-
- dict.put("halt", "hold it");
-
- console.log("true:", dict.get("true"));
- console.log("truck:", dict.get("truck"));
- console.log("trowel:", dict.get("trowel"));
- console.log("hat:", dict.get("hat"));
- console.log("halt:", dict.get("halt"));
- console.log("ham:", dict.get("ham"));
- console.log("hammer", dict.get("hammer"));
-
-
- */
