@@ -1,331 +1,1129 @@
 [
-    {
-        "index": 2,
-        "content": "好客",
-        "type": "word",
-        "words": [
-            {
-                "traditional": "好客",
-                "simplified": "好客",
-                "pronunciation": "hào kè",
-                "definitions": "hospitality; to treat guests well; to enjoy having guests; hospitable; friendly"
-            }
-        ],
-        "hskLevel": 1
+  {
+    "index": 0,
+    "content": "舞狮",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "舞獅",
+        "simplified": "舞狮",
+        "pronunciation": "wǔ shī",
+        "definitions": "lion dance (traditional Chinese dance form)"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 0,
+    "content": "子",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "子",
+        "simplified": "子",
+        "pronunciation": "zǐ",
+        "definitions": "son; child; seed; egg; small thing; 1st earthly branch: 11 p.m.-1 a.m., midnight, 11th solar month (7th December to 5th January), year of the Rat; Viscount, fourth of five orders of nobility 五等爵位[wu3 deng3 jue2 wei4]"
+      },
+      {
+        "traditional": "子",
+        "simplified": "子",
+        "pronunciation": "zi",
+        "definitions": "(noun suffix)"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 0,
+    "content": "是",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "是",
+        "simplified": "是",
+        "pronunciation": "shì",
+        "definitions": "is; are; am; yes; to be"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 0,
+    "content": "中国",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "中國",
+        "simplified": "中国",
+        "pronunciation": "Zhōng guó",
+        "definitions": "China"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 0,
+    "content": "优秀",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "優秀",
+        "simplified": "优秀",
+        "pronunciation": "yōu xiù",
+        "definitions": "outstanding; excellent"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 0,
+    "content": "的",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "的",
+        "simplified": "的",
+        "pronunciation": "de",
+        "definitions": "of; ~'s (possessive particle); (used after an attribute); (used to form a nominal expression); (used at the end of a declarative sentence for emphasis)"
+      },
+      {
+        "traditional": "的",
+        "simplified": "的",
+        "pronunciation": "dī",
+        "definitions": "see 的士[di1 shi4]"
+      },
+      {
+        "traditional": "的",
+        "simplified": "的",
+        "pronunciation": "dí",
+        "definitions": "really and truly"
+      },
+      {
+        "traditional": "的",
+        "simplified": "的",
+        "pronunciation": "dì",
+        "definitions": "aim; clear"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 0,
+    "content": "传统",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "傳統",
+        "simplified": "传统",
+        "pronunciation": "chuán tǒng",
+        "definitions": "tradition; traditional; convention; conventional; CL:個|个[ge4]"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 0,
+    "content": "民间艺术",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "民間藝術",
+        "simplified": "民间艺术",
+        "pronunciation": "mín jiān yì shù",
+        "definitions": "folk art"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 1,
+    "content": "，",
+    "type": "punctuation"
+  },
+  {
+    "index": 2,
+    "content": "每逢",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "每逢",
+        "simplified": "每逢",
+        "pronunciation": "měi féng",
+        "definitions": "every time; on each occasion; whenever"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 2,
+    "content": "元宵",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "元宵",
+        "simplified": "元宵",
+        "pronunciation": "yuán xiāo",
+        "definitions": "Lantern Festival; night of the 15th of the first lunar month; see also 元夜[yuan2 ye4]; sticky rice dumplings"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 2,
+    "content": "佳节",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "佳節",
+        "simplified": "佳节",
+        "pronunciation": "jiā jié",
+        "definitions": "festive day; holiday"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 2,
+    "content": "或",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "或",
+        "simplified": "或",
+        "pronunciation": "huò",
+        "definitions": "maybe; perhaps; might; possibly; or"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 2,
+    "content": "集会",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "集會",
+        "simplified": "集会",
+        "pronunciation": "jí huì",
+        "definitions": "to gather; assembly; meeting; CL:個|个[ge4],次[ci4]"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 2,
+    "content": "庆典",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "慶典",
+        "simplified": "庆典",
+        "pronunciation": "qìng diǎn",
+        "definitions": "celebration"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 3,
+    "content": "，",
+    "type": "punctuation"
+  },
+  {
+    "index": 4,
+    "content": "民间",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "民間",
+        "simplified": "民间",
+        "pronunciation": "mín jiān",
+        "definitions": "among the people; popular; folk; non-governmental; involving people rather than governments"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 4,
+    "content": "都",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "都",
+        "simplified": "都",
+        "pronunciation": "Dū",
+        "definitions": "surname Du"
+      },
+      {
+        "traditional": "都",
+        "simplified": "都",
+        "pronunciation": "dōu",
+        "definitions": "all; both; entirely; (used for emphasis) even; already; (not) at all"
+      },
+      {
+        "traditional": "都",
+        "simplified": "都",
+        "pronunciation": "dū",
+        "definitions": "capital city; metropolis"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 4,
+    "content": "以",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "以",
+        "simplified": "以",
+        "pronunciation": "Yǐ",
+        "definitions": "abbr. for Israel 以色列[Yi3 se4 lie4]"
+      },
+      {
+        "traditional": "以",
+        "simplified": "以",
+        "pronunciation": "yǐ",
+        "definitions": "to use; according to; so as to; by means of; in order to; by; with; because"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 4,
+    "content": "狮",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "獅",
+        "simplified": "狮",
+        "pronunciation": "shī",
+        "definitions": "lion"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 4,
+    "content": "舞",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "舞",
+        "simplified": "舞",
+        "pronunciation": "wǔ",
+        "definitions": "to dance; to wield; to brandish"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 4,
+    "content": "来",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "來",
+        "simplified": "来",
+        "pronunciation": "lái",
+        "definitions": "to come; to arrive; to come round; ever since; next"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 4,
+    "content": "助兴",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "助興",
+        "simplified": "助兴",
+        "pronunciation": "zhù xìng",
+        "definitions": "to add to the fun; to liven things up"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 5,
+    "content": "。",
+    "type": "punctuation"
+  },
+  {
+    "index": 6,
+    "content": "舞狮子",
+    "type": "word",
+    "words": {
+      "舞狮子": []
     },
-    {
-        "index": 4,
-        "content": "尊老爱幼",
-        "type": "word",
-        "words": [
-            {
-                "traditional": "尊老愛幼",
-                "simplified": "尊老爱幼",
-                "pronunciation": "zūn lǎo ài yòu",
-                "definitions": "respect the old and cherish the young"
-            }
-        ],
-        "hskLevel": 1
-    },
-    {
-        "index": 8,
-        "content": "阿",
-        "type": "word",
-        "words": [
-            {
-                "traditional": "阿",
-                "simplified": "阿",
-                "pronunciation": "A1",
-                "definitions": "abbr. for Afghanistan 阿富汗[A1 fu4 han4]"
-            },
-            {
-                "traditional": "阿",
-                "simplified": "阿",
-                "pronunciation": "ā",
-                "definitions": "prefix used before monosyllabic names, kinship terms etc to indicate familiarity; used in transliteration; also pr. [a4]"
-            },
-            {
-                "traditional": "阿",
-                "simplified": "阿",
-                "pronunciation": "ē",
-                "definitions": "flatter"
-            }
-        ],
-        "hskLevel": 1
-    },
-    {
-        "index": 20,
-        "content": "同样",
-        "type": "word",
-        "words": [
-            {
-                "traditional": "同樣",
-                "simplified": "同样",
-                "pronunciation": "tóng yàng",
-                "definitions": "same; equal; equivalent"
-            }
-        ],
-        "hskLevel": 1
-    },
-    {
-        "index": 26,
-        "content": "之",
-        "type": "word",
-        "words": [
-            {
-                "traditional": "之",
-                "simplified": "之",
-                "pronunciation": "zhī",
-                "definitions": "(possessive particle, literary equivalent of 的[de5]); him; her; it"
-            }
-        ],
-        "hskLevel": 1
-    },
-    {
-        "index": 22,
-        "content": "酒",
-        "type": "word",
-        "words": [
-            {
-                "traditional": "酒",
-                "simplified": "酒",
-                "pronunciation": "jiǔ",
-                "definitions": "wine (esp. rice wine); liquor; spirits; alcoholic beverage; CL:杯[bei1],瓶[ping2],罐[guan4],桶[tong3],缸[gang1]"
-            }
-        ],
-        "hskLevel": 1
-    },
-    {
-        "index": 24,
-        "content": "茶",
-        "type": "word",
-        "words": [
-            {
-                "traditional": "茶",
-                "simplified": "茶",
-                "pronunciation": "chá",
-                "definitions": "tea; tea plant; CL:杯[bei1],壺|壶[hu2]"
-            }
-        ],
-        "hskLevel": 1
-    },
-    {
-        "index": 30,
-        "content": "白族",
-        "type": "word",
-        "words": [
-            {
-                "traditional": "白族",
-                "simplified": "白族",
-                "pronunciation": "Bái zú",
-                "definitions": "Bai (ethnic group)"
-            }
-        ],
-        "hskLevel": 1
-    },
-    {
-        "index": 0,
-        "content": "白族",
-        "type": "word",
-        "words": {
-            "白族": [
-                {
-                    "traditional": "白族",
-                    "simplified": "白族",
-                    "pronunciation": "Bái zú",
-                    "definitions": "Bai (ethnic group)"
-                }
-            ]
+    "hskLevel": 1
+  },
+  {
+    "index": 6,
+    "content": "至今",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "至今",
+        "simplified": "至今",
+        "pronunciation": "zhì jīn",
+        "definitions": "so far; to this day; until now"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 6,
+    "content": "已",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "已",
+        "simplified": "已",
+        "pronunciation": "yǐ",
+        "definitions": "already; to stop; then; afterwards"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 6,
+    "content": "有",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "有",
+        "simplified": "有",
+        "pronunciation": "yǒu",
+        "definitions": "to have; there is; there are; to exist; to be"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 6,
+    "content": "一",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "一",
+        "simplified": "一",
+        "pronunciation": "yī",
+        "definitions": "one; 1; single; a (article); as soon as; entire; whole; all; throughout; \"one\" radical in Chinese characters (Kangxi radical 1); also pr. [yao1] for greater clarity when spelling out numbers digit by digit"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 6,
+    "content": "千",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "千",
+        "simplified": "千",
+        "pronunciation": "qiān",
+        "definitions": "thousand"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 6,
+    "content": "多",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "多",
+        "simplified": "多",
+        "pronunciation": "duō",
+        "definitions": "many; much; often; a lot of; numerous; more; in excess; how (to what extent); multi-; Taiwan pr. [duo2] when it means \"how\""
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 6,
+    "content": "年",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "年",
+        "simplified": "年",
+        "pronunciation": "Nián",
+        "definitions": "surname Nian"
+      },
+      {
+        "traditional": "年",
+        "simplified": "年",
+        "pronunciation": "nián",
+        "definitions": "year; CL:個|个[ge4]"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 6,
+    "content": "的",
+    "type": "word",
+    "words": {
+      "的": [
+        {
+          "traditional": "的",
+          "simplified": "的",
+          "pronunciation": "de",
+          "definitions": "of; ~'s (possessive particle); (used after an attribute); (used to form a nominal expression); (used at the end of a declarative sentence for emphasis)"
         },
-        "hskLevel": 1
-    },
-    {
-        "index": 28,
-        "content": "在",
-        "type": "word",
-        "words": [
-            {
-                "traditional": "在",
-                "simplified": "在",
-                "pronunciation": "zài",
-                "definitions": "(located) at; (to be) in; to exist; in the middle of doing sth; (indicating an action in progress)"
-            }
-        ],
-        "hskLevel": 1
-    },
-    {
-        "index": 16,
-        "content": "进",
-        "type": "word",
-        "words": [
-            {
-                "traditional": "進",
-                "simplified": "进",
-                "pronunciation": "jìn",
-                "definitions": "to advance; to enter; to come (or go) into; to receive or admit; to eat or drink; to submit or present; (used after a verb) into, in; to score a goal"
-            }
-        ],
-        "hskLevel": 1
-    },
-    {
-        "index": 18,
-        "content": "白族",
-        "type": "word",
-        "words": {
-            "白族": []
+        {
+          "traditional": "的",
+          "simplified": "的",
+          "pronunciation": "dī",
+          "definitions": "see 的士[di1 shi4]"
         },
-        "hskLevel": 1
-    },
-    {
-        "index": 32,
-        "content": "通常",
-        "type": "word",
-        "words": [
-            {
-                "traditional": "通常",
-                "simplified": "通常",
-                "pronunciation": "tōng cháng",
-                "definitions": "regular; usual; normal; usually; normally"
-            }
-        ],
-        "hskLevel": 1
-    },
-    {
-        "index": 10,
-        "content": "字",
-        "type": "word",
-        "words": [
-            {
-                "traditional": "字",
-                "simplified": "字",
-                "pronunciation": "zì",
-                "definitions": "letter; symbol; character; word; CL:個|个[ge4]; courtesy or style name traditionally given to males aged 20 in dynastic China"
-            }
-        ],
-        "hskLevel": 1
-    },
-    {
-        "index": 6,
-        "content": "在",
-        "type": "word",
-        "words": {
-            "在": [
-                {
-                    "traditional": "在",
-                    "simplified": "在",
-                    "pronunciation": "zài",
-                    "definitions": "(located) at; (to be) in; to exist; in the middle of doing sth; (indicating an action in progress)"
-                }
-            ]
+        {
+          "traditional": "的",
+          "simplified": "的",
+          "pronunciation": "dí",
+          "definitions": "really and truly"
         },
-        "hskLevel": 1
+        {
+          "traditional": "的",
+          "simplified": "的",
+          "pronunciation": "dì",
+          "definitions": "aim; clear"
+        }
+      ]
     },
-    {
-        "index": 12,
-        "content": "白族",
-        "type": "word",
-        "words": {
-            "白族": []
+    "hskLevel": 1
+  },
+  {
+    "index": 6,
+    "content": "历史",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "歷史",
+        "simplified": "历史",
+        "pronunciation": "lì shǐ",
+        "definitions": "history; CL:門|门[men2],段[duan4]"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 7,
+    "content": "，",
+    "type": "punctuation"
+  },
+  {
+    "index": 8,
+    "content": "狮子",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "獅子",
+        "simplified": "狮子",
+        "pronunciation": "Shī zǐ",
+        "definitions": "Leo (star sign); Shihtzu township in Pingtung County 屏東縣|屏东县[Ping2 dong1 Xian4], Taiwan"
+      },
+      {
+        "traditional": "獅子",
+        "simplified": "狮子",
+        "pronunciation": "shī zi",
+        "definitions": "lion; CL:隻|只[zhi1],頭|头[tou2]"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 8,
+    "content": "舞",
+    "type": "word",
+    "words": {
+      "舞": [
+        {
+          "traditional": "舞",
+          "simplified": "舞",
+          "pronunciation": "wǔ",
+          "definitions": "to dance; to wield; to brandish"
+        }
+      ]
+    },
+    "hskLevel": 1
+  },
+  {
+    "index": 8,
+    "content": "在",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "在",
+        "simplified": "在",
+        "pronunciation": "zài",
+        "definitions": "(located) at; (to be) in; to exist; in the middle of doing sth; (indicating an action in progress)"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 8,
+    "content": "旧时",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "舊時",
+        "simplified": "旧时",
+        "pronunciation": "jiù shí",
+        "definitions": "in former times; the olden days"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 8,
+    "content": "称",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "稱",
+        "simplified": "称",
+        "pronunciation": "chèn",
+        "definitions": "to fit; balanced; suitable"
+      },
+      {
+        "traditional": "稱",
+        "simplified": "称",
+        "pronunciation": "chēng",
+        "definitions": "to weigh; to state; to name; name; appellation; to praise"
+      },
+      {
+        "traditional": "稱",
+        "simplified": "称",
+        "pronunciation": "chèng",
+        "definitions": "variant of 秤[cheng4]; steelyard"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 9,
+    "content": "“",
+    "type": "punctuation"
+  },
+  {
+    "index": 10,
+    "content": "太平",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "太平",
+        "simplified": "太平",
+        "pronunciation": "Tài píng",
+        "definitions": "place name"
+      },
+      {
+        "traditional": "太平",
+        "simplified": "太平",
+        "pronunciation": "tài píng",
+        "definitions": "peace and security"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 10,
+    "content": "乐",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "樂",
+        "simplified": "乐",
+        "pronunciation": "Lè",
+        "definitions": "surname Le"
+      },
+      {
+        "traditional": "樂",
+        "simplified": "乐",
+        "pronunciation": "Yuè",
+        "definitions": "surname Yue"
+      },
+      {
+        "traditional": "樂",
+        "simplified": "乐",
+        "pronunciation": "lè",
+        "definitions": "happy; cheerful; to laugh"
+      },
+      {
+        "traditional": "樂",
+        "simplified": "乐",
+        "pronunciation": "yuè",
+        "definitions": "music"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 11,
+    "content": "”，",
+    "type": "punctuation"
+  },
+  {
+    "index": 12,
+    "content": "而",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "而",
+        "simplified": "而",
+        "pronunciation": "ér",
+        "definitions": "and; as well as; and so; but (not); yet (not); (indicates causal relation); (indicates change of state); (indicates contrast)"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 12,
+    "content": "到了",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "到了",
+        "simplified": "到了",
+        "pronunciation": "dào liǎo",
+        "definitions": "at last; finally; in the end"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 12,
+    "content": "唐代",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "唐代",
+        "simplified": "唐代",
+        "pronunciation": "Táng dài",
+        "definitions": "Tang dynasty (618-907)"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 13,
+    "content": "(",
+    "type": "punctuation"
+  },
+  {
+    "index": 14,
+    "content": "公元",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "公元",
+        "simplified": "公元",
+        "pronunciation": "gōng yuán",
+        "definitions": "CE (Common Era); Christian Era; AD (Anno Domini)"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 15,
+    "content": "618～907",
+    "type": "punctuation"
+  },
+  {
+    "index": 16,
+    "content": "年",
+    "type": "word",
+    "words": {
+      "年": [
+        {
+          "traditional": "年",
+          "simplified": "年",
+          "pronunciation": "Nián",
+          "definitions": "surname Nian"
         },
-        "hskLevel": 1
+        {
+          "traditional": "年",
+          "simplified": "年",
+          "pronunciation": "nián",
+          "definitions": "year; CL:個|个[ge4]"
+        }
+      ]
     },
-    {
-        "index": 14,
-        "content": "到",
-        "type": "word",
-        "words": [
-            {
-                "traditional": "到",
-                "simplified": "到",
-                "pronunciation": "dào",
-                "definitions": "to (a place); until (a time); up to; to go; to arrive; (verb complement denoting completion or result of an action)"
-            }
-        ],
-        "hskLevel": 1
+    "hskLevel": 1
+  },
+  {
+    "index": 17,
+    "content": ")",
+    "type": "punctuation"
+  },
+  {
+    "index": 18,
+    "content": "时",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "旹",
+        "simplified": "时",
+        "pronunciation": "shí",
+        "definitions": "old variant of 時|时[shi2]"
+      },
+      {
+        "traditional": "時",
+        "simplified": "时",
+        "pronunciation": "Shí",
+        "definitions": "surname Shi"
+      },
+      {
+        "traditional": "時",
+        "simplified": "时",
+        "pronunciation": "shí",
+        "definitions": "o'clock; time; when; hour; season; period"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 18,
+    "content": "更",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "更",
+        "simplified": "更",
+        "pronunciation": "gēng",
+        "definitions": "to change or replace; to experience; one of the five two hour periods into which the night was formerly divided; watch (e.g. of a sentry or guard)"
+      },
+      {
+        "traditional": "更",
+        "simplified": "更",
+        "pronunciation": "gèng",
+        "definitions": "more; even more; further; still; still more"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 18,
+    "content": "得到",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "得到",
+        "simplified": "得到",
+        "pronunciation": "dé dào",
+        "definitions": "to get; to obtain; to receive"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 18,
+    "content": "广泛",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "廣泛",
+        "simplified": "广泛",
+        "pronunciation": "guǎng fàn",
+        "definitions": "extensive; wide range"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 18,
+    "content": "的",
+    "type": "word",
+    "words": {
+      "的": [
+        {
+          "traditional": "的",
+          "simplified": "的",
+          "pronunciation": "de",
+          "definitions": "of; ~'s (possessive particle); (used after an attribute); (used to form a nominal expression); (used at the end of a declarative sentence for emphasis)"
+        },
+        {
+          "traditional": "的",
+          "simplified": "的",
+          "pronunciation": "dī",
+          "definitions": "see 的士[di1 shi4]"
+        },
+        {
+          "traditional": "的",
+          "simplified": "的",
+          "pronunciation": "dí",
+          "definitions": "really and truly"
+        },
+        {
+          "traditional": "的",
+          "simplified": "的",
+          "pronunciation": "dì",
+          "definitions": "aim; clear"
+        }
+      ]
     },
-    {
-        "index": 1,
-        "content": "、",
-        "type": "punctuation"
+    "hskLevel": 1
+  },
+  {
+    "index": 18,
+    "content": "发展",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "發展",
+        "simplified": "发展",
+        "pronunciation": "fā zhǎn",
+        "definitions": "development; growth; to develop; to grow; to expand"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 19,
+    "content": "。",
+    "type": "punctuation"
+  },
+  {
+    "index": 20,
+    "content": "狮",
+    "type": "word",
+    "words": {
+      "狮": [
+        {
+          "traditional": "獅",
+          "simplified": "狮",
+          "pronunciation": "shī",
+          "definitions": "lion"
+        }
+      ]
     },
-    {
-        "index": 3,
-        "content": "、",
-        "type": "punctuation"
+    "hskLevel": 1
+  },
+  {
+    "index": 20,
+    "content": "艺",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "藝",
+        "simplified": "艺",
+        "pronunciation": "yì",
+        "definitions": "skill; art"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 20,
+    "content": "在",
+    "type": "word",
+    "words": {
+      "在": [
+        {
+          "traditional": "在",
+          "simplified": "在",
+          "pronunciation": "zài",
+          "definitions": "(located) at; (to be) in; to exist; in the middle of doing sth; (indicating an action in progress)"
+        }
+      ]
     },
-    {
-        "index": 5,
-        "content": "，",
-        "type": "punctuation"
+    "hskLevel": 1
+  },
+  {
+    "index": 20,
+    "content": "当时",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "當時",
+        "simplified": "当时",
+        "pronunciation": "dāng shí",
+        "definitions": "then; at that time; while"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 20,
+    "content": "已",
+    "type": "word",
+    "words": {
+      "已": [
+        {
+          "traditional": "已",
+          "simplified": "已",
+          "pronunciation": "yǐ",
+          "definitions": "already; to stop; then; afterwards"
+        }
+      ]
     },
-    {
-        "index": 7,
-        "content": "“",
-        "type": "punctuation"
-    },
-    {
-        "index": 9,
-        "content": "”",
-        "type": "punctuation"
-    },
-    {
-        "index": 11,
-        "content": "。",
-        "type": "punctuation"
-    },
-    {
-        "index": 13,
-        "content": "，",
-        "type": "punctuation"
-    },
-    {
-        "index": 15,
-        "content": "，",
-        "type": "punctuation"
-    },
-    {
-        "index": 17,
-        "content": "。",
-        "type": "punctuation"
-    },
-    {
-        "index": 19,
-        "content": "，",
-        "type": "punctuation"
-    },
-    {
-        "index": 21,
-        "content": "“",
-        "type": "punctuation"
-    },
-    {
-        "index": 23,
-        "content": "，",
-        "type": "punctuation"
-    },
-    {
-        "index": 25,
-        "content": "”",
-        "type": "punctuation"
-    },
-    {
-        "index": 27,
-        "content": "；",
-        "type": "punctuation"
-    },
-    {
-        "index": 29,
-        "content": "，",
-        "type": "punctuation"
-    },
-    {
-        "index": 31,
-        "content": "，",
-        "type": "punctuation"
-    },
-    {
-        "index": 33,
-        "content": "。",
-        "type": "punctuation"
-    }
+    "hskLevel": 1
+  },
+  {
+    "index": 20,
+    "content": "成为",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "成為",
+        "simplified": "成为",
+        "pronunciation": "chéng wéi",
+        "definitions": "to become; to turn into"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 20,
+    "content": "过年",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "過年",
+        "simplified": "过年",
+        "pronunciation": "guò nián",
+        "definitions": "to celebrate the Chinese New Year"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 20,
+    "content": "过节",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "過節",
+        "simplified": "过节",
+        "pronunciation": "guò jié",
+        "definitions": "to celebrate a festival; after the celebrations (i.e. once the festival is over)"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 21,
+    "content": "、",
+    "type": "punctuation"
+  },
+  {
+    "index": 22,
+    "content": "行",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "行",
+        "simplified": "行",
+        "pronunciation": "háng",
+        "definitions": "a row; series; age order (of brothers); profession; professional; relating to company"
+      },
+      {
+        "traditional": "行",
+        "simplified": "行",
+        "pronunciation": "xíng",
+        "definitions": "to walk; to go; to travel; a visit; temporary; makeshift; current; in circulation; to do; to perform; capable; competent; effective; all right; OK!; will do; behavior; conduct; Taiwan pr. [xing4] for the behavior-conduct sense"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 22,
+    "content": "香",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "香",
+        "simplified": "香",
+        "pronunciation": "xiāng",
+        "definitions": "fragrant; sweet smelling; aromatic; savory or appetizing; (to eat) with relish; (of sleep) sound; perfume or spice; joss or incense stick; CL:根[gen1]"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 22,
+    "content": "走",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "走",
+        "simplified": "走",
+        "pronunciation": "zǒu",
+        "definitions": "to walk; to go; to run; to move (of vehicle); to visit; to leave; to go away; to die (euph.); from; through; away (in compound verbs, such as 撤走[che4 zou3]); to change (shape, form, meaning)"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 22,
+    "content": "会",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "會",
+        "simplified": "会",
+        "pronunciation": "huì",
+        "definitions": "can; to be possible; to be able to; will; to be likely to; to be sure to; to assemble; to meet; to gather; to see; union; group; association; CL:個|个[ge4]; a moment (Taiwan pr. for this sense is [hui3])"
+      },
+      {
+        "traditional": "會",
+        "simplified": "会",
+        "pronunciation": "kuài",
+        "definitions": "to balance an account; accountancy; accounting"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 22,
+    "content": "中的",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "中的",
+        "simplified": "中的",
+        "pronunciation": "zhòng dì",
+        "definitions": "to hit the target; to hit the nail on the head"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 22,
+    "content": "必备",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "必備",
+        "simplified": "必备",
+        "pronunciation": "bì bèi",
+        "definitions": "essential"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 22,
+    "content": "节目",
+    "type": "word",
+    "words": [
+      {
+        "traditional": "節目",
+        "simplified": "节目",
+        "pronunciation": "jié mù",
+        "definitions": "program; item (on a program); CL:臺|台[tai2],個|个[ge4],套[tao4]"
+      }
+    ],
+    "hskLevel": 1
+  },
+  {
+    "index": 23,
+    "content": "。",
+    "type": "punctuation"
+  }
 ]

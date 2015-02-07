@@ -63,7 +63,8 @@ function processArticle(article, completeProcessArticle) {
         console.log('segmentSeparators: %j', segmentSeparators);
         console.log('masterList: %j', masterList);
 
-        async.each(segments, function(segment, complete) {
+        async.eachSeries(masterList, function(segment, complete) {
+
                 getAnnotatedSegment(segment, function(result) {
 
                     for(var i =0; i < result.length; i++) {
@@ -90,10 +91,6 @@ function processArticle(article, completeProcessArticle) {
                     console.log('ERROR: %s', err);
                 else {
                     // TODO: Sort the article segments before returning.
-                    for(var i = 0; i < segmentSeparators.length; i++) {
-                        annotatedArticle.push(segmentSeparators[i]);
-                    }
-                    
                     completeProcessArticle(annotatedArticle);
                 }
             });
@@ -104,6 +101,8 @@ function processArticle(article, completeProcessArticle) {
 
 
 }
+
+
 
 // Go through the content one char at a time.  Concat a string until hit punctuation or end.
 // When hit punctuation or end push this string to an array.
@@ -174,20 +173,33 @@ function isPunctuation(character) {
     return false;
 }
 
+
+
 function getAnnotatedSegment(segment, complete) {
 
     var segmentParseLength = 0;
     var subSegments = [];
 
-    var subSegmentCompleteHandler = function(result) {
+    if (segment.type === 'punctuation') {
+        return complete([ segment ]);
+    }
+
+    var subSegmentCompleteHandler = function(result, originalSegment) {
         segmentParseLength += result.content.length;
+        console.log('segementParseLenth: %s, originalSegment: %j', segmentParseLength, originalSegment);
+
         subSegments.push(result);
 
         if (segmentParseLength != segment.content.length) {
-            var subSegment = segment;
-            subSegment.content = segment.content.substr(segmentParseLength, segment.content.length - segmentParseLength)
+
+            var subSegment = JSON.parse(JSON.stringify(segment));
+            subSegment.content = segment.content.substr(segmentParseLength, segment.content.length - segmentParseLength);
+
+            console.log('sub-segment parsing not complete, parsing remainder: %j', subSegment);
+
             getAnnotatedSubSegment(subSegment, subSegmentCompleteHandler);
         } else {
+            console.log('subsegment parsing complete..');
             complete(subSegments);
         }
 
@@ -198,25 +210,31 @@ function getAnnotatedSegment(segment, complete) {
 
 function getAnnotatedSubSegment(subSegment, complete) {
 
+    console.log('getAnnotatedSubSegment: %j', subSegment);
+
     ceSearch(subSegment, function(resultLookup){
+        console.log('resultLookup: %j', resultLookup);
+
         if (resultLookup.words.length == 0) {
 
             if (subSegment.content.length == 1) {
-                return complete( subSegment );
+                return complete( subSegment, subSegment );
             }
 
             var shortenedContent = subSegment.content.substr(0, subSegment.content.length-1);
 
-            var shortenedSubSegment = subSegment;
+            console.log('~-~-~-: %j', subSegment);
+
+            var shortenedSubSegment = JSON.parse(JSON.stringify(subSegment));
             shortenedSubSegment.content = shortenedContent;
 
-            getAnnotatedSubSegment(shortenedSubSegment, function(result) {
+            getAnnotatedSubSegment(shortenedSubSegment, function(result, originalSubSegment) {
                 if (typeof result != 'undefined') {
-                    return complete(result);
+                    return complete(result, originalSubSegment);
                 }
             });
         } else {
-            return complete(resultLookup);
+            return complete(resultLookup, subSegment);
         }
     });
 
@@ -228,10 +246,11 @@ function ceSearch(searchSegment, result) {
     if (typechecker.isEmptyObject(cacheResult)) {
 
         ce.searchByChinese(searchSegment.content, function (words) {
+            console.log('got results: %j', words);
             searchSegment.words = words;
             searchSegment.hskLevel = 1; // TODO: Get hsk levels into dictionary.
-            result(searchSegment);
             cache.set(searchSegment.content, words);
+            result(searchSegment);
         });
     } else {
         searchSegment.words = cacheResult;
