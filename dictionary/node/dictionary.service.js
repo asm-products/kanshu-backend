@@ -3,7 +3,8 @@ var feed        = require('feed-read'),
     async       = require('async'),
     NodeCache   = require('node-cache'),
     typechecker = require('typechecker'),
-    cedict      = require('node-cc-cedict');
+    cedict      = require('node-cc-cedict'),
+    hsk         = require('hsk-words');
 
 var cache = new NodeCache();
 var log = {};
@@ -245,14 +246,23 @@ function ceSearch(searchSegment, result) {
 
     if (typechecker.isEmptyObject(cacheResult)) {
 
+        console.log('(C) MISS');
         ce.searchByChinese(searchSegment.content, function (words) {
             console.log('got results: %j', words);
             searchSegment.words = words;
             searchSegment.hskLevel = 1; // TODO: Get hsk levels into dictionary.
-            cache.set(searchSegment.content, words);
-            result(searchSegment);
+
+            if (words.length > 0)
+                cache.set(searchSegment.content, words);
+
+            hsk.findLevel(searchSegment.content, function(level){
+                // level evaluates to -1 if not found, else is in 1..6
+                searchSegment.hskLevel = level;
+                result(searchSegment);
+            });
         });
     } else {
+        console.log('(C) HIT');
         searchSegment.words = cacheResult;
         searchSegment.hskLevel = 1; // TODO: Get hsk levels into dictionary.
 
