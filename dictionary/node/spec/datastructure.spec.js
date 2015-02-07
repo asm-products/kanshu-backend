@@ -31,10 +31,11 @@ feed("http://www.hwjyw.com/rss/zhwh.xml", function(err, articles) {
 
     articleCount = articles.length;
 
-    for(articleIndex=0;articleIndex < articleCount; articleIndex++)
+
+    for(articleIndex=0;articleIndex < 1 /* articleCount */; articleIndex++)
     {
         processArticle(articles[articleIndex], function() {
-            console.log('finished processing article.');
+            console.log('finished processing article [%s]: %s',articleIndex ,articles[articleIndex]);
 
             for (var i = 0; i < stats.length; i++) {
                 console.log('%j', stats[i]);

@@ -20,6 +20,7 @@ server.use(restify.authorizationParser());
 server.use(restify.bodyParser({ mapParams : true }));
 
 server.get('/lookup/:phrase', dictionaryService.lookup);
+server.post('/processFeed', dictionaryService.processFeed);
 
 /**
  This code will start the http server.

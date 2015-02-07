@@ -1,0 +1,331 @@
+[
+    {
+        "index": 2,
+        "content": "好客",
+        "type": "word",
+        "words": [
+            {
+                "traditional": "好客",
+                "simplified": "好客",
+                "pronunciation": "hào kè",
+                "definitions": "hospitality; to treat guests well; to enjoy having guests; hospitable; friendly"
+            }
+        ],
+        "hskLevel": 1
+    },
+    {
+        "index": 4,
+        "content": "尊老爱幼",
+        "type": "word",
+        "words": [
+            {
+                "traditional": "尊老愛幼",
+                "simplified": "尊老爱幼",
+                "pronunciation": "zūn lǎo ài yòu",
+                "definitions": "respect the old and cherish the young"
+            }
+        ],
+        "hskLevel": 1
+    },
+    {
+        "index": 8,
+        "content": "阿",
+        "type": "word",
+        "words": [
+            {
+                "traditional": "阿",
+                "simplified": "阿",
+                "pronunciation": "A1",
+                "definitions": "abbr. for Afghanistan 阿富汗[A1 fu4 han4]"
+            },
+            {
+                "traditional": "阿",
+                "simplified": "阿",
+                "pronunciation": "ā",
+                "definitions": "prefix used before monosyllabic names, kinship terms etc to indicate familiarity; used in transliteration; also pr. [a4]"
+            },
+            {
+                "traditional": "阿",
+                "simplified": "阿",
+                "pronunciation": "ē",
+                "definitions": "flatter"
+            }
+        ],
+        "hskLevel": 1
+    },
+    {
+        "index": 20,
+        "content": "同样",
+        "type": "word",
+        "words": [
+            {
+                "traditional": "同樣",
+                "simplified": "同样",
+                "pronunciation": "tóng yàng",
+                "definitions": "same; equal; equivalent"
+            }
+        ],
+        "hskLevel": 1
+    },
+    {
+        "index": 26,
+        "content": "之",
+        "type": "word",
+        "words": [
+            {
+                "traditional": "之",
+                "simplified": "之",
+                "pronunciation": "zhī",
+                "definitions": "(possessive particle, literary equivalent of 的[de5]); him; her; it"
+            }
+        ],
+        "hskLevel": 1
+    },
+    {
+        "index": 22,
+        "content": "酒",
+        "type": "word",
+        "words": [
+            {
+                "traditional": "酒",
+                "simplified": "酒",
+                "pronunciation": "jiǔ",
+                "definitions": "wine (esp. rice wine); liquor; spirits; alcoholic beverage; CL:杯[bei1],瓶[ping2],罐[guan4],桶[tong3],缸[gang1]"
+            }
+        ],
+        "hskLevel": 1
+    },
+    {
+        "index": 24,
+        "content": "茶",
+        "type": "word",
+        "words": [
+            {
+                "traditional": "茶",
+                "simplified": "茶",
+                "pronunciation": "chá",
+                "definitions": "tea; tea plant; CL:杯[bei1],壺|壶[hu2]"
+            }
+        ],
+        "hskLevel": 1
+    },
+    {
+        "index": 30,
+        "content": "白族",
+        "type": "word",
+        "words": [
+            {
+                "traditional": "白族",
+                "simplified": "白族",
+                "pronunciation": "Bái zú",
+                "definitions": "Bai (ethnic group)"
+            }
+        ],
+        "hskLevel": 1
+    },
+    {
+        "index": 0,
+        "content": "白族",
+        "type": "word",
+        "words": {
+            "白族": [
+                {
+                    "traditional": "白族",
+                    "simplified": "白族",
+                    "pronunciation": "Bái zú",
+                    "definitions": "Bai (ethnic group)"
+                }
+            ]
+        },
+        "hskLevel": 1
+    },
+    {
+        "index": 28,
+        "content": "在",
+        "type": "word",
+        "words": [
+            {
+                "traditional": "在",
+                "simplified": "在",
+                "pronunciation": "zài",
+                "definitions": "(located) at; (to be) in; to exist; in the middle of doing sth; (indicating an action in progress)"
+            }
+        ],
+        "hskLevel": 1
+    },
+    {
+        "index": 16,
+        "content": "进",
+        "type": "word",
+        "words": [
+            {
+                "traditional": "進",
+                "simplified": "进",
+                "pronunciation": "jìn",
+                "definitions": "to advance; to enter; to come (or go) into; to receive or admit; to eat or drink; to submit or present; (used after a verb) into, in; to score a goal"
+            }
+        ],
+        "hskLevel": 1
+    },
+    {
+        "index": 18,
+        "content": "白族",
+        "type": "word",
+        "words": {
+            "白族": []
+        },
+        "hskLevel": 1
+    },
+    {
+        "index": 32,
+        "content": "通常",
+        "type": "word",
+        "words": [
+            {
+                "traditional": "通常",
+                "simplified": "通常",
+                "pronunciation": "tōng cháng",
+                "definitions": "regular; usual; normal; usually; normally"
+            }
+        ],
+        "hskLevel": 1
+    },
+    {
+        "index": 10,
+        "content": "字",
+        "type": "word",
+        "words": [
+            {
+                "traditional": "字",
+                "simplified": "字",
+                "pronunciation": "zì",
+                "definitions": "letter; symbol; character; word; CL:個|个[ge4]; courtesy or style name traditionally given to males aged 20 in dynastic China"
+            }
+        ],
+        "hskLevel": 1
+    },
+    {
+        "index": 6,
+        "content": "在",
+        "type": "word",
+        "words": {
+            "在": [
+                {
+                    "traditional": "在",
+                    "simplified": "在",
+                    "pronunciation": "zài",
+                    "definitions": "(located) at; (to be) in; to exist; in the middle of doing sth; (indicating an action in progress)"
+                }
+            ]
+        },
+        "hskLevel": 1
+    },
+    {
+        "index": 12,
+        "content": "白族",
+        "type": "word",
+        "words": {
+            "白族": []
+        },
+        "hskLevel": 1
+    },
+    {
+        "index": 14,
+        "content": "到",
+        "type": "word",
+        "words": [
+            {
+                "traditional": "到",
+                "simplified": "到",
+                "pronunciation": "dào",
+                "definitions": "to (a place); until (a time); up to; to go; to arrive; (verb complement denoting completion or result of an action)"
+            }
+        ],
+        "hskLevel": 1
+    },
+    {
+        "index": 1,
+        "content": "、",
+        "type": "punctuation"
+    },
+    {
+        "index": 3,
+        "content": "、",
+        "type": "punctuation"
+    },
+    {
+        "index": 5,
+        "content": "，",
+        "type": "punctuation"
+    },
+    {
+        "index": 7,
+        "content": "“",
+        "type": "punctuation"
+    },
+    {
+        "index": 9,
+        "content": "”",
+        "type": "punctuation"
+    },
+    {
+        "index": 11,
+        "content": "。",
+        "type": "punctuation"
+    },
+    {
+        "index": 13,
+        "content": "，",
+        "type": "punctuation"
+    },
+    {
+        "index": 15,
+        "content": "，",
+        "type": "punctuation"
+    },
+    {
+        "index": 17,
+        "content": "。",
+        "type": "punctuation"
+    },
+    {
+        "index": 19,
+        "content": "，",
+        "type": "punctuation"
+    },
+    {
+        "index": 21,
+        "content": "“",
+        "type": "punctuation"
+    },
+    {
+        "index": 23,
+        "content": "，",
+        "type": "punctuation"
+    },
+    {
+        "index": 25,
+        "content": "”",
+        "type": "punctuation"
+    },
+    {
+        "index": 27,
+        "content": "；",
+        "type": "punctuation"
+    },
+    {
+        "index": 29,
+        "content": "，",
+        "type": "punctuation"
+    },
+    {
+        "index": 31,
+        "content": "，",
+        "type": "punctuation"
+    },
+    {
+        "index": 33,
+        "content": "。",
+        "type": "punctuation"
+    }
+]

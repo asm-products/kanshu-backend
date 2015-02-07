@@ -11,6 +11,8 @@ var log = {};
 module.exports = {
     lookup: internalLookup,
 
+    processFeed: internalProcessFeed,
+
     setLogger: function(value) { log = value; }
 };
 
@@ -22,8 +24,9 @@ function internalLookup(req, res, next) {
         return next();
     });
 }
+
 // TODO: Finish this off so that we can take an RSS feed url and process all the articles.
-function internalProcessArticle(req, res, next) {
+function internalProcessFeed(req, res, next) {
 
     feed(req.body.url, function(err, articles) {
         if (err) throw err;
@@ -36,22 +39,37 @@ function internalProcessArticle(req, res, next) {
         //   * "published" - The date that the article was published (Date).
         //   * "feed"      - {name, source, link}
         //
-        console.log('articles: %j', articles);
 
-        var startDate = Date.now();
+        console.log('found rss feed: %s, processing article: %s', req.body.url, req.body.articleIndex);
 
-        parseSegments(articles[0].content);
+        processArticle(articles[req.body.articleIndex], function(annotatedArticle) {
+           res.send(annotatedArticle);
+            next();
+        });
 
-        console.log('parsed article[0], segments: %s, segmentSeparators: %s', segments.length, segmentSeparators.length);
+    });
+}
+
+function processArticle(article, completeProcessArticle) {
+
+
+    var segmentParserCompleteHander = function(segments, segmentSeparators, masterList) {
+        //var startDate = Date.now();
+        //console.log('parsed article[%s], segments: %s, segmentSeparators: %s', articleIndex, segments.length, segmentSeparators.length);
+
+        var annotatedArticle = [];
 
         console.log('segments: %j', segments);
         console.log('segmentSeparators: %j', segmentSeparators);
+        console.log('masterList: %j', masterList);
 
         async.each(segments, function(segment, complete) {
                 getAnnotatedSegment(segment, function(result) {
-                    //console.log('result: %j', result);
 
-                    var phrase = '';
+                    for(var i =0; i < result.length; i++) {
+                        annotatedArticle.push(result[i]);
+                    }
+                    /*var phrase = '';
 
                     for(var i=0; i < result.length; i++) {
                         phrase += result[i].segment;
@@ -61,7 +79,7 @@ function internalProcessArticle(req, res, next) {
                             phrase += ' (??) ';
                         }
                     }
-
+                    */
                     //console.log('phrase: %s', phrase);
                     complete();
                 });
@@ -71,25 +89,44 @@ function internalProcessArticle(req, res, next) {
                 if (err)
                     console.log('ERROR: %s', err);
                 else {
-                    var completeDate = Date.now();
-                    console.log('Complete % seconds', (completeDate - startDate) / 1000 );
+                    // TODO: Sort the article segments before returning.
+                    for(var i = 0; i < segmentSeparators.length; i++) {
+                        annotatedArticle.push(segmentSeparators[i]);
+                    }
+                    
+                    completeProcessArticle(annotatedArticle);
                 }
             });
 
+    };
 
-        console.log('done.');
-    });
+    parseSegments(article.content, segmentParserCompleteHander);
+
+
 }
 
-/**
- * Parses the content into segments and punctuation segments.
- * @param content - the content to be parsed.
- * @param complete - a callback that passes back segments and segmentSeparators
- */
+// Go through the content one char at a time.  Concat a string until hit punctuation or end.
+// When hit punctuation or end push this string to an array.
+// store punctuation in second array
+// take all of the segments in the array and word search length, then length -1 until word is found
+// add to word set array for that segment.
+// keep parsing next set of chars until all of segment processed.
+// start outputting text.  processed words end in punctuation at array element of same index until end.
+
+
+
+// Find segments.  Start at left and copy all chars until hit a punctuation.
+// then take all punctuation or space until you hit a non punctuation or space or end.  This is the segment separator for the same index as the segment.
+
 function parseSegments(content, complete) {
+    var tempSegment = '';
     var segments = [];
     var segmentSeparators = [];
-    var tempSegment = '';
+    var masterSegmentList = [];
+    var punctuation = {},
+        wordSegment = {};
+
+    var segmentIndex = 0;
 
     for(var i=0; i < content.length; i++)
     {
@@ -99,7 +136,11 @@ function parseSegments(content, complete) {
         else
         {
             if (tempSegment.length > 0) {
-                segments.push(tempSegment);
+                wordSegment = { index: segmentIndex, content: tempSegment, type: 'word' };
+
+                segments.push(wordSegment);
+                masterSegmentList.push(wordSegment);
+                segmentIndex++;
                 tempSegment = '';
             }
 
@@ -110,11 +151,14 @@ function parseSegments(content, complete) {
                 i++;
             }
 
-            segmentSeparators.push(punctuationSegment);
+            punctuation = { index: segmentIndex, content: punctuationSegment, type: 'punctuation' };
+            segmentSeparators.push(punctuation);
+            masterSegmentList.push(punctuation);
+            segmentIndex++;
         }
     }
 
-    complete(segments, segmentSeparators);
+    complete(segments, segmentSeparators, masterSegmentList);
 }
 
 function isPunctuation(character) {
@@ -136,11 +180,13 @@ function getAnnotatedSegment(segment, complete) {
     var subSegments = [];
 
     var subSegmentCompleteHandler = function(result) {
-        segmentParseLength += result.segment.length;
+        segmentParseLength += result.content.length;
         subSegments.push(result);
 
-        if (segmentParseLength != segment.length) {
-            getAnnotatedSubSegment(segment.substr(segmentParseLength, segment.length - segmentParseLength), subSegmentCompleteHandler);
+        if (segmentParseLength != segment.content.length) {
+            var subSegment = segment;
+            subSegment.content = segment.content.substr(segmentParseLength, segment.content.length - segmentParseLength)
+            getAnnotatedSubSegment(subSegment, subSegmentCompleteHandler);
         } else {
             complete(subSegments);
         }
@@ -152,37 +198,46 @@ function getAnnotatedSegment(segment, complete) {
 
 function getAnnotatedSubSegment(subSegment, complete) {
 
-    ceSearch(subSegment, function(words){
-        if (words.length == 0) {
+    ceSearch(subSegment, function(resultLookup){
+        if (resultLookup.words.length == 0) {
 
-            if (subSegment.length == 1) {
-                return complete( {segment: subSegment} );
+            if (subSegment.content.length == 1) {
+                return complete( subSegment );
             }
 
-            var shortenedSegment = subSegment.substr(0, subSegment.length-1);
+            var shortenedContent = subSegment.content.substr(0, subSegment.content.length-1);
 
-            getAnnotatedSubSegment(shortenedSegment, function(result) {
+            var shortenedSubSegment = subSegment;
+            shortenedSubSegment.content = shortenedContent;
+
+            getAnnotatedSubSegment(shortenedSubSegment, function(result) {
                 if (typeof result != 'undefined') {
                     return complete(result);
                 }
             });
         } else {
-            return complete({ segment: subSegment, words: words });
+            return complete(resultLookup);
         }
     });
 
 }
 
-function ceSearch(searchTerm, result) {
-    var cacheResult = cache.get(searchTerm);
+function ceSearch(searchSegment, result) {
+    var cacheResult = cache.get(searchSegment.content);
 
     if (typechecker.isEmptyObject(cacheResult)) {
 
-        ce.searchByChinese(searchTerm, function (words) {
-            result(words);
-            cache.set(searchTerm, words);
+        ce.searchByChinese(searchSegment.content, function (words) {
+            searchSegment.words = words;
+            searchSegment.hskLevel = 1; // TODO: Get hsk levels into dictionary.
+            result(searchSegment);
+            cache.set(searchSegment.content, words);
         });
     } else {
-        result(cacheResult);
+        searchSegment.words = cacheResult;
+        searchSegment.hskLevel = 1; // TODO: Get hsk levels into dictionary.
+
+        result(searchSegment);
     }
 }
+
