@@ -27,4 +27,6 @@ server.post('/processFeed', dictionaryService.processFeed);
  */
 server.listen(nconf.get("apiServicePort"), function() {
     log.info('%s listening at %s', server.name, server.url);
+
+    dictionaryService.precacheDictionary();
 });

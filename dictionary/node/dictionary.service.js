@@ -6,7 +6,9 @@ var feed        = require('feed-read'),
     cedict      = require('node-cc-cedict'),
     hsk         = require('hsk-words');
 
-var cache = new NodeCache();
+var wordCache = new NodeCache();  // used to cache up the words discovered in the dictionary.
+var missCache = new NodeCache();  // used to cache the words that were not found in the dictionary.
+
 var log = {};
 
 module.exports = {
@@ -14,10 +16,27 @@ module.exports = {
 
     processFeed: internalProcessFeed,
 
+    precacheDictionary: internalPrecacheDictionary,
+
     setLogger: function(value) { log = value; }
 };
 
-// example: 你好
+function internalPrecacheDictionary() {
+    console.log('precaching cc-cedict.');
+
+    ce.getAll(function(words) {
+        console.log('got all words: %s', words.length);
+
+        for(var i=0; i < words.length; i++) {
+            wordCache.set(words[i].traditional, words[i]);
+
+            if (words[i].traditional != words[i].simplified)
+                wordCache.set(words[i].simplified, words[i]);
+        }
+
+        console.log('cached all words');
+    });
+}
 
 function internalLookup(req, res, next) {
     cedict.searchByChinese(req.params.phrase, function(words){
@@ -213,7 +232,7 @@ function getAnnotatedSubSegment(subSegment, complete) {
 
     console.log('getAnnotatedSubSegment: %j', subSegment);
 
-    ceSearch(subSegment, function(resultLookup){
+    ceSearchCacheOnly(subSegment, function(resultLookup){
         console.log('resultLookup: %j', resultLookup);
 
         if (resultLookup.words.length == 0) {
@@ -241,8 +260,23 @@ function getAnnotatedSubSegment(subSegment, complete) {
 
 }
 
+
+
 function ceSearch(searchSegment, result) {
-    var cacheResult = cache.get(searchSegment.content);
+
+    // first try the miss cache.
+    var missCacheResult = missCache.get(searchSegment.content);
+
+    if (!typechecker.isEmptyObject(missCacheResult)) { // This segment is already known to not be a word in the dictionary.
+        searchSegment.words = [];
+        searchSegment.hskLevel = -1;
+
+        return result(searchSegment);
+    }
+
+    var cacheResult = wordCache.get(searchSegment.content);
+
+
 
     if (typechecker.isEmptyObject(cacheResult)) {
 
@@ -253,7 +287,9 @@ function ceSearch(searchSegment, result) {
             searchSegment.hskLevel = 1; // TODO: Get hsk levels into dictionary.
 
             if (words.length > 0)
-                cache.set(searchSegment.content, words);
+                wordCache.set(searchSegment.content, words);
+            else
+                missCache.set(searchSegment.content, true);
 
             hsk.findLevel(searchSegment.content, function(level){
                 // level evaluates to -1 if not found, else is in 1..6
@@ -270,3 +306,23 @@ function ceSearch(searchSegment, result) {
     }
 }
 
+function ceSearchCacheOnly(searchSegment, result) {
+
+    var cacheResult = wordCache.get(searchSegment.content);
+
+    if (typechecker.isEmptyObject(cacheResult)) {
+
+        searchSegment.words = [];
+        searchSegment.hskLevel = -1;
+
+        return result(searchSegment);
+
+    } else {
+        hsk.findLevel(searchSegment.content, function(level){
+            // level evaluates to -1 if not found, else is in 1..6
+            searchSegment.words = cacheResult;
+            searchSegment.hskLevel = level;
+            result(searchSegment);
+        });
+    }
+}
