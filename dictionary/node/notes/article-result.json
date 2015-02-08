@@ -3,7 +3,7 @@
     "index": 0,
     "content": "白族",
     "type": "word",
-    "displayText": "白族性格外向、",
+    "displayText": "白族",
     "definitions": {
       "白族": {
         "traditional": "白族",
@@ -18,7 +18,7 @@
     "index": 0,
     "content": "性格",
     "type": "word",
-    "displayText": "白族性格外向、",
+    "displayText": "性格",
     "definitions": {
       "性格": {
         "traditional": "性格",
@@ -33,7 +33,7 @@
     "index": 0,
     "content": "外向",
     "type": "word",
-    "displayText": "白族性格外向、",
+    "displayText": "外向、",
     "definitions": {
       "外向": {
         "traditional": "外向",
@@ -45,70 +45,45 @@
     "hskLevel": 6
   },
   {
-    "index": 1,
-    "content": "客",
+    "index": 2,
+    "content": "好客",
     "type": "word",
-    "displayText": "客、",
+    "displayText": "好客、",
     "definitions": {
-      "客": {
-        "traditional": "客",
-        "simplified": "客",
-        "pronunciation": "kè",
-        "definitions": "customer; visitor; guest"
+      "好客": {
+        "traditional": "好客",
+        "simplified": "好客",
+        "pronunciation": "hào kè",
+        "definitions": "hospitality; to treat guests well; to enjoy having guests; hospitable; friendly"
+      }
+    },
+    "hskLevel": 6
+  },
+  {
+    "index": 4,
+    "content": "尊老爱幼",
+    "type": "word",
+    "displayText": "尊老爱幼",
+    "definitions": {
+      "尊老爱幼": {
+        "traditional": "尊老愛幼",
+        "simplified": "尊老爱幼",
+        "pronunciation": "zūn lǎo ài yòu",
+        "definitions": "respect the old and cherish the young"
       }
     },
     "hskLevel": -1
   },
   {
-    "index": 2,
-    "content": "老",
-    "type": "word",
-    "displayText": "老爱幼",
-    "definitions": {
-      "老": {
-        "traditional": "老",
-        "simplified": "老",
-        "pronunciation": "lǎo",
-        "definitions": "prefix used before the surname of a person or a numeral indicating the order of birth of the children in a family or to indicate affection or familiarity; old (of people); venerable (person); experienced; of long standing; always; all the time; of the past; very; outdated; (of meat etc) tough"
-      }
-    },
-    "hskLevel": 3
+    "index": 5,
+    "content": "，",
+    "type": "punctuation"
   },
   {
-    "index": 2,
-    "content": "爱",
-    "type": "word",
-    "displayText": "老爱幼",
-    "definitions": {
-      "爱": {
-        "traditional": "愛",
-        "simplified": "爱",
-        "pronunciation": "ài",
-        "definitions": "to love; affection; to be fond of; to like"
-      }
-    },
-    "hskLevel": 1
-  },
-  {
-    "index": 2,
-    "content": "幼",
-    "type": "word",
-    "displayText": "老爱幼",
-    "definitions": {
-      "幼": {
-        "traditional": "幼",
-        "simplified": "幼",
-        "pronunciation": "yòu",
-        "definitions": "young"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 3,
+    "index": 6,
     "content": "在",
     "type": "word",
-    "displayText": "在对人的称谓前喜欢加个",
+    "displayText": "在",
     "definitions": {
       "在": {
         "traditional": "在",
@@ -120,10 +95,10 @@
     "hskLevel": 1
   },
   {
-    "index": 3,
+    "index": 6,
     "content": "对",
     "type": "word",
-    "displayText": "在对人的称谓前喜欢加个",
+    "displayText": "对",
     "definitions": {
       "对": {
         "traditional": "對",
@@ -135,10 +110,10 @@
     "hskLevel": 2
   },
   {
-    "index": 3,
+    "index": 6,
     "content": "人",
     "type": "word",
-    "displayText": "在对人的称谓前喜欢加个",
+    "displayText": "人",
     "definitions": {
       "人": {
         "traditional": "人",
@@ -150,10 +125,10 @@
     "hskLevel": 1
   },
   {
-    "index": 3,
+    "index": 6,
     "content": "的",
     "type": "word",
-    "displayText": "在对人的称谓前喜欢加个",
+    "displayText": "的",
     "definitions": {
       "的": {
         "traditional": "的",
@@ -165,10 +140,10 @@
     "hskLevel": 1
   },
   {
-    "index": 3,
+    "index": 6,
     "content": "称谓",
     "type": "word",
-    "displayText": "在对人的称谓前喜欢加个",
+    "displayText": "称谓",
     "definitions": {
       "称谓": {
         "traditional": "稱謂",
@@ -180,10 +155,10 @@
     "hskLevel": -1
   },
   {
-    "index": 3,
+    "index": 6,
     "content": "前",
     "type": "word",
-    "displayText": "在对人的称谓前喜欢加个",
+    "displayText": "前",
     "definitions": {
       "前": {
         "traditional": "前",
@@ -195,10 +170,10 @@
     "hskLevel": -1
   },
   {
-    "index": 3,
+    "index": 6,
     "content": "喜欢",
     "type": "word",
-    "displayText": "在对人的称谓前喜欢加个",
+    "displayText": "喜欢",
     "definitions": {
       "喜欢": {
         "traditional": "喜歡",
@@ -210,10 +185,10 @@
     "hskLevel": 1
   },
   {
-    "index": 3,
+    "index": 6,
     "content": "加",
     "type": "word",
-    "displayText": "在对人的称谓前喜欢加个",
+    "displayText": "加",
     "definitions": {
       "加": {
         "traditional": "加",
@@ -225,10 +200,10 @@
     "hskLevel": -1
   },
   {
-    "index": 3,
+    "index": 6,
     "content": "个",
     "type": "word",
-    "displayText": "在对人的称谓前喜欢加个",
+    "displayText": "个",
     "definitions": {
       "个": {
         "traditional": "箇",
@@ -240,7 +215,12 @@
     "hskLevel": 1
   },
   {
-    "index": 4,
+    "index": 7,
+    "content": "“",
+    "type": "punctuation"
+  },
+  {
+    "index": 8,
     "content": "阿",
     "type": "word",
     "displayText": "阿”",
@@ -255,10 +235,25 @@
     "hskLevel": -1
   },
   {
-    "index": 5,
+    "index": 10,
+    "content": "字",
+    "type": "word",
+    "displayText": "字",
+    "definitions": {
+      "字": {
+        "traditional": "字",
+        "simplified": "字",
+        "pronunciation": "zì",
+        "definitions": "letter; symbol; character; word; CL:個|个[ge4]; courtesy or style name traditionally given to males aged 20 in dynastic China"
+      }
+    },
+    "hskLevel": 1
+  },
+  {
+    "index": 10,
     "content": "表示",
     "type": "word",
-    "displayText": "表示亲切和尊敬。",
+    "displayText": "表示",
     "definitions": {
       "表示": {
         "traditional": "表示",
@@ -270,10 +265,10 @@
     "hskLevel": 3
   },
   {
-    "index": 5,
+    "index": 10,
     "content": "亲切",
     "type": "word",
-    "displayText": "表示亲切和尊敬。",
+    "displayText": "亲切",
     "definitions": {
       "亲切": {
         "traditional": "親切",
@@ -285,10 +280,10 @@
     "hskLevel": 5
   },
   {
-    "index": 5,
+    "index": 10,
     "content": "和",
     "type": "word",
-    "displayText": "表示亲切和尊敬。",
+    "displayText": "和",
     "definitions": {
       "和": {
         "traditional": "龢",
@@ -300,10 +295,10 @@
     "hskLevel": 1
   },
   {
-    "index": 5,
+    "index": 10,
     "content": "尊敬",
     "type": "word",
-    "displayText": "表示亲切和尊敬。",
+    "displayText": "尊敬。",
     "definitions": {
       "尊敬": {
         "traditional": "尊敬",
@@ -315,25 +310,25 @@
     "hskLevel": 5
   },
   {
-    "index": 6,
-    "content": "族",
+    "index": 12,
+    "content": "白族",
     "type": "word",
-    "displayText": "族访友或探病时一般不选择在上午",
+    "displayText": "白族",
     "definitions": {
-      "族": {
-        "traditional": "族",
-        "simplified": "族",
-        "pronunciation": "zú",
-        "definitions": "race; nationality; ethnicity; clan; by extension, social group (e.g. office workers 上班族)"
+      "白族": {
+        "traditional": "白族",
+        "simplified": "白族",
+        "pronunciation": "Bái zú",
+        "definitions": "Bai (ethnic group)"
       }
     },
     "hskLevel": -1
   },
   {
-    "index": 6,
+    "index": 12,
     "content": "访",
     "type": "word",
-    "displayText": "族访友或探病时一般不选择在上午",
+    "displayText": "访",
     "definitions": {
       "访": {
         "traditional": "訪",
@@ -345,10 +340,10 @@
     "hskLevel": -1
   },
   {
-    "index": 6,
+    "index": 12,
     "content": "友",
     "type": "word",
-    "displayText": "族访友或探病时一般不选择在上午",
+    "displayText": "友",
     "definitions": {
       "友": {
         "traditional": "友",
@@ -360,10 +355,10 @@
     "hskLevel": -1
   },
   {
-    "index": 6,
+    "index": 12,
     "content": "或",
     "type": "word",
-    "displayText": "族访友或探病时一般不选择在上午",
+    "displayText": "或",
     "definitions": {
       "或": {
         "traditional": "或",
@@ -375,10 +370,10 @@
     "hskLevel": -1
   },
   {
-    "index": 6,
+    "index": 12,
     "content": "探病",
     "type": "word",
-    "displayText": "族访友或探病时一般不选择在上午",
+    "displayText": "探病",
     "definitions": {
       "探病": {
         "traditional": "探病",
@@ -390,10 +385,10 @@
     "hskLevel": -1
   },
   {
-    "index": 6,
+    "index": 12,
     "content": "时",
     "type": "word",
-    "displayText": "族访友或探病时一般不选择在上午",
+    "displayText": "时",
     "definitions": {
       "时": {
         "traditional": "時",
@@ -405,10 +400,10 @@
     "hskLevel": -1
   },
   {
-    "index": 6,
+    "index": 12,
     "content": "一般",
     "type": "word",
-    "displayText": "族访友或探病时一般不选择在上午",
+    "displayText": "一般",
     "definitions": {
       "一般": {
         "traditional": "一般",
@@ -420,10 +415,10 @@
     "hskLevel": 3
   },
   {
-    "index": 6,
+    "index": 12,
     "content": "不",
     "type": "word",
-    "displayText": "族访友或探病时一般不选择在上午",
+    "displayText": "不",
     "definitions": {
       "不": {
         "traditional": "不",
@@ -435,10 +430,10 @@
     "hskLevel": 1
   },
   {
-    "index": 6,
+    "index": 12,
     "content": "选择",
     "type": "word",
-    "displayText": "族访友或探病时一般不选择在上午",
+    "displayText": "选择",
     "definitions": {
       "选择": {
         "traditional": "選擇",
@@ -450,10 +445,10 @@
     "hskLevel": 3
   },
   {
-    "index": 6,
+    "index": 12,
     "content": "在",
     "type": "word",
-    "displayText": "族访友或探病时一般不选择在上午",
+    "displayText": "在",
     "definitions": {
       "在": {
         "traditional": "在",
@@ -465,10 +460,10 @@
     "hskLevel": 1
   },
   {
-    "index": 6,
+    "index": 12,
     "content": "上午",
     "type": "word",
-    "displayText": "族访友或探病时一般不选择在上午",
+    "displayText": "上午",
     "definitions": {
       "上午": {
         "traditional": "上午",
@@ -480,10 +475,15 @@
     "hskLevel": 1
   },
   {
-    "index": 7,
+    "index": 13,
+    "content": "，",
+    "type": "punctuation"
+  },
+  {
+    "index": 14,
     "content": "到",
     "type": "word",
-    "displayText": "到农村遇到主人家有人分娩或有重病人时",
+    "displayText": "到",
     "definitions": {
       "到": {
         "traditional": "到",
@@ -495,10 +495,10 @@
     "hskLevel": 2
   },
   {
-    "index": 7,
+    "index": 14,
     "content": "农村",
     "type": "word",
-    "displayText": "到农村遇到主人家有人分娩或有重病人时",
+    "displayText": "农村",
     "definitions": {
       "农村": {
         "traditional": "農村",
@@ -510,10 +510,10 @@
     "hskLevel": 4
   },
   {
-    "index": 7,
+    "index": 14,
     "content": "遇到",
     "type": "word",
-    "displayText": "到农村遇到主人家有人分娩或有重病人时",
+    "displayText": "遇到",
     "definitions": {
       "遇到": {
         "traditional": "遇到",
@@ -525,10 +525,10 @@
     "hskLevel": 3
   },
   {
-    "index": 7,
+    "index": 14,
     "content": "主人",
     "type": "word",
-    "displayText": "到农村遇到主人家有人分娩或有重病人时",
+    "displayText": "主人",
     "definitions": {
       "主人": {
         "traditional": "主人",
@@ -540,10 +540,10 @@
     "hskLevel": 5
   },
   {
-    "index": 7,
+    "index": 14,
     "content": "家",
     "type": "word",
-    "displayText": "到农村遇到主人家有人分娩或有重病人时",
+    "displayText": "家",
     "definitions": {
       "家": {
         "traditional": "家",
@@ -555,10 +555,10 @@
     "hskLevel": 1
   },
   {
-    "index": 7,
+    "index": 14,
     "content": "有人",
     "type": "word",
-    "displayText": "到农村遇到主人家有人分娩或有重病人时",
+    "displayText": "有人",
     "definitions": {
       "有人": {
         "traditional": "有人",
@@ -570,10 +570,10 @@
     "hskLevel": -1
   },
   {
-    "index": 7,
+    "index": 14,
     "content": "分娩",
     "type": "word",
-    "displayText": "到农村遇到主人家有人分娩或有重病人时",
+    "displayText": "分娩",
     "definitions": {
       "分娩": {
         "traditional": "分娩",
@@ -585,10 +585,10 @@
     "hskLevel": -1
   },
   {
-    "index": 7,
+    "index": 14,
     "content": "或",
     "type": "word",
-    "displayText": "到农村遇到主人家有人分娩或有重病人时",
+    "displayText": "或",
     "definitions": {
       "或": {
         "traditional": "或",
@@ -600,10 +600,10 @@
     "hskLevel": -1
   },
   {
-    "index": 7,
+    "index": 14,
     "content": "有",
     "type": "word",
-    "displayText": "到农村遇到主人家有人分娩或有重病人时",
+    "displayText": "有",
     "definitions": {
       "有": {
         "traditional": "有",
@@ -615,10 +615,10 @@
     "hskLevel": 1
   },
   {
-    "index": 7,
+    "index": 14,
     "content": "重病",
     "type": "word",
-    "displayText": "到农村遇到主人家有人分娩或有重病人时",
+    "displayText": "重病",
     "definitions": {
       "重病": {
         "traditional": "重病",
@@ -630,10 +630,10 @@
     "hskLevel": -1
   },
   {
-    "index": 7,
+    "index": 14,
     "content": "人",
     "type": "word",
-    "displayText": "到农村遇到主人家有人分娩或有重病人时",
+    "displayText": "人",
     "definitions": {
       "人": {
         "traditional": "人",
@@ -645,10 +645,10 @@
     "hskLevel": 1
   },
   {
-    "index": 7,
+    "index": 14,
     "content": "时",
     "type": "word",
-    "displayText": "到农村遇到主人家有人分娩或有重病人时",
+    "displayText": "时",
     "definitions": {
       "时": {
         "traditional": "時",
@@ -660,10 +660,15 @@
     "hskLevel": -1
   },
   {
-    "index": 8,
+    "index": 15,
+    "content": "，",
+    "type": "punctuation"
+  },
+  {
+    "index": 16,
     "content": "进",
     "type": "word",
-    "displayText": "进屋时应谨慎。",
+    "displayText": "进",
     "definitions": {
       "进": {
         "traditional": "進",
@@ -675,10 +680,10 @@
     "hskLevel": 2
   },
   {
-    "index": 8,
+    "index": 16,
     "content": "屋",
     "type": "word",
-    "displayText": "进屋时应谨慎。",
+    "displayText": "屋",
     "definitions": {
       "屋": {
         "traditional": "屋",
@@ -690,10 +695,10 @@
     "hskLevel": -1
   },
   {
-    "index": 8,
+    "index": 16,
     "content": "时",
     "type": "word",
-    "displayText": "进屋时应谨慎。",
+    "displayText": "时",
     "definitions": {
       "时": {
         "traditional": "時",
@@ -705,10 +710,10 @@
     "hskLevel": -1
   },
   {
-    "index": 8,
+    "index": 16,
     "content": "应",
     "type": "word",
-    "displayText": "进屋时应谨慎。",
+    "displayText": "应",
     "definitions": {
       "应": {
         "traditional": "應",
@@ -720,10 +725,10 @@
     "hskLevel": -1
   },
   {
-    "index": 8,
+    "index": 16,
     "content": "谨慎",
     "type": "word",
-    "displayText": "进屋时应谨慎。",
+    "displayText": "谨慎。",
     "definitions": {
       "谨慎": {
         "traditional": "謹慎",
@@ -735,25 +740,25 @@
     "hskLevel": 5
   },
   {
-    "index": 9,
-    "content": "族",
+    "index": 18,
+    "content": "白族",
     "type": "word",
-    "displayText": "族喜欢敬茶待客",
+    "displayText": "白族",
     "definitions": {
-      "族": {
-        "traditional": "族",
-        "simplified": "族",
-        "pronunciation": "zú",
-        "definitions": "race; nationality; ethnicity; clan; by extension, social group (e.g. office workers 上班族)"
+      "白族": {
+        "traditional": "白族",
+        "simplified": "白族",
+        "pronunciation": "Bái zú",
+        "definitions": "Bai (ethnic group)"
       }
     },
     "hskLevel": -1
   },
   {
-    "index": 9,
+    "index": 18,
     "content": "喜欢",
     "type": "word",
-    "displayText": "族喜欢敬茶待客",
+    "displayText": "喜欢",
     "definitions": {
       "喜欢": {
         "traditional": "喜歡",
@@ -765,10 +770,10 @@
     "hskLevel": 1
   },
   {
-    "index": 9,
+    "index": 18,
     "content": "敬茶",
     "type": "word",
-    "displayText": "族喜欢敬茶待客",
+    "displayText": "敬茶",
     "definitions": {
       "敬茶": {
         "traditional": "敬茶",
@@ -780,10 +785,10 @@
     "hskLevel": -1
   },
   {
-    "index": 9,
+    "index": 18,
     "content": "待",
     "type": "word",
-    "displayText": "族喜欢敬茶待客",
+    "displayText": "待",
     "definitions": {
       "待": {
         "traditional": "待",
@@ -795,10 +800,10 @@
     "hskLevel": -1
   },
   {
-    "index": 9,
+    "index": 18,
     "content": "客",
     "type": "word",
-    "displayText": "族喜欢敬茶待客",
+    "displayText": "客",
     "definitions": {
       "客": {
         "traditional": "客",
@@ -810,10 +815,15 @@
     "hskLevel": -1
   },
   {
-    "index": 10,
+    "index": 19,
+    "content": "，",
+    "type": "punctuation"
+  },
+  {
+    "index": 20,
     "content": "同样",
     "type": "word",
-    "displayText": "同样有",
+    "displayText": "同样",
     "definitions": {
       "同样": {
         "traditional": "同樣",
@@ -825,10 +835,10 @@
     "hskLevel": -1
   },
   {
-    "index": 10,
+    "index": 20,
     "content": "有",
     "type": "word",
-    "displayText": "同样有",
+    "displayText": "有",
     "definitions": {
       "有": {
         "traditional": "有",
@@ -840,10 +850,15 @@
     "hskLevel": 1
   },
   {
-    "index": 11,
+    "index": 21,
+    "content": "“",
+    "type": "punctuation"
+  },
+  {
+    "index": 22,
     "content": "酒",
     "type": "word",
-    "displayText": "酒满敬人",
+    "displayText": "酒",
     "definitions": {
       "酒": {
         "traditional": "酒",
@@ -855,10 +870,10 @@
     "hskLevel": -1
   },
   {
-    "index": 11,
+    "index": 22,
     "content": "满",
     "type": "word",
-    "displayText": "酒满敬人",
+    "displayText": "满",
     "definitions": {
       "满": {
         "traditional": "滿",
@@ -870,10 +885,10 @@
     "hskLevel": 4
   },
   {
-    "index": 11,
+    "index": 22,
     "content": "敬",
     "type": "word",
-    "displayText": "酒满敬人",
+    "displayText": "敬",
     "definitions": {
       "敬": {
         "traditional": "敬",
@@ -885,10 +900,10 @@
     "hskLevel": -1
   },
   {
-    "index": 11,
+    "index": 22,
     "content": "人",
     "type": "word",
-    "displayText": "酒满敬人",
+    "displayText": "人",
     "definitions": {
       "人": {
         "traditional": "人",
@@ -900,10 +915,15 @@
     "hskLevel": 1
   },
   {
-    "index": 12,
+    "index": 23,
+    "content": "，",
+    "type": "punctuation"
+  },
+  {
+    "index": 24,
     "content": "茶",
     "type": "word",
-    "displayText": "茶满欺人”",
+    "displayText": "茶",
     "definitions": {
       "茶": {
         "traditional": "茶",
@@ -915,10 +935,10 @@
     "hskLevel": 1
   },
   {
-    "index": 12,
+    "index": 24,
     "content": "满",
     "type": "word",
-    "displayText": "茶满欺人”",
+    "displayText": "满",
     "definitions": {
       "满": {
         "traditional": "滿",
@@ -930,10 +950,10 @@
     "hskLevel": 4
   },
   {
-    "index": 12,
+    "index": 24,
     "content": "欺",
     "type": "word",
-    "displayText": "茶满欺人”",
+    "displayText": "欺",
     "definitions": {
       "欺": {
         "traditional": "欺",
@@ -945,10 +965,10 @@
     "hskLevel": -1
   },
   {
-    "index": 12,
+    "index": 24,
     "content": "人",
     "type": "word",
-    "displayText": "茶满欺人”",
+    "displayText": "人”",
     "definitions": {
       "人": {
         "traditional": "人",
@@ -960,7 +980,22 @@
     "hskLevel": 1
   },
   {
-    "index": 13,
+    "index": 26,
+    "content": "之",
+    "type": "word",
+    "displayText": "之",
+    "definitions": {
+      "之": {
+        "traditional": "之",
+        "simplified": "之",
+        "pronunciation": "zhī",
+        "definitions": "(possessive particle, literary equivalent of 的[de5]); him; her; it"
+      }
+    },
+    "hskLevel": 4
+  },
+  {
+    "index": 26,
     "content": "说",
     "type": "word",
     "displayText": "说",
@@ -975,10 +1010,15 @@
     "hskLevel": -1
   },
   {
-    "index": 14,
+    "index": 27,
+    "content": "；",
+    "type": "punctuation"
+  },
+  {
+    "index": 28,
     "content": "在",
     "type": "word",
-    "displayText": "在喝酒方面",
+    "displayText": "在",
     "definitions": {
       "在": {
         "traditional": "在",
@@ -990,10 +1030,10 @@
     "hskLevel": 1
   },
   {
-    "index": 14,
+    "index": 28,
     "content": "喝酒",
     "type": "word",
-    "displayText": "在喝酒方面",
+    "displayText": "喝酒",
     "definitions": {
       "喝酒": {
         "traditional": "喝酒",
@@ -1005,10 +1045,10 @@
     "hskLevel": -1
   },
   {
-    "index": 14,
+    "index": 28,
     "content": "方面",
     "type": "word",
-    "displayText": "在喝酒方面",
+    "displayText": "方面",
     "definitions": {
       "方面": {
         "traditional": "方面",
@@ -1020,10 +1060,15 @@
     "hskLevel": 4
   },
   {
-    "index": 15,
+    "index": 29,
+    "content": "，",
+    "type": "punctuation"
+  },
+  {
+    "index": 30,
     "content": "白族",
     "type": "word",
-    "displayText": "白族很文雅",
+    "displayText": "白族",
     "definitions": {
       "白族": {
         "traditional": "白族",
@@ -1035,10 +1080,10 @@
     "hskLevel": -1
   },
   {
-    "index": 15,
+    "index": 30,
     "content": "很",
     "type": "word",
-    "displayText": "白族很文雅",
+    "displayText": "很",
     "definitions": {
       "很": {
         "traditional": "很",
@@ -1050,10 +1095,10 @@
     "hskLevel": 1
   },
   {
-    "index": 15,
+    "index": 30,
     "content": "文雅",
     "type": "word",
-    "displayText": "白族很文雅",
+    "displayText": "文雅",
     "definitions": {
       "文雅": {
         "traditional": "文雅",
@@ -1065,10 +1110,15 @@
     "hskLevel": 6
   },
   {
-    "index": 16,
+    "index": 31,
+    "content": "，",
+    "type": "punctuation"
+  },
+  {
+    "index": 32,
     "content": "通常",
     "type": "word",
-    "displayText": "通常是各自随意。",
+    "displayText": "通常",
     "definitions": {
       "通常": {
         "traditional": "通常",
@@ -1080,10 +1130,10 @@
     "hskLevel": 5
   },
   {
-    "index": 16,
+    "index": 32,
     "content": "是",
     "type": "word",
-    "displayText": "通常是各自随意。",
+    "displayText": "是",
     "definitions": {
       "是": {
         "traditional": "昰",
@@ -1095,10 +1145,10 @@
     "hskLevel": 1
   },
   {
-    "index": 16,
+    "index": 32,
     "content": "各自",
     "type": "word",
-    "displayText": "通常是各自随意。",
+    "displayText": "各自",
     "definitions": {
       "各自": {
         "traditional": "各自",
@@ -1110,10 +1160,10 @@
     "hskLevel": 6
   },
   {
-    "index": 16,
+    "index": 32,
     "content": "随意",
     "type": "word",
-    "displayText": "通常是各自随意。",
+    "displayText": "随意。",
     "definitions": {
       "随意": {
         "traditional": "隨意",
