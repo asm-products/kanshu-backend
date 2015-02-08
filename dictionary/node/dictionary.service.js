@@ -155,12 +155,21 @@ function parseSegments(content, complete) {
         else
         {
             if (tempSegment.length > 0) {
-                wordSegment = { index: segmentIndex, content: tempSegment, type: 'word' };
+                wordSegment = { index: segmentIndex, content: tempSegment, type: 'word', displayText: tempSegment };
+
+                // TODO: Here check to see if charAt(i) is an END OF LINE punctuation.  If they are
+                // add to wordSegment.displayText and skip.
+
+                if (isEolPunctuation(content.charAt(i))) {
+                    wordSegment.displayText += content.charAt(i);
+                    i++;
+                }
 
                 segments.push(wordSegment);
                 masterSegmentList.push(wordSegment);
                 segmentIndex++;
                 tempSegment = '';
+                continue;
             }
 
             var punctuationSegment = content.charAt(i);
@@ -193,7 +202,17 @@ function isPunctuation(character) {
     return false;
 }
 
+/**
+ * Determines of the character is one that must be on the end of a line but never at the start.
+ * @param character - The character to check.
+ * @returns {boolean}
+ */
+function isEolPunctuation(character) {
 
+    var eolChars = ')]｝〕〉》」』】〙〗〟’”｠»。. ?!‼⁇⁈⁉・、:;,‐゠–〜';
+
+    return (eolChars.indexOf(character) >=0);
+}
 
 function getAnnotatedSegment(segment, complete) {
 
@@ -235,7 +254,7 @@ function getAnnotatedSubSegment(subSegment, complete) {
     ceSearchCacheOnly(subSegment, function(resultLookup){
         console.log('resultLookup: %j', resultLookup);
 
-        if (resultLookup.words.length == 0) {
+        if (resultLookup.definitions.length == 0) {
 
             if (subSegment.content.length == 1) {
                 return complete( subSegment, subSegment );
@@ -268,7 +287,7 @@ function ceSearch(searchSegment, result) {
     var missCacheResult = missCache.get(searchSegment.content);
 
     if (!typechecker.isEmptyObject(missCacheResult)) { // This segment is already known to not be a word in the dictionary.
-        searchSegment.words = [];
+        searchSegment.definitions = [];
         searchSegment.hskLevel = -1;
 
         return result(searchSegment);
@@ -283,7 +302,7 @@ function ceSearch(searchSegment, result) {
         console.log('(C) MISS');
         ce.searchByChinese(searchSegment.content, function (words) {
             console.log('got results: %j', words);
-            searchSegment.words = words;
+            searchSegment.definitions = words;
             searchSegment.hskLevel = 1; // TODO: Get hsk levels into dictionary.
 
             if (words.length > 0)
@@ -299,10 +318,13 @@ function ceSearch(searchSegment, result) {
         });
     } else {
         console.log('(C) HIT');
-        searchSegment.words = cacheResult;
-        searchSegment.hskLevel = 1; // TODO: Get hsk levels into dictionary.
+        searchSegment.definitions = cacheResult;
 
-        result(searchSegment);
+        hsk.findLevel(searchSegment.content, function(level){
+            // level evaluates to -1 if not found, else is in 1..6
+            searchSegment.hskLevel = level;
+            result(searchSegment);
+        });
     }
 }
 
@@ -312,7 +334,7 @@ function ceSearchCacheOnly(searchSegment, result) {
 
     if (typechecker.isEmptyObject(cacheResult)) {
 
-        searchSegment.words = [];
+        searchSegment.definitions = [];
         searchSegment.hskLevel = -1;
 
         return result(searchSegment);
@@ -320,7 +342,7 @@ function ceSearchCacheOnly(searchSegment, result) {
     } else {
         hsk.findLevel(searchSegment.content, function(level){
             // level evaluates to -1 if not found, else is in 1..6
-            searchSegment.words = cacheResult;
+            searchSegment.definitions = cacheResult;
             searchSegment.hskLevel = level;
             result(searchSegment);
         });
