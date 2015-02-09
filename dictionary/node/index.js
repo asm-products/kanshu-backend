@@ -2,7 +2,7 @@
  * Created by dsandor on 1/30/15.
  */
 var restify           = require('restify'),
-    dictionaryService = require('./dictionary.service.js'),
+    dictionaryService = require('./dictionary.pg.service.js'),
     bunyan            = require('bunyan'),
     nconf              = require('nconf');
 
@@ -13,6 +13,7 @@ nconf.argv()
     .file({ file: 'config.json' });
 
 dictionaryService.setLogger(log);
+dictionaryService.setConnectionString(nconf.get('connectionString'));
 
 var server = restify.createServer();
 
@@ -27,4 +28,6 @@ server.post('/processFeed', dictionaryService.processFeed);
  */
 server.listen(nconf.get("apiServicePort"), function() {
     log.info('%s listening at %s', server.name, server.url);
+
+    dictionaryService.precacheDictionary();
 });

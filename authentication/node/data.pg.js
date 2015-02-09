@@ -65,12 +65,6 @@ function internalCreateUser(err, user, complete) {
     });
 }
 
-function internalUpdateUser(err, user, complete) {
-    log.debug('updateUser called', user);
-
-
-}
-
 /**
  * Updates the last login date and sets the session id.
  * @param err - If set, this callback is called with the PG error object.
