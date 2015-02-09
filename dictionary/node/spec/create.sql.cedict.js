@@ -37,8 +37,6 @@ function writeDictToPG() {
     var conString = "postgres://localhost/kanshu";
     var sql = 'INSERT INTO words (translatedto, traditional, simplified, pronunciation, definition) VALUES ($1, $2, $3, $4, $5);';
 
-
-
         ce.getAll(function (entries) {
             console.log('adding %s entires', entries.length);
             var count = 0;

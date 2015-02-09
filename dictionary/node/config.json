@@ -1,3 +1,4 @@
 {
+  "connectionString": "postgres://localhost/kanshu",
   "apiServicePort": 23001
 }

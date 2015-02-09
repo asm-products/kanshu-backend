@@ -1,5 +1,5 @@
 var feed        = require('feed-read'),
-    ce          = require('node-cc-cedict'),
+    data        = require('./data.pg.js'),
     async       = require('async'),
     NodeCache   = require('node-cache'),
     typechecker = require('typechecker'),
@@ -31,7 +31,14 @@ module.exports = {
      * Sets the logger to use.
      * @param value
      */
-    setLogger: function(value) { log = value; }
+    setLogger: function(value) { log = value; data.setLogger(value); },
+
+    /**
+     * Sets the connection string for the data layer.
+     * @param value
+     */
+    setConnectionString: function(value) { data.setConnectionString(value); }
+
 };
 
 /**
@@ -40,7 +47,11 @@ module.exports = {
 function internalPrecacheDictionary() {
     console.log('precaching cc-cedict.');
 
-    ce.getAll(function(words) {
+    var errorHandler = function(err) {
+        log.error('failed getting words from data layer', err);
+    };
+
+    var completeHandler = function(words) {
         console.log('got all words: %s', words.length);
 
         for(var i=0; i < words.length; i++) {
@@ -51,7 +62,9 @@ function internalPrecacheDictionary() {
         }
 
         console.log('cached all words');
-    });
+    };
+
+    data.getEntireDictionary(errorHandler, 'en', completeHandler);
 }
 
 /**
@@ -90,7 +103,7 @@ function internalProcessFeed(req, res, next) {
         console.log('found rss feed: %s, processing article: %s', req.body.url, req.body.articleIndex);
 
         processArticle(articles[req.body.articleIndex], function(annotatedArticle) {
-           res.send(annotatedArticle);
+            res.send(annotatedArticle);
             next();
         });
 
@@ -146,7 +159,7 @@ function mergeEolPunctuation(articleArray, complete) {
                 mergedArray[mergedArray.length-1].displayText += articleArray[i].content.charAt(0);
 
                 if (articleArray[i].content.length > 1) {
-                    articleArray[i].content = articleArray.content.substr(1);
+                    articleArray[i].content = articleArray[i].content.substr(1);
                     mergedArray.push(articleArray[i]);
                 } else {
                     continue;
@@ -188,9 +201,9 @@ function parseSegments(content, complete) {
                 wordSegment = { index: segmentIndex, content: tempSegment, type: 'word', displayText: tempSegment };
 
                 /*if (isEolPunctuation(content.charAt(i))) {
-                    wordSegment.displayText += content.charAt(i);
-                    i++;
-                }*/
+                 wordSegment.displayText += content.charAt(i);
+                 i++;
+                 }*/
 
                 segments.push(wordSegment);
                 masterSegmentList.push(wordSegment);

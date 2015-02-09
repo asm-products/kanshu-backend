@@ -5,7 +5,7 @@ var
 var wordCache = new NodeCache();
 
 ce.getAll(function(words) {
-   console.log('got all words: %s', words.length);
+   console.log('got %s words from sqlite dictionary', words.length);
 
     for(var i=0; i < words.length; i++) {
         wordCache.set(words[i].traditional, words[i]);
