@@ -38,7 +38,7 @@ function internalGetEntireDictionary(err, translatedTo, complete) {
             return err
         }
 
-        var query = client.query('SELECT * FROM words WHERE translatedto=$1', [translatedTo]);
+        var query = client.query('SELECT * FROM words WHERE translatedto=$1 ORDER BY traditional', [translatedTo]);
 
         query.on('row', function(row, result) {
             result.addRow(row);
@@ -60,7 +60,7 @@ function internalGetEntireDictionary(err, translatedTo, complete) {
                     traditional:   result.rows[i].traditional,
                     simplified:    result.rows[i].simplified,
                     pronunciation: result.rows[i].pronunciation,
-                    definition:    result.rows[i].definition
+                    definitions:    [ result.rows[i].definition ]
                 });
             }
 
