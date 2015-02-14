@@ -54,11 +54,32 @@ function internalPrecacheDictionary() {
     var completeHandler = function(words) {
         console.log('got all words: %s', words.length);
 
-        for(var i=0; i < words.length; i++) {
-            wordCache.set(words[i].traditional, words[i]);
+        var collapsedList = [];
+        var collapsedListIndex = 0;
 
-            if (words[i].traditional != words[i].simplified)
-                wordCache.set(words[i].simplified, words[i]);
+        console.log('collapsing dupe words..');
+
+        for(var i=0; i < words.length; i++) {
+            if (i == 0) {
+                collapsedList[0] = words[i];
+            } else {
+                if (words[i].traditional == collapsedList[collapsedListIndex].traditional) {
+                    collapsedList[collapsedListIndex].definitions.push(words[i].definitions[0]);
+                    continue;
+                } else {
+                    collapsedListIndex++;
+                    collapsedList[collapsedListIndex] = words[i];
+                }
+            }
+        }
+
+        // add the collapsed list to the cache.
+        console.log('adding collapsed list [%s] to cache.', collapsedListIndex)
+        for(var i=0; i < collapsedListIndex; i++) {
+            wordCache.set(collapsedList[i].traditional, collapsedList[i]);
+
+            if (collapsedList[i].traditional != collapsedList[i].simplified)
+                wordCache.set(collapsedList[i].simplified, collapsedList[i]);
         }
 
         console.log('cached all words');
@@ -74,7 +95,7 @@ function internalPrecacheDictionary() {
  * @param next - callback to call when processing complete.
  */
 function internalLookup(req, res, next) {
-    ce.searchByChinese(req.params.phrase, function(words){
+    ceSearchCacheOnly({ content: req.params.phrase }, function(words) {
         res.send(200, { words: words });
         return next();
     });
@@ -339,7 +360,7 @@ function getAnnotatedSubSegment(subSegment, complete) {
  * @param searchSegment - the text to search for.
  * @param result - the results of the search.
  * @returns {*}
- */
+ *
 function ceSearch(searchSegment, result) {
 
     // first try the miss cache.
@@ -385,7 +406,7 @@ function ceSearch(searchSegment, result) {
             result(searchSegment);
         });
     }
-}
+}*/
 
 /**
  * Search for the segment in the in memory cache.
@@ -395,7 +416,7 @@ function ceSearch(searchSegment, result) {
  */
 function ceSearchCacheOnly(searchSegment, result) {
 
-    var cacheResult = wordCache.get(searchSegment.content);
+    var cacheResult = wordCache.get(searchSegment.content)[searchSegment.content];
 
     if (typechecker.isEmptyObject(cacheResult)) {
 
@@ -407,7 +428,8 @@ function ceSearchCacheOnly(searchSegment, result) {
     } else {
         hsk.findLevel(searchSegment.content, function(level){
             // level evaluates to -1 if not found, else is in 1..6
-            searchSegment.definitions = cacheResult;
+            searchSegment.definitions = cacheResult.definitions;
+            searchSegment.pronunciation = cacheResult.pronunciation;
             searchSegment.hskLevel = level;
             result(searchSegment);
         });
