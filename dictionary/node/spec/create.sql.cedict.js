@@ -12,7 +12,8 @@ var ce    = require('node-cc-cedict'),
     pg    = require('pg'),
     async = require('async');
 
-writeDictToPG();
+//writeDictToPG();
+writeDictToSQLFile();
 
 function writeDictToSQLFile() {
     ce.getAll(function (entries) {
