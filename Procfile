@@ -1,0 +1,1 @@
+web: node dictionary/node/index.js

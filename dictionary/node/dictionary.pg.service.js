@@ -95,7 +95,7 @@ function internalPrecacheDictionary() {
  * @param next - callback to call when processing complete.
  */
 function internalLookup(req, res, next) {
-    ce.searchByChinese(req.params.phrase, function(words){
+    ceSearchCacheOnly({ content: req.params.phrase }, function(words) {
         res.send(200, { words: words });
         return next();
     });
@@ -124,7 +124,7 @@ function internalProcessFeed(req, res, next) {
         console.log('found rss feed: %s, processing article: %s', req.body.url, req.body.articleIndex);
 
         processArticle(articles[req.body.articleIndex], function(annotatedArticle) {
-            res.send(annotatedArticle);
+            res.send({ article: annotatedArticle });
             next();
         });
 
@@ -429,6 +429,7 @@ function ceSearchCacheOnly(searchSegment, result) {
         hsk.findLevel(searchSegment.content, function(level){
             // level evaluates to -1 if not found, else is in 1..6
             searchSegment.definitions = cacheResult.definitions;
+            searchSegment.pronunciation = cacheResult.pronunciation;
             searchSegment.hskLevel = level;
             result(searchSegment);
         });
