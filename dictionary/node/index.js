@@ -26,7 +26,8 @@ server.post('/processFeed', dictionaryService.processFeed);
 /**
  This code will start the http server.
  */
-server.listen(nconf.get("apiServicePort"), function() {
+var port = process.env.PORT || nconf.get('apiServicePort');
+server.listen(port, function() {
     log.info('%s listening at %s', server.name, server.url);
 
     dictionaryService.precacheDictionary();
