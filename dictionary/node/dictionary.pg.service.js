@@ -124,7 +124,7 @@ function internalProcessFeed(req, res, next) {
         console.log('found rss feed: %s, processing article: %s', req.body.url, req.body.articleIndex);
 
         processArticle(articles[req.body.articleIndex], function(annotatedArticle) {
-            res.send(annotatedArticle);
+            res.send({ article: annotatedArticle });
             next();
         });
 
