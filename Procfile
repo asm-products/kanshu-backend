@@ -1,1 +1,1 @@
-web: node dictionary/node/index.js
+web: node index.js
