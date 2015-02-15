@@ -1,8 +1,7 @@
 var feed        = require('feed-read'),
     data        = require('./data.pg.js'),
     async       = require('async'),
-    NodeCache   = require('node-cache'),
-    typechecker = require('typechecker');
+    NodeCache   = require('node-cache');
 
 var wordCache = new NodeCache();  // used to cache up the words discovered in the dictionary.
 
@@ -173,6 +172,8 @@ function mergeEolPunctuation(articleArray, complete) {
     var mergedArray = [];
 
     for(var i = 0; i < articleArray.length; i++) {
+        delete articleArray[i].index;
+
         if (i > 0 && articleArray[i].type === 'punctuation') {
             if (isEolPunctuation(articleArray[i].content.charAt(0))) {
                 mergedArray[mergedArray.length-1].displayText += articleArray[i].content.charAt(0);
@@ -354,59 +355,6 @@ function getAnnotatedSubSegment(subSegment, complete) {
 }
 
 /**
- * Search for the segment in the dictionary.  This function uses cc-cedict node module and uses caching.
- * @param searchSegment - the text to search for.
- * @param result - the results of the search.
- * @returns {*}
- *
-function ceSearch(searchSegment, result) {
-
-    // first try the miss cache.
-    var missCacheResult = missCache.get(searchSegment.content);
-
-    if (!typechecker.isEmptyObject(missCacheResult)) { // This segment is already known to not be a word in the dictionary.
-        searchSegment.definitions = [];
-        searchSegment.hskLevel = -1;
-
-        return result(searchSegment);
-    }
-
-    var cacheResult = wordCache.get(searchSegment.content);
-
-
-
-    if (typechecker.isEmptyObject(cacheResult)) {
-
-        console.log('(C) MISS');
-        ce.searchByChinese(searchSegment.content, function (words) {
-            console.log('got results: %j', words);
-            searchSegment.definitions = words;
-            searchSegment.hskLevel = 1; // TODO: Get hsk levels into dictionary.
-
-            if (words.length > 0)
-                wordCache.set(searchSegment.content, words);
-            else
-                missCache.set(searchSegment.content, true);
-
-            hsk.findLevel(searchSegment.content, function(level){
-                // level evaluates to -1 if not found, else is in 1..6
-                searchSegment.hskLevel = level;
-                result(searchSegment);
-            });
-        });
-    } else {
-        console.log('(C) HIT');
-        searchSegment.definitions = cacheResult;
-
-        hsk.findLevel(searchSegment.content, function(level){
-            // level evaluates to -1 if not found, else is in 1..6
-            searchSegment.hskLevel = level;
-            result(searchSegment);
-        });
-    }
-}*/
-
-/**
  * Search for the segment in the in memory cache.
  * @param searchSegment - the text to search for.
  * @param result - the results.
@@ -416,7 +364,7 @@ function ceSearchCacheOnly(searchSegment, result) {
 
     var cacheResult = wordCache.get(searchSegment.content)[searchSegment.content];
 
-    if (typechecker.isEmptyObject(cacheResult)) {
+    if (isEmpty(cacheResult)) {
 
         searchSegment.definitions = [];
         searchSegment.hskLevel = -1;
@@ -430,4 +378,10 @@ function ceSearchCacheOnly(searchSegment, result) {
 
         result(searchSegment);
     }
+}
+
+function isEmpty(obj) {
+    if (typeof obj === 'undefined') return true;
+
+    return Object.keys(obj).length === 0;
 }
