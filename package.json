@@ -15,6 +15,10 @@
     "pg": "latest",
     "restify": "latest",
     "typechecker": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dsandor/kanshu-backend.git"
   }
 }
 
