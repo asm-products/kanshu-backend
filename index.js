@@ -2,8 +2,13 @@
  * Created by dsandor on 2/15/15.
  */
 var restify           = require('restify'),
+<<<<<<< HEAD
     dictionaryService = require('./dictionary/node/dictionary.pg.service.js'),
     userService       = require('./authentication/node/user.service.js'),
+=======
+    dictionaryService = require('./dictionary.pg.service.js'),
+    userService       = require('./user.service.js'),
+>>>>>>> c4466e245323ba849bdb1f6c19ba753b30c4ddf2
     bunyan            = require('bunyan'),
     nconf             = require('nconf');
 
