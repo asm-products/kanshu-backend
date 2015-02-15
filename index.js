@@ -14,7 +14,7 @@ nconf.argv()
     .file({ file: 'config.json' });
 
 dictionaryService.setLogger(log);
-dictionaryService.setConnectionString(nconf.get('connectionString'));
+dictionaryService.setConnectionString(nconf.get('DATABASE_URL'));
 
 var server = restify.createServer();
 /**
