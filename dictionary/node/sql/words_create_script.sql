@@ -4,5 +4,6 @@ create table words (
 	simplified varchar(255) NOT NULL,
 	pronunciation varchar(255),
 	definition varchar(512),
+	hsklevel int,
 	PRIMARY KEY ( translatedto, traditional, simplified, definition )
 	);
