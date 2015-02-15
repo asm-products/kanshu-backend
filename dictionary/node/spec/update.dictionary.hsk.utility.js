@@ -28,7 +28,7 @@ function readLines(input, func, level) {
     });
 }
 
-function func(data, level) {
+function cacheLine(data, level) {
     console.log('Level %s: %s', level, data);
     hsk.push( { word: data, level: level } );
 }
@@ -37,7 +37,7 @@ for(var i=1; i<=6; i++) {
     var filePath = '../../docs/HSK Official 2012 L' + i.toString() + '.txt';
 
     var input = fs.createReadStream(filePath);
-    readLines(input, func, i);
+    readLines(input, cacheLine, i);
 }
 
 
