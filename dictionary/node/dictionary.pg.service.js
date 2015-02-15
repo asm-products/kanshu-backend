@@ -2,11 +2,9 @@ var feed        = require('feed-read'),
     data        = require('./data.pg.js'),
     async       = require('async'),
     NodeCache   = require('node-cache'),
-    typechecker = require('typechecker'),
-    hsk         = require('hsk-words');
+    typechecker = require('typechecker');
 
 var wordCache = new NodeCache();  // used to cache up the words discovered in the dictionary.
-var missCache = new NodeCache();  // used to cache the words that were not found in the dictionary.
 
 var log = {};
 
@@ -426,12 +424,10 @@ function ceSearchCacheOnly(searchSegment, result) {
         return result(searchSegment);
 
     } else {
-        hsk.findLevel(searchSegment.content, function(level){
-            // level evaluates to -1 if not found, else is in 1..6
-            searchSegment.definitions = cacheResult.definitions;
-            searchSegment.pronunciation = cacheResult.pronunciation;
-            searchSegment.hskLevel = level;
-            result(searchSegment);
-        });
+        searchSegment.definitions   = cacheResult.definitions;
+        searchSegment.pronunciation = cacheResult.pronunciation;
+        searchSegment.hskLevel      = cacheResult.hsklevel;
+
+        result(searchSegment);
     }
 }

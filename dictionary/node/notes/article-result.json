@@ -1,1177 +1,895 @@
-[
-  {
-    "index": 0,
-    "content": "白族",
-    "type": "word",
-    "displayText": "白族",
-    "definitions": {
-      "白族": {
-        "traditional": "白族",
-        "simplified": "白族",
-        "pronunciation": "Bái zú",
-        "definitions": "Bai (ethnic group)"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 0,
-    "content": "性格",
-    "type": "word",
-    "displayText": "性格",
-    "definitions": {
-      "性格": {
-        "traditional": "性格",
-        "simplified": "性格",
-        "pronunciation": "xìng gé",
-        "definitions": "nature; disposition; temperament; character; CL:個|个[ge4]"
-      }
-    },
-    "hskLevel": 4
-  },
-  {
-    "index": 0,
-    "content": "外向",
-    "type": "word",
-    "displayText": "外向、",
-    "definitions": {
-      "外向": {
-        "traditional": "外向",
-        "simplified": "外向",
-        "pronunciation": "wài xiàng",
-        "definitions": "outward-looking; extrovert; extroverted (personality); export-oriented (economy)"
-      }
-    },
-    "hskLevel": 6
-  },
-  {
-    "index": 2,
-    "content": "好客",
-    "type": "word",
-    "displayText": "好客、",
-    "definitions": {
-      "好客": {
-        "traditional": "好客",
-        "simplified": "好客",
-        "pronunciation": "hào kè",
-        "definitions": "hospitality; to treat guests well; to enjoy having guests; hospitable; friendly"
-      }
-    },
-    "hskLevel": 6
-  },
-  {
-    "index": 4,
-    "content": "尊老爱幼",
-    "type": "word",
-    "displayText": "尊老爱幼",
-    "definitions": {
-      "尊老爱幼": {
-        "traditional": "尊老愛幼",
-        "simplified": "尊老爱幼",
-        "pronunciation": "zūn lǎo ài yòu",
-        "definitions": "respect the old and cherish the young"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 5,
-    "content": "，",
-    "type": "punctuation"
-  },
-  {
-    "index": 6,
-    "content": "在",
-    "type": "word",
-    "displayText": "在",
-    "definitions": {
-      "在": {
-        "traditional": "在",
-        "simplified": "在",
-        "pronunciation": "zài",
-        "definitions": "(located) at; (to be) in; to exist; in the middle of doing sth; (indicating an action in progress)"
-      }
-    },
-    "hskLevel": 1
-  },
-  {
-    "index": 6,
-    "content": "对",
-    "type": "word",
-    "displayText": "对",
-    "definitions": {
-      "对": {
-        "traditional": "對",
-        "simplified": "对",
-        "pronunciation": "duì",
-        "definitions": "right; correct; couple; pair; towards; at; for; to face; opposite; to treat (sb a certain way); to match together; to adjust; to fit; to suit; to answer; to reply; classifier: couple"
-      }
-    },
-    "hskLevel": 2
-  },
-  {
-    "index": 6,
-    "content": "人",
-    "type": "word",
-    "displayText": "人",
-    "definitions": {
-      "人": {
-        "traditional": "人",
-        "simplified": "人",
-        "pronunciation": "rén",
-        "definitions": "man; person; people; CL:個|个[ge4],位[wei4]"
-      }
-    },
-    "hskLevel": 1
-  },
-  {
-    "index": 6,
-    "content": "的",
-    "type": "word",
-    "displayText": "的",
-    "definitions": {
-      "的": {
-        "traditional": "的",
-        "simplified": "的",
-        "pronunciation": "dì",
-        "definitions": "aim; clear"
-      }
-    },
-    "hskLevel": 1
-  },
-  {
-    "index": 6,
-    "content": "称谓",
-    "type": "word",
-    "displayText": "称谓",
-    "definitions": {
-      "称谓": {
-        "traditional": "稱謂",
-        "simplified": "称谓",
-        "pronunciation": "chēng wèi",
-        "definitions": "title; appellation; form of address"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 6,
-    "content": "前",
-    "type": "word",
-    "displayText": "前",
-    "definitions": {
-      "前": {
-        "traditional": "前",
-        "simplified": "前",
-        "pronunciation": "qián",
-        "definitions": "front; forward; ahead; first; top (followed by a number); future; ago; before; BC (e.g. 前293年); former; formerly"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 6,
-    "content": "喜欢",
-    "type": "word",
-    "displayText": "喜欢",
-    "definitions": {
-      "喜欢": {
-        "traditional": "喜歡",
-        "simplified": "喜欢",
-        "pronunciation": "xǐ huan",
-        "definitions": "to like; to be fond of"
-      }
-    },
-    "hskLevel": 1
-  },
-  {
-    "index": 6,
-    "content": "加",
-    "type": "word",
-    "displayText": "加",
-    "definitions": {
-      "加": {
-        "traditional": "加",
-        "simplified": "加",
-        "pronunciation": "jiā",
-        "definitions": "to add; plus; (used after an adverb such as 不, 大, 稍 etc, and before a disyllabic verb, to indicate that the action of the verb is applied to sth or sb previously mentioned); to apply (restrictions etc) to (sb); to give (support, consideration etc) to (sth)"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 6,
-    "content": "个",
-    "type": "word",
-    "displayText": "个",
-    "definitions": {
-      "个": {
-        "traditional": "箇",
-        "simplified": "个",
-        "pronunciation": "gè",
-        "definitions": "variant of 個|个[ge4]"
-      }
-    },
-    "hskLevel": 1
-  },
-  {
-    "index": 7,
-    "content": "“",
-    "type": "punctuation"
-  },
-  {
-    "index": 8,
-    "content": "阿",
-    "type": "word",
-    "displayText": "阿”",
-    "definitions": {
-      "阿": {
-        "traditional": "阿",
-        "simplified": "阿",
-        "pronunciation": "ē",
-        "definitions": "flatter"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 10,
-    "content": "字",
-    "type": "word",
-    "displayText": "字",
-    "definitions": {
-      "字": {
-        "traditional": "字",
-        "simplified": "字",
-        "pronunciation": "zì",
-        "definitions": "letter; symbol; character; word; CL:個|个[ge4]; courtesy or style name traditionally given to males aged 20 in dynastic China"
-      }
-    },
-    "hskLevel": 1
-  },
-  {
-    "index": 10,
-    "content": "表示",
-    "type": "word",
-    "displayText": "表示",
-    "definitions": {
-      "表示": {
-        "traditional": "表示",
-        "simplified": "表示",
-        "pronunciation": "biǎo shì",
-        "definitions": "to express; to show; to say; to state; to indicate; to mean"
-      }
-    },
-    "hskLevel": 3
-  },
-  {
-    "index": 10,
-    "content": "亲切",
-    "type": "word",
-    "displayText": "亲切",
-    "definitions": {
-      "亲切": {
-        "traditional": "親切",
-        "simplified": "亲切",
-        "pronunciation": "qīn qiè",
-        "definitions": "amiable; cordial; close and dear; familiar"
-      }
-    },
-    "hskLevel": 5
-  },
-  {
-    "index": 10,
-    "content": "和",
-    "type": "word",
-    "displayText": "和",
-    "definitions": {
-      "和": {
-        "traditional": "龢",
-        "simplified": "和",
-        "pronunciation": "hé",
-        "definitions": "old variant of 和[he2]; harmonious"
-      }
-    },
-    "hskLevel": 1
-  },
-  {
-    "index": 10,
-    "content": "尊敬",
-    "type": "word",
-    "displayText": "尊敬。",
-    "definitions": {
-      "尊敬": {
-        "traditional": "尊敬",
-        "simplified": "尊敬",
-        "pronunciation": "zūn jìng",
-        "definitions": "to respect; to revere"
-      }
-    },
-    "hskLevel": 5
-  },
-  {
-    "index": 12,
-    "content": "白族",
-    "type": "word",
-    "displayText": "白族",
-    "definitions": {
-      "白族": {
-        "traditional": "白族",
-        "simplified": "白族",
-        "pronunciation": "Bái zú",
-        "definitions": "Bai (ethnic group)"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 12,
-    "content": "访",
-    "type": "word",
-    "displayText": "访",
-    "definitions": {
-      "访": {
-        "traditional": "訪",
-        "simplified": "访",
-        "pronunciation": "fǎng",
-        "definitions": "to visit; to call on; to seek; to inquire; to investigate"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 12,
-    "content": "友",
-    "type": "word",
-    "displayText": "友",
-    "definitions": {
-      "友": {
-        "traditional": "友",
-        "simplified": "友",
-        "pronunciation": "yǒu",
-        "definitions": "friend"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 12,
-    "content": "或",
-    "type": "word",
-    "displayText": "或",
-    "definitions": {
-      "或": {
-        "traditional": "或",
-        "simplified": "或",
-        "pronunciation": "huò",
-        "definitions": "maybe; perhaps; might; possibly; or"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 12,
-    "content": "探病",
-    "type": "word",
-    "displayText": "探病",
-    "definitions": {
-      "探病": {
-        "traditional": "探病",
-        "simplified": "探病",
-        "pronunciation": "tàn bìng",
-        "definitions": "to visit a sick person or patient"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 12,
-    "content": "时",
-    "type": "word",
-    "displayText": "时",
-    "definitions": {
-      "时": {
-        "traditional": "時",
-        "simplified": "时",
-        "pronunciation": "shí",
-        "definitions": "o'clock; time; when; hour; season; period"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 12,
-    "content": "一般",
-    "type": "word",
-    "displayText": "一般",
-    "definitions": {
-      "一般": {
-        "traditional": "一般",
-        "simplified": "一般",
-        "pronunciation": "yī bān",
-        "definitions": "same; ordinary; so-so; common; general; generally; in general"
-      }
-    },
-    "hskLevel": 3
-  },
-  {
-    "index": 12,
-    "content": "不",
-    "type": "word",
-    "displayText": "不",
-    "definitions": {
-      "不": {
-        "traditional": "不",
-        "simplified": "不",
-        "pronunciation": "bù",
-        "definitions": "(negative prefix); not; no"
-      }
-    },
-    "hskLevel": 1
-  },
-  {
-    "index": 12,
-    "content": "选择",
-    "type": "word",
-    "displayText": "选择",
-    "definitions": {
-      "选择": {
-        "traditional": "選擇",
-        "simplified": "选择",
-        "pronunciation": "xuǎn zé",
-        "definitions": "to select; to pick; choice; option; alternative"
-      }
-    },
-    "hskLevel": 3
-  },
-  {
-    "index": 12,
-    "content": "在",
-    "type": "word",
-    "displayText": "在",
-    "definitions": {
-      "在": {
-        "traditional": "在",
-        "simplified": "在",
-        "pronunciation": "zài",
-        "definitions": "(located) at; (to be) in; to exist; in the middle of doing sth; (indicating an action in progress)"
-      }
-    },
-    "hskLevel": 1
-  },
-  {
-    "index": 12,
-    "content": "上午",
-    "type": "word",
-    "displayText": "上午",
-    "definitions": {
-      "上午": {
-        "traditional": "上午",
-        "simplified": "上午",
-        "pronunciation": "shàng wǔ",
-        "definitions": "morning; CL:個|个[ge4]"
-      }
-    },
-    "hskLevel": 1
-  },
-  {
-    "index": 13,
-    "content": "，",
-    "type": "punctuation"
-  },
-  {
-    "index": 14,
-    "content": "到",
-    "type": "word",
-    "displayText": "到",
-    "definitions": {
-      "到": {
-        "traditional": "到",
-        "simplified": "到",
-        "pronunciation": "dào",
-        "definitions": "to (a place); until (a time); up to; to go; to arrive; (verb complement denoting completion or result of an action)"
-      }
-    },
-    "hskLevel": 2
-  },
-  {
-    "index": 14,
-    "content": "农村",
-    "type": "word",
-    "displayText": "农村",
-    "definitions": {
-      "农村": {
-        "traditional": "農村",
-        "simplified": "农村",
-        "pronunciation": "nóng cūn",
-        "definitions": "rural area; village; CL:個|个[ge4]"
-      }
-    },
-    "hskLevel": 4
-  },
-  {
-    "index": 14,
-    "content": "遇到",
-    "type": "word",
-    "displayText": "遇到",
-    "definitions": {
-      "遇到": {
-        "traditional": "遇到",
-        "simplified": "遇到",
-        "pronunciation": "yù dào",
-        "definitions": "to meet; to run into; to come across"
-      }
-    },
-    "hskLevel": 3
-  },
-  {
-    "index": 14,
-    "content": "主人",
-    "type": "word",
-    "displayText": "主人",
-    "definitions": {
-      "主人": {
-        "traditional": "主人",
-        "simplified": "主人",
-        "pronunciation": "zhǔ rén",
-        "definitions": "master; host; owner; CL:個|个[ge4]"
-      }
-    },
-    "hskLevel": 5
-  },
-  {
-    "index": 14,
-    "content": "家",
-    "type": "word",
-    "displayText": "家",
-    "definitions": {
-      "家": {
-        "traditional": "家",
-        "simplified": "家",
-        "pronunciation": "jiā",
-        "definitions": "home; family; (polite) my (sister, uncle etc); classifier for families or businesses; refers to the philosophical schools of pre-Han China; noun suffix for a specialist in some activity, such as a musician or revolutionary, corresponding to English -ist, -er, -ary or -ian; CL:個|个[ge4]"
-      }
-    },
-    "hskLevel": 1
-  },
-  {
-    "index": 14,
-    "content": "有人",
-    "type": "word",
-    "displayText": "有人",
-    "definitions": {
-      "有人": {
-        "traditional": "有人",
-        "simplified": "有人",
-        "pronunciation": "yǒu rén",
-        "definitions": "someone; people; anyone; there is someone there; occupied (as in restroom)"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 14,
-    "content": "分娩",
-    "type": "word",
-    "displayText": "分娩",
-    "definitions": {
-      "分娩": {
-        "traditional": "分娩",
-        "simplified": "分娩",
-        "pronunciation": "fēn miǎn",
-        "definitions": "labor; parturition; delivery"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 14,
-    "content": "或",
-    "type": "word",
-    "displayText": "或",
-    "definitions": {
-      "或": {
-        "traditional": "或",
-        "simplified": "或",
-        "pronunciation": "huò",
-        "definitions": "maybe; perhaps; might; possibly; or"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 14,
-    "content": "有",
-    "type": "word",
-    "displayText": "有",
-    "definitions": {
-      "有": {
-        "traditional": "有",
-        "simplified": "有",
-        "pronunciation": "yǒu",
-        "definitions": "to have; there is; there are; to exist; to be"
-      }
-    },
-    "hskLevel": 1
-  },
-  {
-    "index": 14,
-    "content": "重病",
-    "type": "word",
-    "displayText": "重病",
-    "definitions": {
-      "重病": {
-        "traditional": "重病",
-        "simplified": "重病",
-        "pronunciation": "zhòng bìng",
-        "definitions": "serious illness"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 14,
-    "content": "人",
-    "type": "word",
-    "displayText": "人",
-    "definitions": {
-      "人": {
-        "traditional": "人",
-        "simplified": "人",
-        "pronunciation": "rén",
-        "definitions": "man; person; people; CL:個|个[ge4],位[wei4]"
-      }
-    },
-    "hskLevel": 1
-  },
-  {
-    "index": 14,
-    "content": "时",
-    "type": "word",
-    "displayText": "时",
-    "definitions": {
-      "时": {
-        "traditional": "時",
-        "simplified": "时",
-        "pronunciation": "shí",
-        "definitions": "o'clock; time; when; hour; season; period"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 15,
-    "content": "，",
-    "type": "punctuation"
-  },
-  {
-    "index": 16,
-    "content": "进",
-    "type": "word",
-    "displayText": "进",
-    "definitions": {
-      "进": {
-        "traditional": "進",
-        "simplified": "进",
-        "pronunciation": "jìn",
-        "definitions": "to advance; to enter; to come (or go) into; to receive or admit; to eat or drink; to submit or present; (used after a verb) into, in; to score a goal"
-      }
-    },
-    "hskLevel": 2
-  },
-  {
-    "index": 16,
-    "content": "屋",
-    "type": "word",
-    "displayText": "屋",
-    "definitions": {
-      "屋": {
-        "traditional": "屋",
-        "simplified": "屋",
-        "pronunciation": "wū",
-        "definitions": "house; room; CL:間|间[jian1],個|个[ge4]"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 16,
-    "content": "时",
-    "type": "word",
-    "displayText": "时",
-    "definitions": {
-      "时": {
-        "traditional": "時",
-        "simplified": "时",
-        "pronunciation": "shí",
-        "definitions": "o'clock; time; when; hour; season; period"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 16,
-    "content": "应",
-    "type": "word",
-    "displayText": "应",
-    "definitions": {
-      "应": {
-        "traditional": "應",
-        "simplified": "应",
-        "pronunciation": "yìng",
-        "definitions": "to answer; to respond; to comply with; to deal or cope with"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 16,
-    "content": "谨慎",
-    "type": "word",
-    "displayText": "谨慎。",
-    "definitions": {
-      "谨慎": {
-        "traditional": "謹慎",
-        "simplified": "谨慎",
-        "pronunciation": "jǐn shèn",
-        "definitions": "cautious; prudent"
-      }
-    },
-    "hskLevel": 5
-  },
-  {
-    "index": 18,
-    "content": "白族",
-    "type": "word",
-    "displayText": "白族",
-    "definitions": {
-      "白族": {
-        "traditional": "白族",
-        "simplified": "白族",
-        "pronunciation": "Bái zú",
-        "definitions": "Bai (ethnic group)"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 18,
-    "content": "喜欢",
-    "type": "word",
-    "displayText": "喜欢",
-    "definitions": {
-      "喜欢": {
-        "traditional": "喜歡",
-        "simplified": "喜欢",
-        "pronunciation": "xǐ huan",
-        "definitions": "to like; to be fond of"
-      }
-    },
-    "hskLevel": 1
-  },
-  {
-    "index": 18,
-    "content": "敬茶",
-    "type": "word",
-    "displayText": "敬茶",
-    "definitions": {
-      "敬茶": {
-        "traditional": "敬茶",
-        "simplified": "敬茶",
-        "pronunciation": "jìng chá",
-        "definitions": "to serve tea (to guests)"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 18,
-    "content": "待",
-    "type": "word",
-    "displayText": "待",
-    "definitions": {
-      "待": {
-        "traditional": "待",
-        "simplified": "待",
-        "pronunciation": "dài",
-        "definitions": "to wait; to treat; to deal with; to need; going to (do sth); about to; intending to"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 18,
-    "content": "客",
-    "type": "word",
-    "displayText": "客",
-    "definitions": {
-      "客": {
-        "traditional": "客",
-        "simplified": "客",
-        "pronunciation": "kè",
-        "definitions": "customer; visitor; guest"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 19,
-    "content": "，",
-    "type": "punctuation"
-  },
-  {
-    "index": 20,
-    "content": "同样",
-    "type": "word",
-    "displayText": "同样",
-    "definitions": {
-      "同样": {
-        "traditional": "同樣",
-        "simplified": "同样",
-        "pronunciation": "tóng yàng",
-        "definitions": "same; equal; equivalent"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 20,
-    "content": "有",
-    "type": "word",
-    "displayText": "有",
-    "definitions": {
-      "有": {
-        "traditional": "有",
-        "simplified": "有",
-        "pronunciation": "yǒu",
-        "definitions": "to have; there is; there are; to exist; to be"
-      }
-    },
-    "hskLevel": 1
-  },
-  {
-    "index": 21,
-    "content": "“",
-    "type": "punctuation"
-  },
-  {
-    "index": 22,
-    "content": "酒",
-    "type": "word",
-    "displayText": "酒",
-    "definitions": {
-      "酒": {
-        "traditional": "酒",
-        "simplified": "酒",
-        "pronunciation": "jiǔ",
-        "definitions": "wine (esp. rice wine); liquor; spirits; alcoholic beverage; CL:杯[bei1],瓶[ping2],罐[guan4],桶[tong3],缸[gang1]"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 22,
-    "content": "满",
-    "type": "word",
-    "displayText": "满",
-    "definitions": {
-      "满": {
-        "traditional": "滿",
-        "simplified": "满",
-        "pronunciation": "mǎn",
-        "definitions": "to fill; full; filled; packed; fully; completely; quite; to reach the limit; to satisfy; satisfied; contented"
-      }
-    },
-    "hskLevel": 4
-  },
-  {
-    "index": 22,
-    "content": "敬",
-    "type": "word",
-    "displayText": "敬",
-    "definitions": {
-      "敬": {
-        "traditional": "敬",
-        "simplified": "敬",
-        "pronunciation": "jìng",
-        "definitions": "to respect; to venerate; to salute; to offer"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 22,
-    "content": "人",
-    "type": "word",
-    "displayText": "人",
-    "definitions": {
-      "人": {
-        "traditional": "人",
-        "simplified": "人",
-        "pronunciation": "rén",
-        "definitions": "man; person; people; CL:個|个[ge4],位[wei4]"
-      }
-    },
-    "hskLevel": 1
-  },
-  {
-    "index": 23,
-    "content": "，",
-    "type": "punctuation"
-  },
-  {
-    "index": 24,
-    "content": "茶",
-    "type": "word",
-    "displayText": "茶",
-    "definitions": {
-      "茶": {
-        "traditional": "茶",
-        "simplified": "茶",
-        "pronunciation": "chá",
-        "definitions": "tea; tea plant; CL:杯[bei1],壺|壶[hu2]"
-      }
-    },
-    "hskLevel": 1
-  },
-  {
-    "index": 24,
-    "content": "满",
-    "type": "word",
-    "displayText": "满",
-    "definitions": {
-      "满": {
-        "traditional": "滿",
-        "simplified": "满",
-        "pronunciation": "mǎn",
-        "definitions": "to fill; full; filled; packed; fully; completely; quite; to reach the limit; to satisfy; satisfied; contented"
-      }
-    },
-    "hskLevel": 4
-  },
-  {
-    "index": 24,
-    "content": "欺",
-    "type": "word",
-    "displayText": "欺",
-    "definitions": {
-      "欺": {
-        "traditional": "欺",
-        "simplified": "欺",
-        "pronunciation": "qī",
-        "definitions": "to take unfair advantage of; to deceive; to cheat"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 24,
-    "content": "人",
-    "type": "word",
-    "displayText": "人”",
-    "definitions": {
-      "人": {
-        "traditional": "人",
-        "simplified": "人",
-        "pronunciation": "rén",
-        "definitions": "man; person; people; CL:個|个[ge4],位[wei4]"
-      }
-    },
-    "hskLevel": 1
-  },
-  {
-    "index": 26,
-    "content": "之",
-    "type": "word",
-    "displayText": "之",
-    "definitions": {
-      "之": {
-        "traditional": "之",
-        "simplified": "之",
-        "pronunciation": "zhī",
-        "definitions": "(possessive particle, literary equivalent of 的[de5]); him; her; it"
-      }
-    },
-    "hskLevel": 4
-  },
-  {
-    "index": 26,
-    "content": "说",
-    "type": "word",
-    "displayText": "说",
-    "definitions": {
-      "说": {
-        "traditional": "說",
-        "simplified": "说",
-        "pronunciation": "shuō",
-        "definitions": "to speak; to say; to explain; to scold; to tell off; a theory (usually in compounds such as 日心说 heliocentric theory)"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 27,
-    "content": "；",
-    "type": "punctuation"
-  },
-  {
-    "index": 28,
-    "content": "在",
-    "type": "word",
-    "displayText": "在",
-    "definitions": {
-      "在": {
-        "traditional": "在",
-        "simplified": "在",
-        "pronunciation": "zài",
-        "definitions": "(located) at; (to be) in; to exist; in the middle of doing sth; (indicating an action in progress)"
-      }
-    },
-    "hskLevel": 1
-  },
-  {
-    "index": 28,
-    "content": "喝酒",
-    "type": "word",
-    "displayText": "喝酒",
-    "definitions": {
-      "喝酒": {
-        "traditional": "喝酒",
-        "simplified": "喝酒",
-        "pronunciation": "hē jiǔ",
-        "definitions": "to drink (alcohol)"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 28,
-    "content": "方面",
-    "type": "word",
-    "displayText": "方面",
-    "definitions": {
-      "方面": {
-        "traditional": "方面",
-        "simplified": "方面",
-        "pronunciation": "fāng miàn",
-        "definitions": "respect; aspect; field; side; CL:個|个[ge4]"
-      }
-    },
-    "hskLevel": 4
-  },
-  {
-    "index": 29,
-    "content": "，",
-    "type": "punctuation"
-  },
-  {
-    "index": 30,
-    "content": "白族",
-    "type": "word",
-    "displayText": "白族",
-    "definitions": {
-      "白族": {
-        "traditional": "白族",
-        "simplified": "白族",
-        "pronunciation": "Bái zú",
-        "definitions": "Bai (ethnic group)"
-      }
-    },
-    "hskLevel": -1
-  },
-  {
-    "index": 30,
-    "content": "很",
-    "type": "word",
-    "displayText": "很",
-    "definitions": {
-      "很": {
-        "traditional": "很",
-        "simplified": "很",
-        "pronunciation": "hěn",
-        "definitions": "(adverb of degree); quite; very; awfully"
-      }
-    },
-    "hskLevel": 1
-  },
-  {
-    "index": 30,
-    "content": "文雅",
-    "type": "word",
-    "displayText": "文雅",
-    "definitions": {
-      "文雅": {
-        "traditional": "文雅",
-        "simplified": "文雅",
-        "pronunciation": "wén yǎ",
-        "definitions": "elegant; refined"
-      }
-    },
-    "hskLevel": 6
-  },
-  {
-    "index": 31,
-    "content": "，",
-    "type": "punctuation"
-  },
-  {
-    "index": 32,
-    "content": "通常",
-    "type": "word",
-    "displayText": "通常",
-    "definitions": {
-      "通常": {
-        "traditional": "通常",
-        "simplified": "通常",
-        "pronunciation": "tōng cháng",
-        "definitions": "regular; usual; normal; usually; normally"
-      }
-    },
-    "hskLevel": 5
-  },
-  {
-    "index": 32,
-    "content": "是",
-    "type": "word",
-    "displayText": "是",
-    "definitions": {
-      "是": {
-        "traditional": "昰",
-        "simplified": "是",
-        "pronunciation": "shì",
-        "definitions": "variant of 是[shi4]; (used in given names)"
-      }
-    },
-    "hskLevel": 1
-  },
-  {
-    "index": 32,
-    "content": "各自",
-    "type": "word",
-    "displayText": "各自",
-    "definitions": {
-      "各自": {
-        "traditional": "各自",
-        "simplified": "各自",
-        "pronunciation": "gè zì",
-        "definitions": "each; respective; apiece"
-      }
-    },
-    "hskLevel": 6
-  },
-  {
-    "index": 32,
-    "content": "随意",
-    "type": "word",
-    "displayText": "随意。",
-    "definitions": {
-      "随意": {
-        "traditional": "隨意",
-        "simplified": "随意",
-        "pronunciation": "suí yì",
-        "definitions": "as one wishes; according to one's wishes; at will; voluntary; conscious"
-      }
-    },
-    "hskLevel": 6
-  }
-]
+{
+  "article": [
+    {
+      "index": 0,
+      "content": "白族",
+      "type": "word",
+      "displayText": "白族",
+      "definitions": [
+        "Bai (ethnic group)"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "Bái zú"
+    },
+    {
+      "index": 0,
+      "content": "性格",
+      "type": "word",
+      "displayText": "性格",
+      "definitions": [
+        "nature; disposition; temperament; character; CL:個|个[ge4]"
+      ],
+      "hskLevel": 4,
+      "pronunciation": "xìng gé"
+    },
+    {
+      "index": 0,
+      "content": "外向",
+      "type": "word",
+      "displayText": "外向、",
+      "definitions": [
+        "outward-looking; extrovert; extroverted (personality); export-oriented (economy)"
+      ],
+      "hskLevel": 6,
+      "pronunciation": "wài xiàng"
+    },
+    {
+      "index": 2,
+      "content": "好客",
+      "type": "word",
+      "displayText": "好客、",
+      "definitions": [
+        "hospitality; to treat guests well; to enjoy having guests; hospitable; friendly"
+      ],
+      "pronunciation": "hào kè",
+      "hskLevel": 5
+    },
+    {
+      "index": 4,
+      "content": "尊老爱幼",
+      "type": "word",
+      "displayText": "尊老爱幼",
+      "definitions": [
+        "respect the old and cherish the young"
+      ],
+      "pronunciation": "zūn lǎo ài yòu",
+      "hskLevel": 0
+    },
+    {
+      "index": 5,
+      "content": "，",
+      "type": "punctuation"
+    },
+    {
+      "index": 6,
+      "content": "在",
+      "type": "word",
+      "displayText": "在",
+      "definitions": [
+        "(located) at; (to be) in; to exist; in the middle of doing sth; (indicating an action in progress)"
+      ],
+      "hskLevel": 1,
+      "pronunciation": "zài"
+    },
+    {
+      "index": 6,
+      "content": "对",
+      "type": "word",
+      "displayText": "对",
+      "definitions": [
+        "right; correct; couple; pair; towards; at; for; to face; opposite; to treat (sb a certain way); to match together; to adjust; to fit; to suit; to answer; to reply; classifier: couple"
+      ],
+      "hskLevel": 2,
+      "pronunciation": "duì"
+    },
+    {
+      "index": 6,
+      "content": "人",
+      "type": "word",
+      "displayText": "人",
+      "definitions": [
+        "man; person; people; CL:個|个[ge4],位[wei4]"
+      ],
+      "hskLevel": 1,
+      "pronunciation": "rén"
+    },
+    {
+      "index": 6,
+      "content": "的",
+      "type": "word",
+      "displayText": "的",
+      "definitions": [
+        "aim; clear",
+        "of; ~'s (possessive particle); (used after an attribute); (used to form a nominal expression); (used at the end of a declarative sentence for emphasis)",
+        "really and truly",
+        "see 的士[di1 shi4]"
+      ],
+      "hskLevel": 1,
+      "pronunciation": "dì"
+    },
+    {
+      "index": 6,
+      "content": "称谓",
+      "type": "word",
+      "displayText": "称谓",
+      "definitions": [
+        "title; appellation; form of address"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "chēng wèi"
+    },
+    {
+      "index": 6,
+      "content": "前",
+      "type": "word",
+      "displayText": "前",
+      "definitions": [
+        "front; forward; ahead; first; top (followed by a number); future; ago; before; BC (e.g. 前293年); former; formerly"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "qián"
+    },
+    {
+      "index": 6,
+      "content": "喜欢",
+      "type": "word",
+      "displayText": "喜欢",
+      "definitions": [
+        "to like; to be fond of"
+      ],
+      "hskLevel": 1,
+      "pronunciation": "xǐ huan"
+    },
+    {
+      "index": 6,
+      "content": "加",
+      "type": "word",
+      "displayText": "加",
+      "definitions": [
+        "abbr. for Canada 加拿大[Jia1 na2 da4]",
+        "to add; plus; (used after an adverb such as 不, 大, 稍 etc, and before a disyllabic verb, to indicate that the action of the verb is applied to sth or sb previously mentioned); to apply (restrictions etc) to (sb); to give (support, consideration etc) to (sth)"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "Jiā"
+    },
+    {
+      "index": 6,
+      "content": "个",
+      "type": "word",
+      "displayText": "个",
+      "definitions": [
+        "variant of 個|个[ge4]"
+      ],
+      "hskLevel": 1,
+      "pronunciation": "gè"
+    },
+    {
+      "index": 7,
+      "content": "“",
+      "type": "punctuation"
+    },
+    {
+      "index": 8,
+      "content": "阿",
+      "type": "word",
+      "displayText": "阿”",
+      "definitions": [
+        "abbr. for Afghanistan 阿富汗[A1 fu4 han4]",
+        "flatter",
+        "prefix used before monosyllabic names, kinship terms etc to indicate familiarity; used in transliteration; also pr. [a4]"
+      ],
+      "pronunciation": "A1",
+      "hskLevel": 0
+    },
+    {
+      "index": 10,
+      "content": "字",
+      "type": "word",
+      "displayText": "字",
+      "definitions": [
+        "letter; symbol; character; word; CL:個|个[ge4]; courtesy or style name traditionally given to males aged 20 in dynastic China"
+      ],
+      "hskLevel": 1,
+      "pronunciation": "zì"
+    },
+    {
+      "index": 10,
+      "content": "表示",
+      "type": "word",
+      "displayText": "表示",
+      "definitions": [
+        "to express; to show; to say; to state; to indicate; to mean"
+      ],
+      "hskLevel": 4,
+      "pronunciation": "biǎo shì"
+    },
+    {
+      "index": 10,
+      "content": "亲切",
+      "type": "word",
+      "displayText": "亲切",
+      "definitions": [
+        "amiable; cordial; close and dear; familiar"
+      ],
+      "hskLevel": 5,
+      "pronunciation": "qīn qiè"
+    },
+    {
+      "index": 10,
+      "content": "和",
+      "type": "word",
+      "displayText": "和",
+      "definitions": [
+        "old variant of 和[he2]; harmonious"
+      ],
+      "hskLevel": 1,
+      "pronunciation": "hé"
+    },
+    {
+      "index": 10,
+      "content": "尊敬",
+      "type": "word",
+      "displayText": "尊敬。",
+      "definitions": [
+        "to respect; to revere"
+      ],
+      "hskLevel": 5,
+      "pronunciation": "zūn jìng"
+    },
+    {
+      "index": 12,
+      "content": "白族",
+      "type": "word",
+      "displayText": "白族",
+      "definitions": [
+        "Bai (ethnic group)"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "Bái zú"
+    },
+    {
+      "index": 12,
+      "content": "访",
+      "type": "word",
+      "displayText": "访",
+      "definitions": [
+        "to visit; to call on; to seek; to inquire; to investigate"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "fǎng"
+    },
+    {
+      "index": 12,
+      "content": "友",
+      "type": "word",
+      "displayText": "友",
+      "definitions": [
+        "friend"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "yǒu"
+    },
+    {
+      "index": 12,
+      "content": "或",
+      "type": "word",
+      "displayText": "或",
+      "definitions": [
+        "maybe; perhaps; might; possibly; or"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "huò"
+    },
+    {
+      "index": 12,
+      "content": "探病",
+      "type": "word",
+      "displayText": "探病",
+      "definitions": [
+        "to visit a sick person or patient"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "tàn bìng"
+    },
+    {
+      "index": 12,
+      "content": "时",
+      "type": "word",
+      "displayText": "时",
+      "definitions": [
+        "o'clock; time; when; hour; season; period",
+        "surname Shi"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "shí"
+    },
+    {
+      "index": 12,
+      "content": "一般",
+      "type": "word",
+      "displayText": "一般",
+      "definitions": [
+        "same; ordinary; so-so; common; general; generally; in general"
+      ],
+      "hskLevel": 3,
+      "pronunciation": "yī bān"
+    },
+    {
+      "index": 12,
+      "content": "不",
+      "type": "word",
+      "displayText": "不",
+      "definitions": [
+        "(negative prefix); not; no"
+      ],
+      "hskLevel": 1,
+      "pronunciation": "bù"
+    },
+    {
+      "index": 12,
+      "content": "选择",
+      "type": "word",
+      "displayText": "选择",
+      "definitions": [
+        "to select; to pick; choice; option; alternative"
+      ],
+      "hskLevel": 3,
+      "pronunciation": "xuǎn zé"
+    },
+    {
+      "index": 12,
+      "content": "在",
+      "type": "word",
+      "displayText": "在",
+      "definitions": [
+        "(located) at; (to be) in; to exist; in the middle of doing sth; (indicating an action in progress)"
+      ],
+      "hskLevel": 1,
+      "pronunciation": "zài"
+    },
+    {
+      "index": 12,
+      "content": "上午",
+      "type": "word",
+      "displayText": "上午",
+      "definitions": [
+        "morning; CL:個|个[ge4]"
+      ],
+      "hskLevel": 1,
+      "pronunciation": "shàng wǔ"
+    },
+    {
+      "index": 13,
+      "content": "，",
+      "type": "punctuation"
+    },
+    {
+      "index": 14,
+      "content": "到",
+      "type": "word",
+      "displayText": "到",
+      "definitions": [
+        "to (a place); until (a time); up to; to go; to arrive; (verb complement denoting completion or result of an action)"
+      ],
+      "hskLevel": 2,
+      "pronunciation": "dào"
+    },
+    {
+      "index": 14,
+      "content": "农村",
+      "type": "word",
+      "displayText": "农村",
+      "definitions": [
+        "rural area; village; CL:個|个[ge4]"
+      ],
+      "hskLevel": 5,
+      "pronunciation": "nóng cūn"
+    },
+    {
+      "index": 14,
+      "content": "遇到",
+      "type": "word",
+      "displayText": "遇到",
+      "definitions": [
+        "to meet; to run into; to come across"
+      ],
+      "hskLevel": 3,
+      "pronunciation": "yù dào"
+    },
+    {
+      "index": 14,
+      "content": "主人",
+      "type": "word",
+      "displayText": "主人",
+      "definitions": [
+        "master; host; owner; CL:個|个[ge4]"
+      ],
+      "hskLevel": 5,
+      "pronunciation": "zhǔ rén"
+    },
+    {
+      "index": 14,
+      "content": "家",
+      "type": "word",
+      "displayText": "家",
+      "definitions": [
+        "home; family; (polite) my (sister, uncle etc); classifier for families or businesses; refers to the philosophical schools of pre-Han China; noun suffix for a specialist in some activity, such as a musician or revolutionary, corresponding to English -ist, -er, -ary or -ian; CL:個|个[ge4]",
+        "surname Jia"
+      ],
+      "hskLevel": 1,
+      "pronunciation": "jiā"
+    },
+    {
+      "index": 14,
+      "content": "有人",
+      "type": "word",
+      "displayText": "有人",
+      "definitions": [
+        "someone; people; anyone; there is someone there; occupied (as in restroom)"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "yǒu rén"
+    },
+    {
+      "index": 14,
+      "content": "分娩",
+      "type": "word",
+      "displayText": "分娩",
+      "definitions": [
+        "labor; parturition; delivery"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "fēn miǎn"
+    },
+    {
+      "index": 14,
+      "content": "或",
+      "type": "word",
+      "displayText": "或",
+      "definitions": [
+        "maybe; perhaps; might; possibly; or"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "huò"
+    },
+    {
+      "index": 14,
+      "content": "有",
+      "type": "word",
+      "displayText": "有",
+      "definitions": [
+        "to have; there is; there are; to exist; to be"
+      ],
+      "hskLevel": 1,
+      "pronunciation": "yǒu"
+    },
+    {
+      "index": 14,
+      "content": "重病",
+      "type": "word",
+      "displayText": "重病",
+      "definitions": [
+        "serious illness"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "zhòng bìng"
+    },
+    {
+      "index": 14,
+      "content": "人",
+      "type": "word",
+      "displayText": "人",
+      "definitions": [
+        "man; person; people; CL:個|个[ge4],位[wei4]"
+      ],
+      "hskLevel": 1,
+      "pronunciation": "rén"
+    },
+    {
+      "index": 14,
+      "content": "时",
+      "type": "word",
+      "displayText": "时",
+      "definitions": [
+        "o'clock; time; when; hour; season; period",
+        "surname Shi"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "shí"
+    },
+    {
+      "index": 15,
+      "content": "，",
+      "type": "punctuation"
+    },
+    {
+      "index": 16,
+      "content": "进",
+      "type": "word",
+      "displayText": "进",
+      "definitions": [
+        "to advance; to enter; to come (or go) into; to receive or admit; to eat or drink; to submit or present; (used after a verb) into, in; to score a goal"
+      ],
+      "hskLevel": 2,
+      "pronunciation": "jìn"
+    },
+    {
+      "index": 16,
+      "content": "屋",
+      "type": "word",
+      "displayText": "屋",
+      "definitions": [
+        "house; room; CL:間|间[jian1],個|个[ge4]"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "wū"
+    },
+    {
+      "index": 16,
+      "content": "时",
+      "type": "word",
+      "displayText": "时",
+      "definitions": [
+        "o'clock; time; when; hour; season; period",
+        "surname Shi"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "shí"
+    },
+    {
+      "index": 16,
+      "content": "应",
+      "type": "word",
+      "displayText": "应",
+      "definitions": [
+        "surname Ying",
+        "to agree (to do sth); should; ought to; must; (legal) shall",
+        "to answer; to respond; to comply with; to deal or cope with"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "Yìng"
+    },
+    {
+      "index": 16,
+      "content": "谨慎",
+      "type": "word",
+      "displayText": "谨慎。",
+      "definitions": [
+        "cautious; prudent"
+      ],
+      "hskLevel": 5,
+      "pronunciation": "jǐn shèn"
+    },
+    {
+      "index": 18,
+      "content": "白族",
+      "type": "word",
+      "displayText": "白族",
+      "definitions": [
+        "Bai (ethnic group)"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "Bái zú"
+    },
+    {
+      "index": 18,
+      "content": "喜欢",
+      "type": "word",
+      "displayText": "喜欢",
+      "definitions": [
+        "to like; to be fond of"
+      ],
+      "hskLevel": 1,
+      "pronunciation": "xǐ huan"
+    },
+    {
+      "index": 18,
+      "content": "敬茶",
+      "type": "word",
+      "displayText": "敬茶",
+      "definitions": [
+        "to serve tea (to guests)"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "jìng chá"
+    },
+    {
+      "index": 18,
+      "content": "待",
+      "type": "word",
+      "displayText": "待",
+      "definitions": [
+        "to stay",
+        "to wait; to treat; to deal with; to need; going to (do sth); about to; intending to"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "dāi"
+    },
+    {
+      "index": 18,
+      "content": "客",
+      "type": "word",
+      "displayText": "客",
+      "definitions": [
+        "customer; visitor; guest"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "kè"
+    },
+    {
+      "index": 19,
+      "content": "，",
+      "type": "punctuation"
+    },
+    {
+      "index": 20,
+      "content": "同样",
+      "type": "word",
+      "displayText": "同样",
+      "definitions": [
+        "same; equal; equivalent"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "tóng yàng"
+    },
+    {
+      "index": 20,
+      "content": "有",
+      "type": "word",
+      "displayText": "有",
+      "definitions": [
+        "to have; there is; there are; to exist; to be"
+      ],
+      "hskLevel": 1,
+      "pronunciation": "yǒu"
+    },
+    {
+      "index": 21,
+      "content": "“",
+      "type": "punctuation"
+    },
+    {
+      "index": 22,
+      "content": "酒",
+      "type": "word",
+      "displayText": "酒",
+      "definitions": [
+        "wine (esp. rice wine); liquor; spirits; alcoholic beverage; CL:杯[bei1],瓶[ping2],罐[guan4],桶[tong3],缸[gang1]"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "jiǔ"
+    },
+    {
+      "index": 22,
+      "content": "满",
+      "type": "word",
+      "displayText": "满",
+      "definitions": [
+        "Manchu ethnic group",
+        "to fill; full; filled; packed; fully; completely; quite; to reach the limit; to satisfy; satisfied; contented"
+      ],
+      "hskLevel": 4,
+      "pronunciation": "Mǎn"
+    },
+    {
+      "index": 22,
+      "content": "敬",
+      "type": "word",
+      "displayText": "敬",
+      "definitions": [
+        "to respect; to venerate; to salute; to offer"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "jìng"
+    },
+    {
+      "index": 22,
+      "content": "人",
+      "type": "word",
+      "displayText": "人",
+      "definitions": [
+        "man; person; people; CL:個|个[ge4],位[wei4]"
+      ],
+      "hskLevel": 1,
+      "pronunciation": "rén"
+    },
+    {
+      "index": 23,
+      "content": "，",
+      "type": "punctuation"
+    },
+    {
+      "index": 24,
+      "content": "茶",
+      "type": "word",
+      "displayText": "茶",
+      "definitions": [
+        "tea; tea plant; CL:杯[bei1],壺|壶[hu2]"
+      ],
+      "hskLevel": 1,
+      "pronunciation": "chá"
+    },
+    {
+      "index": 24,
+      "content": "满",
+      "type": "word",
+      "displayText": "满",
+      "definitions": [
+        "Manchu ethnic group",
+        "to fill; full; filled; packed; fully; completely; quite; to reach the limit; to satisfy; satisfied; contented"
+      ],
+      "hskLevel": 4,
+      "pronunciation": "Mǎn"
+    },
+    {
+      "index": 24,
+      "content": "欺",
+      "type": "word",
+      "displayText": "欺",
+      "definitions": [
+        "to take unfair advantage of; to deceive; to cheat"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "qī"
+    },
+    {
+      "index": 24,
+      "content": "人",
+      "type": "word",
+      "displayText": "人”",
+      "definitions": [
+        "man; person; people; CL:個|个[ge4],位[wei4]"
+      ],
+      "hskLevel": 1,
+      "pronunciation": "rén"
+    },
+    {
+      "index": 26,
+      "content": "之",
+      "type": "word",
+      "displayText": "之",
+      "definitions": [
+        "(possessive particle, literary equivalent of 的[de5]); him; her; it"
+      ],
+      "hskLevel": 4,
+      "pronunciation": "zhī"
+    },
+    {
+      "index": 26,
+      "content": "说",
+      "type": "word",
+      "displayText": "说",
+      "definitions": [
+        "to persuade",
+        "to speak; to say; to explain; to scold; to tell off; a theory (usually in compounds such as 日心说 heliocentric theory)"
+      ],
+      "hskLevel": 1,
+      "pronunciation": "shuì"
+    },
+    {
+      "index": 27,
+      "content": "；",
+      "type": "punctuation"
+    },
+    {
+      "index": 28,
+      "content": "在",
+      "type": "word",
+      "displayText": "在",
+      "definitions": [
+        "(located) at; (to be) in; to exist; in the middle of doing sth; (indicating an action in progress)"
+      ],
+      "hskLevel": 1,
+      "pronunciation": "zài"
+    },
+    {
+      "index": 28,
+      "content": "喝酒",
+      "type": "word",
+      "displayText": "喝酒",
+      "definitions": [
+        "to drink (alcohol)"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "hē jiǔ"
+    },
+    {
+      "index": 28,
+      "content": "方面",
+      "type": "word",
+      "displayText": "方面",
+      "definitions": [
+        "respect; aspect; field; side; CL:個|个[ge4]"
+      ],
+      "hskLevel": 4,
+      "pronunciation": "fāng miàn"
+    },
+    {
+      "index": 29,
+      "content": "，",
+      "type": "punctuation"
+    },
+    {
+      "index": 30,
+      "content": "白族",
+      "type": "word",
+      "displayText": "白族",
+      "definitions": [
+        "Bai (ethnic group)"
+      ],
+      "hskLevel": 0,
+      "pronunciation": "Bái zú"
+    },
+    {
+      "index": 30,
+      "content": "很",
+      "type": "word",
+      "displayText": "很",
+      "definitions": [
+        "(adverb of degree); quite; very; awfully"
+      ],
+      "hskLevel": 1,
+      "pronunciation": "hěn"
+    },
+    {
+      "index": 30,
+      "content": "文雅",
+      "type": "word",
+      "displayText": "文雅",
+      "definitions": [
+        "elegant; refined"
+      ],
+      "hskLevel": 6,
+      "pronunciation": "wén yǎ"
+    },
+    {
+      "index": 31,
+      "content": "，",
+      "type": "punctuation"
+    },
+    {
+      "index": 32,
+      "content": "通常",
+      "type": "word",
+      "displayText": "通常",
+      "definitions": [
+        "regular; usual; normal; usually; normally"
+      ],
+      "hskLevel": 5,
+      "pronunciation": "tōng cháng"
+    },
+    {
+      "index": 32,
+      "content": "是",
+      "type": "word",
+      "displayText": "是",
+      "definitions": [
+        "variant of 是[shi4]; (used in given names)"
+      ],
+      "hskLevel": 1,
+      "pronunciation": "shì"
+    },
+    {
+      "index": 32,
+      "content": "各自",
+      "type": "word",
+      "displayText": "各自",
+      "definitions": [
+        "each; respective; apiece"
+      ],
+      "hskLevel": 5,
+      "pronunciation": "gè zì"
+    },
+    {
+      "index": 32,
+      "content": "随意",
+      "type": "word",
+      "displayText": "随意。",
+      "definitions": [
+        "as one wishes; according to one's wishes; at will; voluntary; conscious"
+      ],
+      "hskLevel": 6,
+      "pronunciation": "suí yì"
+    }
+  ]
+}
