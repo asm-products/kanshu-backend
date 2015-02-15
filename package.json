@@ -1,5 +1,20 @@
 {
   "name": "kanshu-backend",
   "version": "0.0.2",
-  "main": "index.js"
+  "main": "index.js",
+  "dependencies": {
+    "async": "latest",
+    "bunyan": "latest",
+    "feed-read": "latest",
+    "feedparser": "latest",
+    "jasmine-node": "latest",
+    "nconf": "latest",
+    "node-cache": "latest",
+    "node-stopwatch": "latest",
+    "node-uuid": "latest",
+    "pg": "latest",
+    "restify": "latest",
+    "typechecker": "latest"
+  }
 }
+
