@@ -28,7 +28,12 @@ module.exports = {
      * Sets the logger to use.
      * @param value
      */
-    setLogger: function(value) { log = value; data.setLogger(value); },
+    setLogger: function(value)
+    {
+        console.log('setting logger (dictionary.pg.service.js)');
+        log = value;
+        data.setLogger(value);
+    },
 
     /**
      * Sets the connection string for the data layer.

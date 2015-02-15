@@ -16,6 +16,10 @@ nconf.argv()
 dictionaryService.setLogger(log);
 dictionaryService.setConnectionString(nconf.get('DATABASE_URL'));
 
+userService.setLogger(log);
+userService.setConnectionString(nconf.get('DATABASE_URL'));
+userService.setInitialSessionExpirationMinutes(nconf.get('initialSessionExpirationMinutes'));
+
 var server = restify.createServer();
 /**
  * These are the http interceptors.
