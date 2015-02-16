@@ -12,7 +12,21 @@ var ce    = require('node-cc-cedict'),
     pg    = require('pg'),
     async = require('async');
 
-writeDictToPG();
+var hsk = [];
+var conString = "postgres://localhost/kanshu";
+
+//writeDictToPG();
+//writeDictToSQLFile();
+
+console.log('updating db with hsk levels.');
+
+initializeHskLevels(function() {
+    console.log('found %s hsk levels', hsk.length);
+
+    updatePGWithHskLevels(function() {
+        console.log('completed updating PG.');
+    });
+});
 
 function writeDictToSQLFile() {
     ce.getAll(function (entries) {
@@ -34,7 +48,6 @@ function writeDictToSQLFile() {
 }
 
 function writeDictToPG() {
-    var conString = "postgres://localhost/kanshu";
     var sql = 'INSERT INTO words (translatedto, traditional, simplified, pronunciation, definition) VALUES ($1, $2, $3, $4, $5);';
 
         ce.getAll(function (entries) {
@@ -69,4 +82,82 @@ function writeDictToPG() {
             });
 
     });
+}
+
+
+function readLines(input, func, level, complete) {
+    var remaining = '';
+
+    input.on('data', function(data) {
+        remaining += data;
+        var index = remaining.indexOf('\n');
+        while (index > -1) {
+            var line = remaining.substring(0, index);
+            remaining = remaining.substring(index + 1);
+            func(line, level);
+            index = remaining.indexOf('\n');
+        }
+    });
+
+    input.on('end', function() {
+        if (remaining.length > 0) {
+            func(remaining, level);
+        }
+        complete();
+    });
+}
+
+function cacheLine(data, level) {
+    console.log('Level %s: %s', level, data);
+    hsk.push({ word: data.replace('\r', ''), level: level });
+}
+
+function initializeHskLevels(complete) {
+
+    var files = [];
+    for (var i = 1; i <= 6; i++) {
+        var filePath = '../../docs/HSK Official 2012 L' + i.toString() + '.txt';
+        files.push({path: filePath, level: i});
+    }
+
+    async.each(files,
+    function(file, callback) {
+        var input = fs.createReadStream(file.path);
+        readLines(input, cacheLine, file.level, callback);
+    },
+    function(err) {
+        if (err) {
+            console.log('error: %j', err);
+        }
+        complete();
+    });
+
+
+}
+
+function updatePGWithHskLevels(complete) {
+    var sql = 'UPDATE words SET hsklevel = $1 WHERE traditional = $2 OR simplified = $2';
+
+    async.each(hsk, function(hskword, callback) {
+            pg.connect(conString, function (err, client, done) {
+                if (err) {
+                    return console.error('error fetching client from pool', err);
+                }
+
+                client.query(sql, [hskword.level, hskword.word], function (err, result) {
+
+                    done();
+
+                    if (err) {
+                        console.log('%j\n%j\ncount: %s', err, entry, count);
+                    }
+
+                    callback();
+                });
+            });
+    },
+    function(err) {
+        complete();
+    });
+
 }

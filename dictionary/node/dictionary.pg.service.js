@@ -1,12 +1,9 @@
 var feed        = require('feed-read'),
     data        = require('./data.pg.js'),
     async       = require('async'),
-    NodeCache   = require('node-cache'),
-    typechecker = require('typechecker'),
-    hsk         = require('hsk-words');
+    NodeCache   = require('node-cache');
 
 var wordCache = new NodeCache();  // used to cache up the words discovered in the dictionary.
-var missCache = new NodeCache();  // used to cache the words that were not found in the dictionary.
 
 var log = {};
 
@@ -31,7 +28,12 @@ module.exports = {
      * Sets the logger to use.
      * @param value
      */
-    setLogger: function(value) { log = value; data.setLogger(value); },
+    setLogger: function(value)
+    {
+        console.log('setting logger (dictionary.pg.service.js)');
+        log = value;
+        data.setLogger(value);
+    },
 
     /**
      * Sets the connection string for the data layer.
@@ -54,11 +56,32 @@ function internalPrecacheDictionary() {
     var completeHandler = function(words) {
         console.log('got all words: %s', words.length);
 
-        for(var i=0; i < words.length; i++) {
-            wordCache.set(words[i].traditional, words[i]);
+        var collapsedList = [];
+        var collapsedListIndex = 0;
 
-            if (words[i].traditional != words[i].simplified)
-                wordCache.set(words[i].simplified, words[i]);
+        console.log('collapsing dupe words..');
+
+        for(var i=0; i < words.length; i++) {
+            if (i == 0) {
+                collapsedList[0] = words[i];
+            } else {
+                if (words[i].traditional == collapsedList[collapsedListIndex].traditional) {
+                    collapsedList[collapsedListIndex].definitions.push(words[i].definitions[0]);
+                    continue;
+                } else {
+                    collapsedListIndex++;
+                    collapsedList[collapsedListIndex] = words[i];
+                }
+            }
+        }
+
+        // add the collapsed list to the cache.
+        console.log('adding collapsed list [%s] to cache.', collapsedListIndex)
+        for(var i=0; i < collapsedListIndex; i++) {
+            wordCache.set(collapsedList[i].traditional, collapsedList[i]);
+
+            if (collapsedList[i].traditional != collapsedList[i].simplified)
+                wordCache.set(collapsedList[i].simplified, collapsedList[i]);
         }
 
         console.log('cached all words');
@@ -74,7 +97,7 @@ function internalPrecacheDictionary() {
  * @param next - callback to call when processing complete.
  */
 function internalLookup(req, res, next) {
-    ce.searchByChinese(req.params.phrase, function(words){
+    ceSearchCacheOnly({ content: req.params.phrase }, function(words) {
         res.send(200, { words: words });
         return next();
     });
@@ -103,7 +126,7 @@ function internalProcessFeed(req, res, next) {
         console.log('found rss feed: %s, processing article: %s', req.body.url, req.body.articleIndex);
 
         processArticle(articles[req.body.articleIndex], function(annotatedArticle) {
-            res.send(annotatedArticle);
+            res.send({ article: annotatedArticle });
             next();
         });
 
@@ -154,6 +177,8 @@ function mergeEolPunctuation(articleArray, complete) {
     var mergedArray = [];
 
     for(var i = 0; i < articleArray.length; i++) {
+        delete articleArray[i].index;
+
         if (i > 0 && articleArray[i].type === 'punctuation') {
             if (isEolPunctuation(articleArray[i].content.charAt(0))) {
                 mergedArray[mergedArray.length-1].displayText += articleArray[i].content.charAt(0);
@@ -335,59 +360,6 @@ function getAnnotatedSubSegment(subSegment, complete) {
 }
 
 /**
- * Search for the segment in the dictionary.  This function uses cc-cedict node module and uses caching.
- * @param searchSegment - the text to search for.
- * @param result - the results of the search.
- * @returns {*}
- */
-function ceSearch(searchSegment, result) {
-
-    // first try the miss cache.
-    var missCacheResult = missCache.get(searchSegment.content);
-
-    if (!typechecker.isEmptyObject(missCacheResult)) { // This segment is already known to not be a word in the dictionary.
-        searchSegment.definitions = [];
-        searchSegment.hskLevel = -1;
-
-        return result(searchSegment);
-    }
-
-    var cacheResult = wordCache.get(searchSegment.content);
-
-
-
-    if (typechecker.isEmptyObject(cacheResult)) {
-
-        console.log('(C) MISS');
-        ce.searchByChinese(searchSegment.content, function (words) {
-            console.log('got results: %j', words);
-            searchSegment.definitions = words;
-            searchSegment.hskLevel = 1; // TODO: Get hsk levels into dictionary.
-
-            if (words.length > 0)
-                wordCache.set(searchSegment.content, words);
-            else
-                missCache.set(searchSegment.content, true);
-
-            hsk.findLevel(searchSegment.content, function(level){
-                // level evaluates to -1 if not found, else is in 1..6
-                searchSegment.hskLevel = level;
-                result(searchSegment);
-            });
-        });
-    } else {
-        console.log('(C) HIT');
-        searchSegment.definitions = cacheResult;
-
-        hsk.findLevel(searchSegment.content, function(level){
-            // level evaluates to -1 if not found, else is in 1..6
-            searchSegment.hskLevel = level;
-            result(searchSegment);
-        });
-    }
-}
-
-/**
  * Search for the segment in the in memory cache.
  * @param searchSegment - the text to search for.
  * @param result - the results.
@@ -395,9 +367,9 @@ function ceSearch(searchSegment, result) {
  */
 function ceSearchCacheOnly(searchSegment, result) {
 
-    var cacheResult = wordCache.get(searchSegment.content);
+    var cacheResult = wordCache.get(searchSegment.content)[searchSegment.content];
 
-    if (typechecker.isEmptyObject(cacheResult)) {
+    if (isEmpty(cacheResult)) {
 
         searchSegment.definitions = [];
         searchSegment.hskLevel = -1;
@@ -405,11 +377,16 @@ function ceSearchCacheOnly(searchSegment, result) {
         return result(searchSegment);
 
     } else {
-        hsk.findLevel(searchSegment.content, function(level){
-            // level evaluates to -1 if not found, else is in 1..6
-            searchSegment.definitions = cacheResult;
-            searchSegment.hskLevel = level;
-            result(searchSegment);
-        });
+        searchSegment.definitions   = cacheResult.definitions;
+        searchSegment.pronunciation = cacheResult.pronunciation;
+        searchSegment.hskLevel      = cacheResult.hsklevel;
+
+        result(searchSegment);
     }
+}
+
+function isEmpty(obj) {
+    if (typeof obj === 'undefined') return true;
+
+    return Object.keys(obj).length === 0;
 }
