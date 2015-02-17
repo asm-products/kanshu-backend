@@ -39,7 +39,11 @@ module.exports = {
      * Sets the connection string for the data layer.
      * @param value
      */
-    setConnectionString: function(value) { data.setConnectionString(value); }
+    setConnectionString: function(value)
+    {
+        log.debug('connString: %s', value);
+        data.setConnectionString(value);
+    }
 
 };
 
