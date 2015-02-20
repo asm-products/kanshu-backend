@@ -1,5 +1,6 @@
 /* Create the users table. */
 CREATE TABLE users (
+	id						 serial,
 	email				  	 varchar(120),
 	passwordhash		  	 varchar(384),
 	lastlogin	 		  	 timestamp,

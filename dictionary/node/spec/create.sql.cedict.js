@@ -13,7 +13,7 @@ var ce    = require('node-cc-cedict'),
     async = require('async');
 
 var hsk = [];
-var conString = "postgres://localhost/kanshu";
+var conString = "postgres://vztatczzgyhmiy:GFo0ahvkwEh71eNR-moO5Fj-Gr@ec2-54-204-45-65.compute-1.amazonaws.com:5432/d2eoma8t05r5v9";
 
 //writeDictToPG();
 //writeDictToSQLFile();

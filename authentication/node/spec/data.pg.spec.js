@@ -15,7 +15,7 @@ nconf.argv()
     .env()
     .file({ file: '../config.json' });
 
-var conString = nconf.get('connectionString');
+var conString = nconf.get('DATABASE_URL');
 
 var testUserEmail = 'pg.data.unittest@test.com';
 var testUserSessionId = '';

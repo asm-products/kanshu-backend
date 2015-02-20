@@ -29,7 +29,11 @@ module.exports = {
 
     setLogger: function(value) { log = value; data.setLogger(value); },
 
-    setConnectionString: function(value) { connectionString = value; },
+    setConnectionString: function(value)
+    {
+        connectionString = value;
+        data.setConnectionString(value);
+    },
 
     setInitialSessionExpirationMinutes: function(value) { initialSessionExpirationMinutes = value; }
 };
