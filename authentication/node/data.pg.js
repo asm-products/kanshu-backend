@@ -25,7 +25,10 @@ module.exports = {
 
     setLogger: function(value) { log = value; },
 
-    setConnectionString: function(value) { connectionString = value; }
+    setConnectionString: function(value)
+    {
+        connectionString = value;
+    }
 
 };
 
