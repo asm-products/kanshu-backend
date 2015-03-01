@@ -315,8 +315,8 @@ function internalValidate(req, res, next) {
         return next();
     };
 
-    var completeHandler = function(isValid) {
-        if (isValid) {
+    var completeHandler = function(result) {
+        if (result.isValid) {
             res.send(200, { mesage: 'Session validates ok.' });
             return next();
         }

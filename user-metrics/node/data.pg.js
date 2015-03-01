@@ -12,11 +12,14 @@
  *
  * Created by dsandor on 2/28/15.
  */
-var pg = require('pg');
+var pg         = require('pg'),
+    authHelper = require('../../authentication/node/authentication.helper.js');
 
 module.exports = {
 
     saveWord: {}, // TODO: Allow user to save a word
+
+    linkArticle: internalLinkArticle,
 
     setLogger: function(value) { log = value; },
 
@@ -31,59 +34,43 @@ var log = {},
  * in the header of the POST request.
  *
  * @param articleId - the article Id to link to the user.
+ * @param sessionId - the session id of the user.
  * @param complete - the callback that is called when the process completes.  'err' object is passed to
  * the callback if there was an error linking the article to the user.
  */
-function internalLinkArticle(articleId, complete) {
+function internalLinkArticle(articleId, sessionId, complete) {
 
-    // TODO: finish this part, get user from session id.
+    log.debug('Link article called for articleId: %s and sessionId: %s', articleId, sessionId);
 
-    /*
-    log.debug('Link article called for articleId: %s and userSession: %s', articleId, );
-
-    pg.connect(connectionString, function(pgcerr, client, done) {
-
-        if (pgcerr) {
-            if (typeof err != 'undefined') err(pgcerr);
-
-            done(client);
-            return callback(err);
+    var validateSessionCompleteHandler = function(result) {
+        if (!result.isValid) {
+            return complete({ message: result.message });
         }
 
-        var query = client.query('INSERT INTO userarticle (userid, articleid) VALUES ($1, $2)', [translatedTo]);
+        pg.connect(connectionString, function(pgcerr, client, done) {
 
-        query.on('row', function(row, result) {
-            result.addRow(row);
-        });
+            if (pgcerr) {
+                if (typeof err != 'undefined') err(pgcerr);
 
-        query.on('error', function(pgerr) {
-            done(client);
-            return err(pgerr);
-        });
-
-        query.on('end', function(result) {
-            log.debug('%s rows found', result.rowCount);
-            done();
-            var words = [];
-
-            for(var i=0; i < result.rowCount; i++) {
-                words.push({
-                    translatedto:  result.rows[i].translatedto,
-                    traditional:   result.rows[i].traditional,
-                    simplified:    result.rows[i].simplified,
-                    pronunciation: result.rows[i].pronunciation,
-                    hsklevel:      result.rows[i].hsklevel,
-                    definitions:    [ result.rows[i].definition ]
-                });
+                done(client);
+                return callback(err);
             }
 
-            // TODO: Get all the definitions.. use underscore to find an existing item in the array and
-            // add the new definition to it.
+            client.query('INSERT INTO userarticle (userid, articleid) VALUES ($1, $2)', [result.user.id, articleId],
+                function (pgqerr, result) {
+                    if (!pgqerr) {
+                        done();
+                        complete();
+                    } else {
+                        done(client);
+                        return err(pgqerr);
+                    }
+                }
+            );
 
-            return complete(words);
+            complete();
         });
+    };
 
-    });
-    */
-
+    authHelper.validateSession(sessionId, validateSessionCompleteHandler);
 }

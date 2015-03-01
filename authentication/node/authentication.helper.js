@@ -28,9 +28,9 @@ function internalValidateSession(sessionId, complete) {
         return complete({ isValid: false, message: msg });
     };
 
-    var completeHandler = function(isValid) {
-        if (isValid) {
-            return complete({ isValid: true, message: 'Session validates ok.' });
+    var completeHandler = function(result) {
+        if (result.isValid) {
+            return complete(result);
         }
 
         return complete({ isValid: false, message: 'Invalid session.' });

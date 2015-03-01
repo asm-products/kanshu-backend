@@ -138,21 +138,23 @@ function internalValidateUserSession(err, sessionId, complete) {
             if (result.rowCount == 1) { // valid session
                 log.debug('session [%s] found as email [%s]', sessionId, result.rows[0].email);
 
+                var user = getUserFromRowNoPwd(result.rows[0]);
+
                 touchUserSession(
                     function (error) {
                         log.error('failed touching user session', error);
                         return err(error);
                     },
-                    result.rows[0].email,
+                    user.email,
                     function () {
                         log.debug('successfully touched user session');
-                        return complete(true);
+                        return complete({isValid: true, user: user});
                     });
             }
             else // invalid session
             {
                 if (typeof complete != 'undefined')
-                    return complete(false);
+                    return complete({isValid: false});
             }
         });
     });
@@ -213,19 +215,47 @@ function internalGetUser(err, email, complete) {
                 return complete();
             }
 
-            var user = {
-                email: result.rows[0].email,
-                salt: result.rows[0].salt,
-                lastLogin: result.rows[0].sessionid,
-                userBio: result.rows[0].userBio,
-                passwordHash: result.rows[0].passwordhash
-            };
+            var user = getUserFromRow(result.rows[0]);
 
             return complete(user);
         });
 
 
     });
+}
+
+/**
+ * This serves as a single place to reconstruct a user object from a data row.
+ * @param dataRow - the row from the database with the data about the user.
+ * @returns {{email: (*|user.email|email), salt: (*|salt|user.salt|Message.salt), lastLogin: *, userBio: (*|user.userBio), passwordHash: *}}
+ */
+function getUserFromRow(dataRow) {
+    var user = {
+        id:           dataRow.id,
+        email:        dataRow.email,
+        salt:         dataRow.salt,
+        lastLogin:    dataRow.sessionid,
+        userBio:      dataRow.userBio,
+        passwordHash: dataRow.passwordhash
+    };
+
+    return user;
+}
+
+/**
+ * Get the user object from the row but redacts the salt and password hash.
+ * @param dataRow
+ * @returns {{email: (*|user.email|email), salt: (*|salt|user.salt|Message.salt), lastLogin: *, userBio: (*|user.userBio), passwordHash: *}}
+ */
+function getUserFromRowNoPwd(dataRow) {
+    var user = getUserFromRow(dataRow);
+
+    if (typeof user != 'undefined') {
+        delete user.salt;
+        delete user.passwordHash;
+    }
+
+    return user;
 }
 
 function internalLogoutUser(err, sessionId, complete) {
