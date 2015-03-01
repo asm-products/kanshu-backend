@@ -107,8 +107,8 @@ function internalSetUserLoggedIn(err, email, sessionId, complete) {
  * @param sessionId - The user's new session id.
  * @param complete - Callback called when the process completes successfully. Passes isValid boolean back.
  */
-function internalValidateUserSession(err, email, sessionId, complete) {
-    log.debug('validateUserSession called', email, sessionId);
+function internalValidateUserSession(err, sessionId, complete) {
+    log.debug('validateUserSession called', sessionId);
 
     pg.connect(connectionString, function(pgcerr, client, done) {
 
@@ -120,8 +120,8 @@ function internalValidateUserSession(err, email, sessionId, complete) {
         }
 
         // get the total number of visits today (including the current visit)
-        client.query("SELECT COUNT(email) FROM users WHERE email=$1 AND sessionId=$2 AND sessionexpirationdate > timezone('UTC', now());",
-            [email, sessionId],
+        client.query("SELECT * FROM users WHERE sessionId=$1 AND sessionexpirationdate > timezone('UTC', now());",
+            [sessionId],
             function(qerr, result) {
 
             // handle an error from the query
@@ -136,19 +136,24 @@ function internalValidateUserSession(err, email, sessionId, complete) {
             done();
 
             if (result.rowCount == 1) { // valid session
+                log.debug('session [%s] found as email [%s]', sessionId, result.rows[0].email);
+
                 touchUserSession(
                     function (error) {
                         log.error('failed touching user session', error);
                         return err(error);
                     },
-                    email,
+                    result.rows[0].email,
                     function () {
                         log.debug('successfully touched user session');
-                        complete(true);
+                        return complete(true);
                     });
             }
             else // invalid session
-                complete(false);
+            {
+                if (typeof complete != 'undefined')
+                    return complete(false);
+            }
         });
     });
 }
