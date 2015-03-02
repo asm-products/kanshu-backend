@@ -199,7 +199,7 @@ function internalGetWordsByUser(sessionId, translatedTo, complete) {
                 if (typeof err != 'undefined') err(pgcerr);
 
                 done(client);
-                return err
+                return complete();
             }
 
             var sql = 'select w.*, sw.ismastered, sw.mastereddate, sw.saveddate FROM savedword sw ' +
@@ -250,7 +250,7 @@ function internalGetWordsByUser(sessionId, translatedTo, complete) {
  * @param wordId - the word id.
  * @param complete - called when done.
  */
-function internalMarkWordMastered(sessionId, wordId, complete) {
+function internalMarkWordMastered(wordId, sessionId, complete) {
     log.debug('Mark word mastered called for articleId: %s, wordId: %s, and sessionId: %s', articleId, wordId, sessionId);
 
     var validateSessionCompleteHandler = function(result) {
