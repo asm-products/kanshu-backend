@@ -4,6 +4,7 @@
 var restify           = require('restify'),
     dictionaryService = require('./dictionary/node/dictionary.pg.service.js'),
     userService       = require('./authentication/node/user.service.js'),
+    metricsService    = require('./user-metrics/node/user.metric.service.js'),
     bunyan            = require('bunyan'),
     nconf             = require('nconf');
 
@@ -44,6 +45,17 @@ server.post('/createUser', userService.createUser);
 server.post('/updateUser', userService.updateUser);
 server.get('/logout', userService.logout);
 server.get('/validate', userService.validate);
+
+/**
+ * User metrics service url routes.
+ */
+server.post('/saveword', metricsService.saveWord);
+server.post('/deleteword', metricsService.deleteWord);
+server.post('/linkarticle', metricsService.linkArticle);
+server.post('/markmastered', metricsService.markWordMastered);
+server.get('/getwords', metricsService.getWordsByUser);
+server.get('/getwordsmastered', metricsService.getWordsMasteredMetric);
+server.get('/getmasteredbylevel', metricsService.getMasteredByLevel);
 
 /**
  This code will start the http server.
