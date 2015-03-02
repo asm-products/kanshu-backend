@@ -4,6 +4,7 @@
 var restify           = require('restify'),
     dictionaryService = require('./dictionary/node/dictionary.pg.service.js'),
     userService       = require('./authentication/node/user.service.js'),
+    metricsService    = require('./user.metric.service.js'),
     bunyan            = require('bunyan'),
     nconf             = require('nconf');
 
