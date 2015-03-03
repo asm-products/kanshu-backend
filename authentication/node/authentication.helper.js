@@ -3,12 +3,9 @@
  */
 var data   = require('./data.pg.js');
 
-function authenticationHelper(req, res, next) {
-
-    this.sessionId = req.headers.sessionid;
-
-    this.validateSession = internalValidateSession;
-}
+module.exports = {
+    validateSession: internalValidateSession
+};
 
 /**
  * Validates a session against the database.
