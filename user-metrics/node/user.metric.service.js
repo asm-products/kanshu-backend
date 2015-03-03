@@ -26,7 +26,7 @@ module.exports = {
      */
     setLogger: function(value)
     {
-        console.log('setting logger (dictionary.pg.service.js)');
+        console.log('setting logger (user.metric.service.js)');
         log = value;
         data.setLogger(value);
     },

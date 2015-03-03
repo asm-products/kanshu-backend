@@ -21,6 +21,9 @@ userService.setLogger(log);
 userService.setConnectionString(nconf.get('DATABASE_URL'));
 userService.setInitialSessionExpirationMinutes(nconf.get('initialSessionExpirationMinutes'));
 
+metricsService.setLogger(log);
+metricsService.setConnectionString(nconf.get('DATABASE_URL'));
+
 var server = restify.createServer();
 /**
  * These are the http interceptors.
