@@ -113,7 +113,7 @@ function internalSaveWord(wordId, sessionId, complete) {
                 return callback(err);
             }
 
-            client.query('INSERT INTO savedword (userid, wordid, saveddate) VALUES ($1, $2, $3)', [result.user.id, wordId, Date.now()],
+            client.query('INSERT INTO savedword (userid, wordid, saveddate) VALUES ($1, $2, $3)', [result.user.id, wordId, new Date()],
                 function (pgqerr, result) {
                     if (!pgqerr) {
                         done();
