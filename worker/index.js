@@ -1,8 +1,9 @@
 /**
  * Created by dsandor on 3/3/15.
  */
-var nconf = require('nconf'),
-    pg    = require('pg');
+var nconf          = require('nconf'),
+    pg             = require('pg'),
+    dictionaryData = require('../dictionary/node/data.pg.js');
 
 nconf.argv()
     .env()
@@ -26,6 +27,7 @@ function scanFeedsForNewArticles() {
            console.log('Got the following sources: ');
            for(var i=0; i < sources.length; i++) {
                console.log('topic: %s, rssfeedurl: %s', sources[i].topic, sources[i].rssFeedUrl);
+               // TODO: Figure out how to best enumerate the articleSources and articles in each source.
            }
        }
 
@@ -85,5 +87,36 @@ function getArticleSources(complete) {
             return complete([]);
         });
 
+    });
+}
+
+function saveArticle(article, articleSource, complete) {
+
+    log.debug('Save article called');
+
+    pg.connect(connectionString, function(pgcerr, client, done) {
+
+        if (pgcerr) {
+            if (typeof err != 'undefined') err(pgcerr);
+
+            done(client);
+            return complete(err);
+        }
+
+        var sql = 'INSERT INTO article (url, title, content, articlesourceid) VALUES ($1, $2, $3, $5);';
+
+        client.query(sql, [article.url, article.title, article.content, articleSource.articleSourceId],
+            function (pgqerr, result) {
+                if (!pgqerr) {
+                    done();
+                    complete();
+                } else {
+                    done(client);
+                    return err(pgqerr);
+                }
+            }
+        );
+
+        complete();
     });
 }
