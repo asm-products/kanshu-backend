@@ -6,13 +6,16 @@ var nconf = require('nconf'),
 
 nconf.argv()
     .env()
-    .file({ file: '../config.json' });
+    .file({ file: __dirname + '/../config.json' });
 
 var connectionString = nconf.get('DATABASE_URL');
 var scanFeedsForNewArticlesIntervalSeconds = nconf.get('scanFeedsForNewArticlesIntervalSeconds') * 1000;
 
+console.log('__dirname: %', __dirname);
+console.log('connectionString: %s', connectionString);
+console.log('scanFeedsForNewArticlesIntervalSeconds: %s', scanFeedsForNewArticlesIntervalSeconds);
 
-setTimeout(scanFeedsForNewArticles, scanFeedsForNewArticlesIntervalSeconds);
+setTimeout(scanFeedsForNewArticles, 5000);
 
 function scanFeedsForNewArticles() {
 

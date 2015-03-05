@@ -6,7 +6,8 @@ var restify           = require('restify'),
     userService       = require('./authentication/node/user.service.js'),
     metricsService    = require('./user-metrics/node/user.metric.service.js'),
     bunyan            = require('bunyan'),
-    nconf             = require('nconf');
+    nconf             = require('nconf'),
+    spawn             = require('child_process').spawn;
 
 var log = bunyan.createLogger({name: 'api', level: 'debug'});
 
@@ -23,6 +24,12 @@ userService.setInitialSessionExpirationMinutes(nconf.get('initialSessionExpirati
 
 metricsService.setLogger(log);
 metricsService.setConnectionString(nconf.get('DATABASE_URL'));
+
+/**
+ * Fire up the worker process.
+ */
+worker = spawn('node', ['worker/index.js'], { stdio: 'inherit' });
+log.debug('started worker PID: %s', worker.pid);
 
 var server = restify.createServer();
 /**
