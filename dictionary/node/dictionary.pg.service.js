@@ -394,3 +394,27 @@ function isEmpty(obj) {
 
     return Object.keys(obj).length === 0;
 }
+
+function internalProcessAndStoreFeedArticle(feedUrl, articleIndex) {
+
+    feed(feedUrl, function(err, articles) {
+        if (err) throw err;
+        // Each article has the following properties:
+        //
+        //   * "title"     - The article title (String).
+        //   * "author"    - The author's name (String).
+        //   * "link"      - The original article link (String).
+        //   * "content"   - The HTML content of the article (String).
+        //   * "published" - The date that the article was published (Date).
+        //   * "feed"      - {name, source, link}
+        //
+
+        console.log('found rss feed: %s, processing article: %s', feedUrl, articleIndex);
+
+        processArticle(articles[articleIndex], function(annotatedArticle) {
+            // TODO: Save this article to pg if it was successfully processed.
+            // Get url from articles[].link and store that under article.url in db.
+        });
+
+    });
+}
