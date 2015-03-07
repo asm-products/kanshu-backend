@@ -24,6 +24,8 @@ module.exports = {
      */
     precacheDictionary: internalPrecacheDictionary,
 
+    processArticle: processArticle,
+
     /**
      * Sets the logger to use.
      * @param value
@@ -50,7 +52,7 @@ module.exports = {
 /**
  * This function is used to precache the cc-cedict node module dictionary into memory.
  */
-function internalPrecacheDictionary() {
+function internalPrecacheDictionary(complete) {
     console.log('precaching cc-cedict.');
 
     var errorHandler = function(err) {
@@ -89,6 +91,10 @@ function internalPrecacheDictionary() {
         }
 
         console.log('cached all words');
+
+        if(typeof complete != 'typeof') {
+            complete();
+        }
     };
 
     data.getEntireDictionary(errorHandler, 'en', completeHandler);

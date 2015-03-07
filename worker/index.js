@@ -1,9 +1,14 @@
 /**
  * Created by dsandor on 3/3/15.
  */
-var nconf          = require('nconf'),
-    pg             = require('pg'),
-    dictionaryData = require('../dictionary/node/data.pg.js');
+var nconf = require('nconf'),
+    pg    = require('pg'),
+    async = require('async'),
+    feed  = require('feed-read'),
+    dict  = require('../dictionary/node/dictionary.pg.service.js'),
+    bunyan= require('bunyan');
+
+var log = bunyan.createLogger({name: 'api', level: 'debug'});
 
 nconf.argv()
     .env()
@@ -16,7 +21,14 @@ console.log('__dirname: %', __dirname);
 console.log('connectionString: %s', connectionString);
 console.log('scanFeedsForNewArticlesIntervalSeconds: %s', scanFeedsForNewArticlesIntervalSeconds);
 
-setTimeout(scanFeedsForNewArticles, 5000);
+dict.setLogger(log);
+dict.setConnectionString(connectionString);
+
+dict.precacheDictionary(function() {
+    setTimeout(scanFeedsForNewArticles, 5000);
+});
+
+// async.each(openFiles, function(file, callback), function(err))
 
 function scanFeedsForNewArticles() {
 
@@ -25,15 +37,64 @@ function scanFeedsForNewArticles() {
            console.log('an error must have occurred while getting sources.');
        } else {
            console.log('Got the following sources: ');
-           for(var i=0; i < sources.length; i++) {
-               console.log('topic: %s, rssfeedurl: %s', sources[i].topic, sources[i].rssFeedUrl);
-               // TODO: Figure out how to best enumerate the articleSources and articles in each source.
-           }
-       }
 
-        setTimeout(scanFeedsForNewArticles, scanFeedsForNewArticlesIntervalSeconds);
+           async.eachSeries(sources, sourceIterator, sourceArrayComplete);
+       }
     });
 }
+
+function sourceArrayComplete(err) {
+    console.log('all topics processed.');
+    //setTimeout(scanFeedsForNewArticles, scanFeedsForNewArticlesIntervalSeconds);
+}
+
+function sourceIterator(source, siComplete) {
+    console.log('Processing topic: %s, rssfeedurl: %s', source.topic, source.rssFeedUrl);
+
+    feed(source.rssFeedUrl, function(err, articles) {
+        if (err) {
+            console.log('feed error: %j', err);
+            return siComplete();
+        }
+        // Each article has the following properties:
+        //
+        //   * "title"     - The article title (String).
+        //   * "author"    - The author's name (String).
+        //   * "link"      - The original article link (String).
+        //   * "content"   - The HTML content of the article (String).
+        //   * "published" - The date that the article was published (Date).
+        //   * "feed"      - {name, source, link}
+        //
+        function feedItemArrayComplete(err) {
+            if (err) {
+                console.log('feedItemArrayComplete: %j', feedItemArrayComplete);
+                return siComplete();
+            }
+
+            console.log('FEED_ITEM_ARRAY_COMPLETE');
+            siComplete();
+        }
+
+        function feedItemIterator(feedItem, fiiComplete) {
+            console.log('FEED ITEM: %j', feedItem);
+
+            setTimeout(function() {
+                dict.processArticle(feedItem, function(annotatedArticle) {
+                    console.log('ARTICLE PROCESSED: %j', annotatedArticle);
+                    fiiComplete();
+                });
+            },1);
+        }
+
+        console.log('Processing articles from feed: %s', source.rssFeedUrl);
+        async.eachSeries(articles, feedItemIterator, feedItemArrayComplete);
+
+    });
+}
+
+
+
+
 
 /**
  * Gets the article sources and calls the complete callback when complete with an array of articleSource objects:
