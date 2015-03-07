@@ -83,7 +83,8 @@ function sourceIterator(source, siComplete) {
                     console.log('ARTICLE PROCESSED: %j', annotatedArticle);
                     fiiComplete();
                 });
-            },1);
+                },
+                0);
         }
 
         console.log('Processing articles from feed: %s', source.rssFeedUrl);

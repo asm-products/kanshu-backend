@@ -357,11 +357,14 @@ function getAnnotatedSubSegment(subSegment, complete) {
             shortenedSubSegment.content = shortenedContent;
             shortenedSubSegment.displayText = shortenedContent;
 
-            getAnnotatedSubSegment(shortenedSubSegment, function(result, originalSubSegment) {
-                if (typeof result != 'undefined') {
-                    return complete(result, originalSubSegment);
-                }
-            });
+            setTimeout(function() {
+                getAnnotatedSubSegment(shortenedSubSegment, function(result, originalSubSegment) {
+                    if (typeof result != 'undefined') {
+                        return complete(result, originalSubSegment);
+                    }
+                });
+            },0);
+
         } else {
             return complete(resultLookup, subSegment);
         }
