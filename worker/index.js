@@ -80,8 +80,35 @@ function sourceIterator(source, siComplete) {
 
             setTimeout(function() {
                 dict.processArticle(feedItem, function(annotatedArticle) {
-                    console.log('ARTICLE PROCESSED: %s', annotatedArticle.length);
-                    fiiComplete();
+                    console.log('ARTICLE PROCESSED: %s', annotatedArticle.article.length);
+
+                    if (annotatedArticle.article.length > 0) {
+                        pg.connect(connectionString, function(pgcerr, client, done) {
+
+                            if (pgcerr) {
+                                if (typeof err != 'undefined') err(pgcerr);
+
+                                done(client);
+                                return callback(err);
+                            }
+
+                            client.query('INSERT INTO article (url, title, content, articlesourceid) VALUES ($1, $2, $3, $4);',
+                                [annotatedArticle.link, JSON.stringify(annotatedArticle.title), JSON.stringify(annotatedArticle.article), source.articleSourceId],
+                                function (pgqerr, result) {
+                                    if (!pgqerr) {
+                                        console.log('Saved article: %s', annotatedArticle.link);
+                                        done();
+                                    } else {
+                                        done(client);
+                                    }
+
+                                    fiiComplete();
+                                }
+                            );
+                        });
+                    } else {
+                        fiiComplete();
+                    }
                 });
                 },
                 0);

@@ -168,9 +168,18 @@ function processArticle(article, completeProcessArticle) {
     })
 }
 
+/**
+ * Processes a string of characters to an array of translated words.
+ * @param content - a string of characters.
+ * @param completeProcessContent - callback that is called when the process is complete.
+ */
 function processContent(content, completeProcessContent) {
 
-    var segmentParserCompleteHander = function(segments, segmentSeparators, masterList) {
+    if (content.indexOf('<') >=0 && content.indexOf('<') > 0) {
+        content = htmlToText.fromString(content);
+    }
+
+    var segmentParserCompleteHandler = function(segments, segmentSeparators, masterList) {
 
         var annotatedArticle = [];
         var currentMasterListIndex = 0;
@@ -201,7 +210,7 @@ function processContent(content, completeProcessContent) {
             });
     };
 
-    parseSegments(content, segmentParserCompleteHander);
+    parseSegments(content, segmentParserCompleteHandler);
 }
 
 function mergeEolPunctuation(articleArray, complete) {
