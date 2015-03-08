@@ -13,7 +13,7 @@ nconf.argv()
     .file({ file: 'config.json' });
 
 dictionaryService.setLogger(log);
-dictionaryService.setConnectionString(nconf.get('connectionString'));
+dictionaryService.setConnectionString(nconf.get('DATABASE_URL'));
 
 var server = restify.createServer();
 
@@ -21,7 +21,11 @@ server.use(restify.authorizationParser());
 server.use(restify.bodyParser({ mapParams : true }));
 
 server.get('/lookup/:phrase', dictionaryService.lookup);
+server.get('/articles/:sourceId/:maxRows', dictionaryService.getArticleListBySourceid);
+server.get('/articles/:sourceId', dictionaryService.getArticleListBySourceid);
+
 server.post('/processFeed', dictionaryService.processFeed);
+
 
 /**
  This code will start the http server.

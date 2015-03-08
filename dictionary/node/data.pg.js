@@ -12,7 +12,11 @@ module.exports = {
 
     setLogger: function(value) { log = value; },
 
-    setConnectionString: function(value) { connectionString = value; }
+    setConnectionString: function(value) { connectionString = value; },
+
+    getArticleById: internalGetArticleById,
+
+    getArticleListBySourceId: internalGetArticleListBySourceId
 
 };
 
@@ -72,3 +76,112 @@ function internalGetEntireDictionary(err, translatedTo, complete) {
     });
 
 }
+
+/**
+ * This function will return an article by its id.
+ * @param articleId - the ID of the object to return.
+ * @param complete - complete(err, article) passes err if there was an error otherwise it returns an article object.
+ */
+function internalGetArticleById(articleId, complete) {
+    log.debug('internalGetArticleById called for articleId: %s', articleId);
+
+    pg.connect(connectionString, function(pgcerr, client, done) {
+
+        if (pgcerr) {
+            done(client);
+            return complete(pgcerr);
+        }
+
+        var query = client.query('SELECT * FROM article WHERE articleid = $1 order by id DESC;', [articleId]);
+
+        query.on('row', function(row, result) {
+            result.addRow(row);
+        });
+
+        query.on('error', function(pgerr) {
+            done(client);
+            return complete(pgerr);
+        });
+
+        query.on('end', function(result) {
+            log.debug('%s rows found', result.rowCount);
+            done();
+            var article = { };
+
+            if (result.rows.length > 0) { // There should be only one.
+                article.id = result.rows[0].id;
+                article.url = result.rows[0].url;
+                article.articlesourceid = result.rows[0].articlesourceid;
+
+                if (typeof result.rows[0].title != 'undefined') {
+                    article.title = JSON.parse(result.rows[0].title);
+                }
+
+                if (typeof result.rows[0].content != 'undefined') {
+                    article.content = JSON.parse(result.rows[0].content);
+                }
+            }
+
+            return complete(undefined, article);
+        });
+    });
+}
+
+/**
+ * This function will return an article by its id.
+ * @param sourceId - the ID of the articleSource.
+ * @param maxRows - the maximum number of articles to return, 0 = return all.
+ * @param complete - complete(err, article) passes err if there was an error otherwise it returns an array of article objects.
+ */
+function internalGetArticleListBySourceId(sourceId, maxRows, complete) {
+    log.debug('internalGetArticleListBySourceId called for sourceId: %s and maxRows: %s', sourceId, maxRows);
+
+    pg.connect(connectionString, function(pgcerr, client, done) {
+
+        if (pgcerr) {
+            done(client);
+            return complete(pgcerr);
+        }
+
+        var query = client.query('SELECT * FROM article WHERE articlesourceid = $1 order by id DESC;', [sourceId]);
+
+        query.on('row', function(row, result) {
+            result.addRow(row);
+        });
+
+        query.on('error', function(pgerr) {
+            done(client);
+            return complete(pgerr);
+        });
+
+        query.on('end', function(result) {
+            log.debug('%s rows found', result.rowCount);
+            done();
+            var articles = [];
+            var rowsToReturn = result.rows.length;
+
+            if (maxRows > 0 && maxRows < result.rows.length) rowsToReturn = maxRows;
+
+            for(var i=0; i < maxRows; i++) {
+                var article = {};
+
+                article.id = result.rows[0].id;
+                article.url = result.rows[0].url;
+                article.articlesourceid = result.rows[0].articlesourceid;
+
+                if (typeof result.rows[0].title != 'undefined') {
+                    article.title = JSON.parse(result.rows[0].title);
+                }
+
+                if (typeof result.rows[0].content != 'undefined') {
+                    article.content = JSON.parse(result.rows[0].content);
+                }
+
+                articles.push(article);
+            }
+
+            return complete(undefined, articles);
+        });
+    });
+}
+

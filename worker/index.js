@@ -6,7 +6,9 @@ var nconf = require('nconf'),
     async = require('async'),
     feed  = require('feed-read'),
     dict  = require('../dictionary/node/dictionary.pg.service.js'),
-    bunyan= require('bunyan');
+    bunyan= require('bunyan'),
+    fs    = require('fs'),
+    uuid  = require('node-uuid');
 
 var log = bunyan.createLogger({name: 'api', level: 'debug'});
 
@@ -80,9 +82,16 @@ function sourceIterator(source, siComplete) {
 
             setTimeout(function() {
                 dict.processArticle(feedItem, function(annotatedArticle) {
+
+                    if (typeof annotatedArticle === 'undefined' || typeof annotatedArticle['article'] === 'undefined') {
+                        console.log('Failed parsing article: %s, %s, %s', feedItem.link, source.rssFeedUrl, feedItem.feed);
+                        return fiiComplete();
+                    }
+
                     console.log('ARTICLE PROCESSED: %s', annotatedArticle.article.length);
 
                     if (annotatedArticle.article.length > 0) {
+
                         pg.connect(connectionString, function(pgcerr, client, done) {
 
                             if (pgcerr) {
@@ -106,6 +115,16 @@ function sourceIterator(source, siComplete) {
                                 }
                             );
                         });
+
+                        /*
+                        fs.writeFile("/tmp/article_" + uuid.v4(), JSON.stringify(annotatedArticle), function(err) {
+                            if(err) {
+                                console.log(err);
+                            } else {
+                                console.log("The file was saved!");
+                            }
+                            fiiComplete();
+                        });*/
                     } else {
                         fiiComplete();
                     }

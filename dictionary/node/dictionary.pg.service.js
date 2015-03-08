@@ -27,6 +27,10 @@ module.exports = {
 
     processArticle: processArticle,
 
+    getArticleById: internalGetArticleById,
+
+    getArticleListBySourceid: internalGetArticleListBySourceId,
+
     /**
      * Sets the logger to use.
      * @param value
@@ -157,6 +161,11 @@ function processArticle(article, completeProcessArticle) {
         link: ''
     };
 
+    if (article.link.length == 0) {
+        log.error('processArticle called for an article with no link/url, not going to process this item.');
+        completeProcessArticle();
+    }
+
     processContent(article.content, function(content) {
         result.article = content;
         result.link = article.link;
@@ -175,7 +184,7 @@ function processArticle(article, completeProcessArticle) {
  */
 function processContent(content, completeProcessContent) {
 
-    if (content.indexOf('<') >=0 && content.indexOf('<') > 0) {
+    if (content.indexOf('<') >=0 && content.indexOf('>') > 0) {
         content = htmlToText.fromString(content);
     }
 
@@ -442,26 +451,47 @@ function isEmpty(obj) {
     return Object.keys(obj).length === 0;
 }
 
-function internalProcessAndStoreFeedArticle(feedUrl, articleIndex) {
+function internalGetArticleById(req, res, next) {
 
-    feed(feedUrl, function(err, articles) {
-        if (err) throw err;
-        // Each article has the following properties:
-        //
-        //   * "title"     - The article title (String).
-        //   * "author"    - The author's name (String).
-        //   * "link"      - The original article link (String).
-        //   * "content"   - The HTML content of the article (String).
-        //   * "published" - The date that the article was published (Date).
-        //   * "feed"      - {name, source, link}
-        //
+    if (isEmpty(req.params.articleId)) {
+        res.send(500, { message: 'Invalid request: articleId not supplied.' });
+        return next();
+    }
 
-        console.log('found rss feed: %s, processing article: %s', feedUrl, articleIndex);
+    data.getArticleById(req.params.articleId, function(err, result) {
 
-        processArticle(articles[articleIndex], function(annotatedArticle) {
-            // TODO: Save this article to pg if it was successfully processed.
-            // Get url from articles[].link and store that under article.url in db.
-        });
+        if (err) {
+            res.send(500, { message: 'Failed getting article: ' + err.message} );
+            return next();
+        }
 
+        log.debug('Retrieved article [%s] successfully.', req.params.articleId);
+
+        res.send(result);
+        return next();
+    });
+}
+
+function internalGetArticleListBySourceId(req, res, next) {
+
+    if (req.params.sourceId == '' ) {
+        res.send(500, { message: 'Invalid request: sourceId not supplied.' });
+        return next();
+    }
+
+    var rowsToReturn = 0;
+    if (req.params.maxRows != '') rowsToReturn = parseInt(req.params.maxRows);
+
+    data.getArticleListBySourceId(req.params.sourceId, rowsToReturn, function(err, result) {
+
+        if (err) {
+            res.send(500, { message: 'Failed getting articles: ' + err.message} );
+            return next();
+        }
+
+        log.debug('Retrieved [%s] articles [sourceId=%s] successfully.', result.length, req.params.sourceId);
+
+        res.send(result);
+        return next();
     });
 }

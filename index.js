@@ -45,7 +45,9 @@ server.use(restify.bodyParser({ mapParams : true }));
  */
 server.get('/lookup/:phrase', dictionaryService.lookup);
 server.post('/processFeed', dictionaryService.processFeed);
-
+server.get('/article/:articleId', dictionaryService.getArticleById);
+server.get('/articles/:sourceId/:maxRows', dictionaryService.getArticleListBySourceid);
+server.get('/articles/:sourceId', dictionaryService.getArticleListBySourceid);
 /**
  * Authentication service url routes.
  * These are the Auth API routes.  They map to the functions defined in the user.service.js file.
