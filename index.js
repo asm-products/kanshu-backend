@@ -27,9 +27,10 @@ metricsService.setConnectionString(nconf.get('DATABASE_URL'));
 
 /**
  * Fire up the worker process.
- */
+
 worker = spawn('node', ['worker/index.js'], { stdio: 'inherit' });
 log.debug('started worker PID: %s', worker.pid);
+*/
 
 var server = restify.createServer();
 /**
