@@ -14,7 +14,8 @@
     "node-uuid": "latest",
     "pg": "latest",
     "restify": "latest",
-    "typechecker": "latest"
+    "typechecker": "latest",
+    "html-to-text": "latest"
   },
   "repository": {
     "type": "git",

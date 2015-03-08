@@ -76,11 +76,11 @@ function sourceIterator(source, siComplete) {
         }
 
         function feedItemIterator(feedItem, fiiComplete) {
-            console.log('FEED ITEM: %j', feedItem);
+            console.log('FEED ITEM: %s, %s, %s', feedItem.link, source.rssFeedUrl, feedItem.feed);
 
             setTimeout(function() {
                 dict.processArticle(feedItem, function(annotatedArticle) {
-                    console.log('ARTICLE PROCESSED: %j', annotatedArticle);
+                    console.log('ARTICLE PROCESSED: %s', annotatedArticle.length);
                     fiiComplete();
                 });
                 },

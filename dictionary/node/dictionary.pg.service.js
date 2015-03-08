@@ -1,7 +1,8 @@
 var feed        = require('feed-read'),
     data        = require('./data.pg.js'),
     async       = require('async'),
-    NodeCache   = require('node-cache');
+    NodeCache   = require('node-cache'),
+    htmlToText = require('html-to-text');
 
 var wordCache = new NodeCache();  // used to cache up the words discovered in the dictionary.
 
@@ -92,7 +93,7 @@ function internalPrecacheDictionary(complete) {
 
         console.log('cached all words');
 
-        if(typeof complete != 'typeof') {
+        if(typeof complete != 'undefined') {
             complete();
         }
     };
@@ -135,8 +136,8 @@ function internalProcessFeed(req, res, next) {
 
         console.log('found rss feed: %s, processing article: %s', req.body.url, req.body.articleIndex);
 
-        processArticle(articles[req.body.articleIndex], function(annotatedArticle) {
-            res.send({ article: annotatedArticle });
+        processArticle(articles[req.body.articleIndex], function(result) {
+            res.send(result);
             next();
         });
 
@@ -150,14 +151,31 @@ function internalProcessFeed(req, res, next) {
  */
 function processArticle(article, completeProcessArticle) {
 
+    var result = {
+        article: {},
+        title: {},
+        link: ''
+    };
+
+    processContent(article.content, function(content) {
+        result.article = content;
+        result.link = article.link;
+
+        processContent(article.title, function(title) {
+            result.title = title;
+            completeProcessArticle(result);
+        });
+    })
+}
+
+function processContent(content, completeProcessContent) {
+
     var segmentParserCompleteHander = function(segments, segmentSeparators, masterList) {
 
         var annotatedArticle = [];
         var currentMasterListIndex = 0;
 
         async.eachSeries(masterList, function(segment, complete) {
-
-                console.log('currentMasterListIndex: %s', currentMasterListIndex);
 
                 getAnnotatedSegment(segment, function(result) {
 
@@ -171,16 +189,19 @@ function processArticle(article, completeProcessArticle) {
             function(err) {
 
                 if (err)
+                {
                     console.log('ERROR: %s', err);
+                    completeProcessContent();
+                }
                 else {
                     mergeEolPunctuation(annotatedArticle, function(results) {
-                        completeProcessArticle(results);
+                        completeProcessContent(results);
                     });
                 }
             });
     };
 
-    parseSegments(article.content, segmentParserCompleteHander);
+    parseSegments(content, segmentParserCompleteHander);
 }
 
 function mergeEolPunctuation(articleArray, complete) {
@@ -261,6 +282,14 @@ function parseSegments(content, complete) {
         }
     }
 
+    if (tempSegment.length > 0) {
+        wordSegment = { index: segmentIndex, content: tempSegment, type: 'word', displayText: tempSegment };
+
+        segments.push(wordSegment);
+        masterSegmentList.push(wordSegment);
+        tempSegment = '';
+    }
+
     complete(segments, segmentSeparators, masterSegmentList);
 }
 
@@ -309,7 +338,7 @@ function getAnnotatedSegment(segment, complete) {
 
     var subSegmentCompleteHandler = function(result, originalSegment) {
         segmentParseLength += result.content.length;
-        console.log('segementParseLenth: %s\noriginalSegment: %j\nresult: %j', segmentParseLength, originalSegment, result);
+        //console.log('segementParseLenth: %s\noriginalSegment: %j\nresult: %j', segmentParseLength, originalSegment, result);
 
         subSegments.push(result);
 
@@ -319,12 +348,12 @@ function getAnnotatedSegment(segment, complete) {
             subSegment.content = segment.content.substr(segmentParseLength, segment.content.length - segmentParseLength);
             subSegment.displayText = subSegment.content;
 
-            console.log('sub-segment parsing not complete [segmentParseLength=%s], [segment.content.length=%s], parsing remainder: %j',
-                segmentParseLength, segment.content.length, subSegment);
+            //console.log('sub-segment parsing not complete [segmentParseLength=%s], [segment.content.length=%s], parsing remainder: %j',
+            //    segmentParseLength, segment.content.length, subSegment);
 
             getAnnotatedSubSegment(subSegment, subSegmentCompleteHandler);
         } else {
-            console.log('subsegment parsing complete..');
+            //console.log('subsegment parsing complete..');
             complete(subSegments);
         }
 
@@ -340,10 +369,10 @@ function getAnnotatedSegment(segment, complete) {
  */
 function getAnnotatedSubSegment(subSegment, complete) {
 
-    console.log('getAnnotatedSubSegment: %j', subSegment);
+    //console.log('getAnnotatedSubSegment: %j', subSegment);
 
     ceSearchCacheOnly(subSegment, function(resultLookup){
-        console.log('resultLookup: %j', resultLookup);
+        //console.log('resultLookup: %j', resultLookup);
 
         if (resultLookup.definitions.length == 0) {
 
