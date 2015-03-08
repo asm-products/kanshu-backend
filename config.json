@@ -1,5 +1,6 @@
 {
-  "DATABASE_URL": "postgres://localhost/kanshu",
+  "DATABASE_URL": "",
   "apiServicePort": 23001,
-  "initialSessionExpirationMinutes": 10080
+  "initialSessionExpirationMinutes": 10080,
+  "scanFeedsForNewArticlesIntervalSeconds": 300
 }

@@ -14,13 +14,14 @@
     "node-uuid": "latest",
     "pg": "latest",
     "restify": "latest",
-    "typechecker": "latest"
+    "typechecker": "latest",
+    "html-to-text": "latest"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/dsandor/kanshu-backend.git"
   },
   "engines": {
-    "node": "0.10.x"
+    "node": "0.12.x"
   }
 }

@@ -6,7 +6,8 @@ var restify           = require('restify'),
     userService       = require('./authentication/node/user.service.js'),
     metricsService    = require('./user-metrics/node/user.metric.service.js'),
     bunyan            = require('bunyan'),
-    nconf             = require('nconf');
+    nconf             = require('nconf'),
+    spawn             = require('child_process').spawn;
 
 var log = bunyan.createLogger({name: 'api', level: 'debug'});
 
@@ -24,6 +25,13 @@ userService.setInitialSessionExpirationMinutes(nconf.get('initialSessionExpirati
 metricsService.setLogger(log);
 metricsService.setConnectionString(nconf.get('DATABASE_URL'));
 
+/**
+ * Fire up the worker process.
+
+worker = spawn('node', ['worker/index.js'], { stdio: 'inherit' });
+log.debug('started worker PID: %s', worker.pid);
+*/
+
 var server = restify.createServer();
 /**
  * These are the http interceptors.
@@ -38,7 +46,9 @@ server.use(restify.bodyParser({ mapParams : true }));
  */
 server.get('/lookup/:phrase', dictionaryService.lookup);
 server.post('/processFeed', dictionaryService.processFeed);
-
+server.get('/article/:articleId', dictionaryService.getArticleById);
+server.get('/articles/:sourceId/:maxRows', dictionaryService.getArticleListBySourceid);
+server.get('/articles/:sourceId', dictionaryService.getArticleListBySourceid);
 /**
  * Authentication service url routes.
  * These are the Auth API routes.  They map to the functions defined in the user.service.js file.
