@@ -118,7 +118,7 @@ function internalGetArticleById(articleId, complete) {
                 }
 
                 if (typeof result.rows[0].content != 'undefined') {
-                    article.content = JSON.parse(result.rows[0].content);
+                    article.article = JSON.parse(result.rows[0].content);
                 }
             }
 
@@ -174,7 +174,7 @@ function internalGetArticleListBySourceId(sourceId, maxRows, complete) {
                 }
 
                 if (typeof result.rows[0].content != 'undefined') {
-                    article.content = JSON.parse(result.rows[0].content);
+                    article.article = JSON.parse(result.rows[0].content);
                 }
 
                 articles.push(article);
