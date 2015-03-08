@@ -453,7 +453,7 @@ function isEmpty(obj) {
 
 function internalGetArticleById(req, res, next) {
 
-    if (isEmpty(req.params.articleId)) {
+    if (req.params.articleId == '') {
         res.send(500, { message: 'Invalid request: articleId not supplied.' });
         return next();
     }

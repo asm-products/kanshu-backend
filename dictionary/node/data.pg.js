@@ -92,7 +92,7 @@ function internalGetArticleById(articleId, complete) {
             return complete(pgcerr);
         }
 
-        var query = client.query('SELECT * FROM article WHERE articleid = $1 order by id DESC;', [articleId]);
+        var query = client.query('SELECT * FROM article WHERE id = $1 order by id DESC;', [articleId]);
 
         query.on('row', function(row, result) {
             result.addRow(row);

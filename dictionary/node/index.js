@@ -21,6 +21,7 @@ server.use(restify.authorizationParser());
 server.use(restify.bodyParser({ mapParams : true }));
 
 server.get('/lookup/:phrase', dictionaryService.lookup);
+server.get('/article/:articleId', dictionaryService.getArticleById);
 server.get('/articles/:sourceId/:maxRows', dictionaryService.getArticleListBySourceid);
 server.get('/articles/:sourceId', dictionaryService.getArticleListBySourceid);
 
