@@ -80,57 +80,90 @@ function sourceIterator(source, siComplete) {
         function feedItemIterator(feedItem, fiiComplete) {
             console.log('FEED ITEM: %s, %s, %s', feedItem.link, source.rssFeedUrl, feedItem.feed);
 
-            setTimeout(function() {
-                dict.processArticle(feedItem, function(annotatedArticle) {
+            if (feedItem.link == '') {
+                console.log('feed item has no link.  Skipping.');
+                return fiiComplete();
+            }
 
-                    if (typeof annotatedArticle === 'undefined' || typeof annotatedArticle['article'] === 'undefined') {
-                        console.log('Failed parsing article: %s, %s, %s', feedItem.link, source.rssFeedUrl, feedItem.feed);
-                        return fiiComplete();
-                    }
+            // TODO: Check to see if the feed item already exists.
+            pg.connect(connectionString, function(pgcerr, client, done) {
 
-                    console.log('ARTICLE PROCESSED: %s', annotatedArticle.article.length);
+                if (pgcerr) {
+                    if (typeof err != 'undefined') err(pgcerr);
 
-                    if (annotatedArticle.article.length > 0) {
+                    done(client);
+                    return callback(err);
+                }
 
-                        pg.connect(connectionString, function(pgcerr, client, done) {
-
-                            if (pgcerr) {
-                                if (typeof err != 'undefined') err(pgcerr);
-
-                                done(client);
-                                return callback(err);
-                            }
-
-                            client.query('INSERT INTO article (url, title, content, articlesourceid) VALUES ($1, $2, $3, $4);',
-                                [annotatedArticle.link, JSON.stringify(annotatedArticle.title), JSON.stringify(annotatedArticle.article), source.articleSourceId],
-                                function (pgqerr, result) {
-                                    if (!pgqerr) {
-                                        console.log('Saved article: %s', annotatedArticle.link);
-                                        done();
-                                    } else {
-                                        done(client);
-                                    }
-
-                                    fiiComplete();
-                                }
-                            );
-                        });
-
-                        /*
-                        fs.writeFile("/tmp/article_" + uuid.v4(), JSON.stringify(annotatedArticle), function(err) {
-                            if(err) {
-                                console.log(err);
+                client.query('SELECT id FROM article WHERE url = $1 AND articlesourceid = $2;',
+                    [feedItem.link, source.articleSourceId],
+                    function (err, result) {
+                        if (!err) {
+                            if (result.rowCount == 1) {
+                                console.log('Found article in db: %s', feedItem.link);
+                                done();
+                                return fiiComplete();
                             } else {
-                                console.log("The file was saved!");
+                                // article does not exist.. process it.
+                                setTimeout(function() {
+                                        dict.processArticle(feedItem, function(annotatedArticle) {
+
+                                            if (typeof annotatedArticle === 'undefined' || typeof annotatedArticle['article'] === 'undefined') {
+                                                console.log('Failed parsing article: %s, %s, %j', feedItem.link, source.rssFeedUrl, feedItem.feed);
+                                                return fiiComplete();
+                                            }
+
+                                            console.log('ARTICLE PROCESSED: %s', annotatedArticle.article.length);
+
+                                            if (annotatedArticle.article.length > 0) {
+
+                                                pg.connect(connectionString, function(pgcerr, client, done) {
+
+                                                    if (pgcerr) {
+                                                        if (typeof err != 'undefined') err(pgcerr);
+
+                                                        done(client);
+                                                        return fiiComplete();
+                                                    }
+
+                                                    client.query('INSERT INTO article (url, title, content, articlesourceid) VALUES ($1, $2, $3, $4);',
+                                                        [annotatedArticle.link, JSON.stringify(annotatedArticle.title), JSON.stringify(annotatedArticle.article), source.articleSourceId],
+                                                        function (pgqerr, result) {
+                                                            if (!pgqerr) {
+                                                                console.log('Saved article: %s', annotatedArticle.link);
+                                                                done();
+                                                            } else {
+                                                                done(client);
+                                                            }
+
+                                                            fiiComplete();
+                                                        }
+                                                    );
+                                                });
+
+                                                /*
+                                                 fs.writeFile("/tmp/article_" + uuid.v4(), JSON.stringify(annotatedArticle), function(err) {
+                                                 if(err) {
+                                                 console.log(err);
+                                                 } else {
+                                                 console.log("The file was saved!");
+                                                 }
+                                                 fiiComplete();
+                                                 });*/
+                                            } else {
+                                                fiiComplete();
+                                            }
+                                        });
+                                    },
+                                    0);
                             }
+                        } else {
+                            done(client);
                             fiiComplete();
-                        });*/
-                    } else {
-                        fiiComplete();
+                        }
                     }
-                });
-                },
-                0);
+                );
+            });
         }
 
         console.log('Processing articles from feed: %s', source.rssFeedUrl);
