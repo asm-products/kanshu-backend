@@ -27,7 +27,7 @@ dict.setLogger(log);
 dict.setConnectionString(connectionString);
 
 dict.precacheDictionary(function() {
-    setTimeout(scanFeedsForNewArticles, 5000);
+    setTimeout(scanFeedsForNewArticles, 5000); // initial worker starts 5 seconds after init.
 });
 
 // async.each(openFiles, function(file, callback), function(err))
@@ -47,7 +47,7 @@ function scanFeedsForNewArticles() {
 
 function sourceArrayComplete(err) {
     console.log('all topics processed.');
-    //setTimeout(scanFeedsForNewArticles, scanFeedsForNewArticlesIntervalSeconds);
+    setTimeout(scanFeedsForNewArticles, scanFeedsForNewArticlesIntervalSeconds);
 }
 
 function sourceIterator(source, siComplete) {
@@ -69,7 +69,7 @@ function sourceIterator(source, siComplete) {
         //
         function feedItemArrayComplete(err) {
             if (err) {
-                console.log('feedItemArrayComplete: %j', feedItemArrayComplete);
+                console.log('ERR - feedItemArrayComplete: %j', feedItemArrayComplete);
                 return siComplete();
             }
 
@@ -85,26 +85,27 @@ function sourceIterator(source, siComplete) {
                 return fiiComplete();
             }
 
-            // TODO: Check to see if the feed item already exists.
             pg.connect(connectionString, function(pgcerr, client, done) {
 
                 if (pgcerr) {
-                    if (typeof err != 'undefined') err(pgcerr);
-
+                    console.log('Error connecting to pg to check for existing article: %j', pgcerr);
                     done(client);
-                    return callback(err);
+                    return fiiComplete();
                 }
 
+                console.log('Checking DB for url: %s and articlesourceid: %s', feedItem.link, source.articleSourceId);
                 client.query('SELECT id FROM article WHERE url = $1 AND articlesourceid = $2;',
                     [feedItem.link, source.articleSourceId],
                     function (err, result) {
+                        done();
                         if (!err) {
                             if (result.rowCount == 1) {
                                 console.log('Found article in db: %s', feedItem.link);
-                                done();
                                 return fiiComplete();
                             } else {
                                 // article does not exist.. process it.
+                                console.log('processing article, it does not exist in db.');
+
                                 setTimeout(function() {
                                         dict.processArticle(feedItem, function(annotatedArticle) {
 
@@ -120,23 +121,24 @@ function sourceIterator(source, siComplete) {
                                                 pg.connect(connectionString, function(pgcerr, client, done) {
 
                                                     if (pgcerr) {
-                                                        if (typeof err != 'undefined') err(pgcerr);
+                                                        console.log('ERR: %j', pgcerr);
 
                                                         done(client);
                                                         return fiiComplete();
                                                     }
 
+                                                    console.log('Inserting article into db..');
                                                     client.query('INSERT INTO article (url, title, content, articlesourceid) VALUES ($1, $2, $3, $4);',
                                                         [annotatedArticle.link, JSON.stringify(annotatedArticle.title), JSON.stringify(annotatedArticle.article), source.articleSourceId],
                                                         function (pgqerr, result) {
+                                                            done();
                                                             if (!pgqerr) {
                                                                 console.log('Saved article: %s', annotatedArticle.link);
-                                                                done();
                                                             } else {
-                                                                done(client);
+                                                                console.log('ERR: Failed saving article: %j', pgqerr);
                                                             }
 
-                                                            fiiComplete();
+                                                            return fiiComplete();
                                                         }
                                                     );
                                                 });
@@ -149,17 +151,19 @@ function sourceIterator(source, siComplete) {
                                                  console.log("The file was saved!");
                                                  }
                                                  fiiComplete();
-                                                 });*/
+                                                 });
+                                                 */
                                             } else {
-                                                fiiComplete();
+                                                console.log('article length was 0, did not persist.');
+                                                return fiiComplete();
                                             }
                                         });
                                     },
                                     0);
                             }
                         } else {
-                            done(client);
-                            fiiComplete();
+                            console.log('ERR checking db for article: %j', err);
+                            return fiiComplete();
                         }
                     }
                 );
