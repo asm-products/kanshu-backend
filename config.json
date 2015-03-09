@@ -2,5 +2,5 @@
   "DATABASE_URL": "",
   "apiServicePort": 23001,
   "initialSessionExpirationMinutes": 10080,
-  "scanFeedsForNewArticlesIntervalSeconds": 300
+  "scanFeedsForNewArticlesIntervalSeconds": 900
 }
