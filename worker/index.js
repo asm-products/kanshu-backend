@@ -281,33 +281,52 @@ function getArticleSources(complete) {
     });
 }
 
-function saveArticle(article, articleSource, complete) {
+function saveArticleWords(article, id) {
 
-    log.debug('Save article called');
+    console.log('saving words for articleid: %s', id);
+    var wordIds = [];
 
-    pg.connect(connectionString, function(pgcerr, client, done) {
+    // Extract word ids from title.
+    for(var i=0; i < article.title.length; i++) {
+        if (article.title[i].type === 'word') {
+            if (wordIds.indexOf(article.title[i].id) < 0) {
+                wordIds.push(article.title[i].id);
+            }
+        }
+    }
+
+    for(var i=0; i < article.article.length; i++) {
+        if (article.article[i].type === 'word') {
+            if (wordIds.indexOf(article.article[i].id) < 0) {
+                wordIds.push(article.article[i].id);
+            }
+        }
+    }
+
+    console.log('found %s unique words in article [%s].', wordIds.length, id);
+
+
+    pg.connect(connectionString, function (pgcerr, client, done) {
 
         if (pgcerr) {
-            if (typeof err != 'undefined') err(pgcerr);
-
             done(client);
-            return complete(err);
+            return;
         }
 
-        var sql = 'INSERT INTO article (url, title, content, articlesourceid) VALUES ($1, $2, $3, $5);';
+        for(var i=0; i < wordIds.length; i++) {
+            console.log('linked article %s to word %s', id, wordIds[i]);
+            client.query('INSERT INTO articleword (articleid, wordid) VALUES ($1, $2);',
+                [id, wordIds[i]],
+                function () {
+                    //noop
 
-        client.query(sql, [article.url, article.title, article.content, articleSource.articleSourceId],
-            function (pgqerr, result) {
-                if (!pgqerr) {
-                    done();
-                    complete();
-                } else {
-                    done(client);
-                    return err(pgqerr);
                 }
-            }
-        );
+            );
+        }
 
-        complete();
+        done();
     });
+
+
+    console.log('completed saving word links for article: %s', id);
 }
