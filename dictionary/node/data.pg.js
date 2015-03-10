@@ -58,6 +58,7 @@ function internalGetEntireDictionary(err, translatedTo, complete) {
 
             for(var i=0; i < result.rowCount; i++) {
                 words.push({
+                    id:            result.rows[i].id,
                     translatedto:  result.rows[i].translatedto,
                     traditional:   result.rows[i].traditional,
                     simplified:    result.rows[i].simplified,

@@ -27,7 +27,7 @@ dict.setLogger(log);
 dict.setConnectionString(connectionString);
 
 dict.precacheDictionary(function() {
-    setTimeout(scanFeedsForNewArticles, 5000); // initial worker starts 5 seconds after init.
+    setTimeout(scanFeedsForNewArticles, 5000);
 });
 
 // async.each(openFiles, function(file, callback), function(err))
@@ -47,7 +47,7 @@ function scanFeedsForNewArticles() {
 
 function sourceArrayComplete(err) {
     console.log('all topics processed.');
-    setTimeout(scanFeedsForNewArticles, scanFeedsForNewArticlesIntervalSeconds);
+    //setTimeout(scanFeedsForNewArticles, scanFeedsForNewArticlesIntervalSeconds);
 }
 
 function sourceIterator(source, siComplete) {
@@ -69,7 +69,7 @@ function sourceIterator(source, siComplete) {
         //
         function feedItemArrayComplete(err) {
             if (err) {
-                console.log('ERR - feedItemArrayComplete: %j', feedItemArrayComplete);
+                console.log('feedItemArrayComplete: %j', feedItemArrayComplete);
                 return siComplete();
             }
 
@@ -85,27 +85,26 @@ function sourceIterator(source, siComplete) {
                 return fiiComplete();
             }
 
+            // TODO: Check to see if the feed item already exists.
             pg.connect(connectionString, function(pgcerr, client, done) {
 
                 if (pgcerr) {
-                    console.log('Error connecting to pg to check for existing article: %j', pgcerr);
+                    if (typeof err != 'undefined') err(pgcerr);
+
                     done(client);
-                    return fiiComplete();
+                    return callback(err);
                 }
 
-                console.log('Checking DB for url: %s and articlesourceid: %s', feedItem.link, source.articleSourceId);
                 client.query('SELECT id FROM article WHERE url = $1 AND articlesourceid = $2;',
                     [feedItem.link, source.articleSourceId],
                     function (err, result) {
-                        done();
                         if (!err) {
                             if (result.rowCount == 1) {
                                 console.log('Found article in db: %s', feedItem.link);
+                                done();
                                 return fiiComplete();
                             } else {
                                 // article does not exist.. process it.
-                                console.log('processing article, it does not exist in db.');
-
                                 setTimeout(function() {
                                         dict.processArticle(feedItem, function(annotatedArticle) {
 
@@ -121,24 +120,24 @@ function sourceIterator(source, siComplete) {
                                                 pg.connect(connectionString, function(pgcerr, client, done) {
 
                                                     if (pgcerr) {
-                                                        console.log('ERR: %j', pgcerr);
+                                                        if (typeof err != 'undefined') err(pgcerr);
 
                                                         done(client);
                                                         return fiiComplete();
                                                     }
 
-                                                    console.log('Inserting article into db..');
-                                                    client.query('INSERT INTO article (url, title, content, articlesourceid) VALUES ($1, $2, $3, $4);',
+                                                    client.query('INSERT INTO article (url, title, content, articlesourceid) VALUES ($1, $2, $3, $4) RETURNING id;',
                                                         [annotatedArticle.link, JSON.stringify(annotatedArticle.title), JSON.stringify(annotatedArticle.article), source.articleSourceId],
                                                         function (pgqerr, result) {
-                                                            done();
                                                             if (!pgqerr) {
-                                                                console.log('Saved article: %s', annotatedArticle.link);
+                                                                console.log('Saved article id [%s]: %s', result.rows[0].id, annotatedArticle.link);
+                                                                done();
+                                                                saveArticleWords(annotatedArticle, result.rows[0].id);
                                                             } else {
-                                                                console.log('ERR: Failed saving article: %j', pgqerr);
+                                                                done(client);
                                                             }
 
-                                                            return fiiComplete();
+                                                            fiiComplete();
                                                         }
                                                     );
                                                 });
@@ -151,19 +150,17 @@ function sourceIterator(source, siComplete) {
                                                  console.log("The file was saved!");
                                                  }
                                                  fiiComplete();
-                                                 });
-                                                 */
+                                                 });*/
                                             } else {
-                                                console.log('article length was 0, did not persist.');
-                                                return fiiComplete();
+                                                fiiComplete();
                                             }
                                         });
                                     },
                                     0);
                             }
                         } else {
-                            console.log('ERR checking db for article: %j', err);
-                            return fiiComplete();
+                            done(client);
+                            fiiComplete();
                         }
                     }
                 );
@@ -176,6 +173,55 @@ function sourceIterator(source, siComplete) {
     });
 }
 
+function saveArticleWords(article, id) {
+
+    console.log('saving words for articleid: %s', id);
+    var wordIds = [];
+
+    // Extract word ids from title.
+    for(var i=0; i < article.title.length; i++) {
+        if (article.title[i].type === 'word') {
+            if (wordIds.indexOf(article.title[i].id) < 0) {
+                wordIds.push(article.title[i].id);
+            }
+        }
+    }
+
+    for(var i=0; i < article.article.length; i++) {
+        if (article.article[i].type === 'word') {
+            if (wordIds.indexOf(article.article[i].id) < 0) {
+                wordIds.push(article.article[i].id);
+            }
+        }
+    }
+
+    console.log('found %s unique words in article [%s].', wordIds.length, id);
+
+
+        pg.connect(connectionString, function (pgcerr, client, done) {
+
+            if (pgcerr) {
+                done(client);
+                return;
+            }
+
+            for(var i=0; i < wordIds.length; i++) {
+                console.log('linked article %s to word %s', id, wordIds[i]);
+                client.query('INSERT INTO articleword (articleid, wordid) VALUES ($1, $2);',
+                    [id, wordIds[i]],
+                    function () {
+                        //noop
+
+                    }
+                );
+            }
+
+            done();
+        });
+
+
+    console.log('completed saving word links for article: %s', id);
+}
 
 
 
@@ -235,33 +281,52 @@ function getArticleSources(complete) {
     });
 }
 
-function saveArticle(article, articleSource, complete) {
+function saveArticleWords(article, id) {
 
-    log.debug('Save article called');
+    console.log('saving words for articleid: %s', id);
+    var wordIds = [];
 
-    pg.connect(connectionString, function(pgcerr, client, done) {
+    // Extract word ids from title.
+    for(var i=0; i < article.title.length; i++) {
+        if (article.title[i].type === 'word') {
+            if (wordIds.indexOf(article.title[i].id) < 0) {
+                wordIds.push(article.title[i].id);
+            }
+        }
+    }
+
+    for(var i=0; i < article.article.length; i++) {
+        if (article.article[i].type === 'word') {
+            if (wordIds.indexOf(article.article[i].id) < 0) {
+                wordIds.push(article.article[i].id);
+            }
+        }
+    }
+
+    console.log('found %s unique words in article [%s].', wordIds.length, id);
+
+
+    pg.connect(connectionString, function (pgcerr, client, done) {
 
         if (pgcerr) {
-            if (typeof err != 'undefined') err(pgcerr);
-
             done(client);
-            return complete(err);
+            return;
         }
 
-        var sql = 'INSERT INTO article (url, title, content, articlesourceid) VALUES ($1, $2, $3, $5);';
+        for(var i=0; i < wordIds.length; i++) {
+            console.log('linked article %s to word %s', id, wordIds[i]);
+            client.query('INSERT INTO articleword (articleid, wordid) VALUES ($1, $2);',
+                [id, wordIds[i]],
+                function () {
+                    //noop
 
-        client.query(sql, [article.url, article.title, article.content, articleSource.articleSourceId],
-            function (pgqerr, result) {
-                if (!pgqerr) {
-                    done();
-                    complete();
-                } else {
-                    done(client);
-                    return err(pgqerr);
                 }
-            }
-        );
+            );
+        }
 
-        complete();
+        done();
     });
+
+
+    console.log('completed saving word links for article: %s', id);
 }
