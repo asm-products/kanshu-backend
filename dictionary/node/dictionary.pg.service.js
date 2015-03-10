@@ -440,6 +440,7 @@ function ceSearchCacheOnly(searchSegment, result) {
         searchSegment.definitions   = cacheResult.definitions;
         searchSegment.pronunciation = cacheResult.pronunciation;
         searchSegment.hskLevel      = cacheResult.hsklevel;
+        searchSegment.id            = cacheResult.id;
 
         result(searchSegment);
     }
