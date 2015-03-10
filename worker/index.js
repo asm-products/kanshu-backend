@@ -98,10 +98,10 @@ function sourceIterator(source, siComplete) {
                 client.query('SELECT id FROM article WHERE url = $1 AND articlesourceid = $2;',
                     [feedItem.link, source.articleSourceId],
                     function (err, result) {
+                        done();
                         if (!err) {
                             if (result.rowCount == 1) {
                                 console.log('Found article in db: %s', feedItem.link);
-                                done();
                                 return fiiComplete();
                             } else {
                                 // article does not exist.. process it.
@@ -129,12 +129,12 @@ function sourceIterator(source, siComplete) {
                                                     client.query('INSERT INTO article (url, title, content, articlesourceid) VALUES ($1, $2, $3, $4) RETURNING id;',
                                                         [annotatedArticle.link, JSON.stringify(annotatedArticle.title), JSON.stringify(annotatedArticle.article), source.articleSourceId],
                                                         function (pgqerr, result) {
+                                                            done();
+
                                                             if (!pgqerr) {
                                                                 console.log('Saved article id [%s]: %s', result.rows[0].id, annotatedArticle.link);
-                                                                done();
                                                                 saveArticleWords(annotatedArticle, result.rows[0].id);
                                                             } else {
-                                                                done(client);
                                                             }
 
                                                             fiiComplete();
@@ -159,7 +159,6 @@ function sourceIterator(source, siComplete) {
                                     0);
                             }
                         } else {
-                            done(client);
                             fiiComplete();
                         }
                     }
