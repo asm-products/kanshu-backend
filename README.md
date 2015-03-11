@@ -70,6 +70,15 @@ This method gets the word counts by level that the user has mastered.
 ```
 * Please note that **level0** represents words that are mastered but are not listed in the HSK level lists.
 
+### `GET` /getarticlesreadmetric
+This method gets the article counts for the user identified by the sessionId passed in the header.
+```sh
+{
+    "articleCount": Integer
+}
+```
+
+
 # kanshu dictionary api
 
 The dictionary api is written in JavaScript and runs on [node.js].

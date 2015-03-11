@@ -4,7 +4,8 @@
  *
  * Created by dsandor on 1/28/15.
  */
-var pg = require('pg');
+var pg         = require('pg'),
+    authHelper = require('../../authentication/node/authentication.helper.js');
 
 module.exports = {
 
@@ -81,51 +82,67 @@ function internalGetEntireDictionary(err, translatedTo, complete) {
 /**
  * This function will return an article by its id.
  * @param articleId - the ID of the object to return.
+ * @param sessionId - the user's session id.
  * @param complete - complete(err, article) passes err if there was an error otherwise it returns an article object.
  */
-function internalGetArticleById(articleId, complete) {
+function internalGetArticleById(articleId, sessionId, complete) {
     log.debug('internalGetArticleById called for articleId: %s', articleId);
 
-    pg.connect(connectionString, function(pgcerr, client, done) {
-
-        if (pgcerr) {
-            done(client);
-            return complete(pgcerr);
+    var validateSessionCompleteHandler = function(result) {
+        if (!result.isValid) {
+            return complete({message: result.message});
         }
 
-        var query = client.query('SELECT * FROM article WHERE id = $1 order by id DESC;', [articleId]);
+        var user = result.user;
 
-        query.on('row', function(row, result) {
-            result.addRow(row);
-        });
+        pg.connect(connectionString, function (pgcerr, client, done) {
 
-        query.on('error', function(pgerr) {
-            done(client);
-            return complete(pgerr);
-        });
-
-        query.on('end', function(result) {
-            log.debug('%s rows found', result.rowCount);
-            done();
-            var article = { };
-
-            if (result.rows.length > 0) { // There should be only one.
-                article.id = result.rows[0].id;
-                article.url = result.rows[0].url;
-                article.articlesourceid = result.rows[0].articlesourceid;
-
-                if (typeof result.rows[0].title != 'undefined') {
-                    article.title = JSON.parse(result.rows[0].title);
-                }
-
-                if (typeof result.rows[0].content != 'undefined') {
-                    article.article = JSON.parse(result.rows[0].content);
-                }
+            if (pgcerr) {
+                done(client);
+                return complete(pgcerr);
             }
 
-            return complete(undefined, article);
+            var query = client.query('SELECT * FROM article WHERE id = $1 order by id DESC;', [articleId]);
+
+            query.on('row', function (row, result) {
+                result.addRow(row);
+            });
+
+            query.on('error', function (pgerr) {
+                done(client);
+                return complete(pgerr);
+            });
+
+            query.on('end', function (result) {
+                log.debug('%s rows found', result.rowCount);
+                if ( result.rowCount == 1) {
+                    client.query('SELECT linkarticletouser($1, $2)', [articleId, user.id]);
+                    log.debug('linked article to user', articleId, user.id, user);
+                }
+
+                done();
+                var article = {};
+
+                if (result.rows.length > 0) { // There should be only one.
+                    article.id = result.rows[0].id;
+                    article.url = result.rows[0].url;
+                    article.articlesourceid = result.rows[0].articlesourceid;
+
+                    if (typeof result.rows[0].title != 'undefined') {
+                        article.title = JSON.parse(result.rows[0].title);
+                    }
+
+                    if (typeof result.rows[0].content != 'undefined') {
+                        article.article = JSON.parse(result.rows[0].content);
+                    }
+                }
+
+                return complete(undefined, article);
+            });
         });
-    });
+    }
+
+    authHelper.validateSession(sessionId, validateSessionCompleteHandler);
 }
 
 /**

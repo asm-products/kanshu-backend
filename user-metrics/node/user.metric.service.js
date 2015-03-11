@@ -20,6 +20,7 @@ module.exports = {
 
     getMasteredByLevel: internalGetMasteredByLevel,
 
+    getArticlesReadMetric: internalGetArticlesReadMetric,
     /**
      * Sets the logger to use.
      * @param value
@@ -143,3 +144,14 @@ function internalGetMasteredByLevel(req, res, next) {
     data.getMasteredByLevel( sessionId, getMasteredByLevelComplete );
 }
 
+function internalGetArticlesReadMetric(req, res, next) {
+    var sessionId = req.headers.sessionid;
+
+    var getArticlesReadMetricComplete = function(result) {
+
+        res.send(200, result);
+        return next();
+    };
+
+    data.getArticlesReadMetric( sessionId, getArticlesReadMetricComplete );
+}

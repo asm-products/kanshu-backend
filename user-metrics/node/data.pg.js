@@ -31,6 +31,8 @@ module.exports = {
 
     getMasteredByLevel: internalGetMasteredByLevel,
 
+    getArticlesReadMetric: internalGetArticlesReadMetric,
+
     setLogger: function(value) { log = value; },
 
     setConnectionString: function(value) { connectionString = value; }
@@ -411,5 +413,59 @@ function internalGetMasteredByLevel(sessionId, complete) {
 
     authHelper.validateSession(sessionId, validateSessionCompleteHandler);
 
+}
+
+/**
+ * Gets the user's count of the articles read.
+ * @param sessionId - the user's session id.
+ * @param complete - a callback that passes an object back that looks like this: { articleCount: 0 }
+ */
+function internalGetArticlesReadMetric(sessionId, complete) {
+
+    var sql = 'SELECT (SELECT count(0) FROM userarticle WHERE userid = $1) as articlecount;';
+
+    var validateSessionCompleteHandler = function(result) {
+        if (!result.isValid) {
+            return complete({message: result.message});
+        }
+
+        var user = result.user;
+
+        pg.connect(connectionString, function (pgcerr, client, done) {
+
+            if (pgcerr) {
+                if (typeof err != 'undefined') err(pgcerr);
+
+                done(client);
+                return err
+            }
+            var query = client.query(sql, [user.id]);
+
+            query.on('row', function (row, result) {
+                result.addRow(row);
+            });
+
+            query.on('error', function (pgerr) {
+                done(client);
+                return err(pgerr);
+            });
+
+            query.on('end', function (result) {
+                log.debug('%s rows found', result.rowCount);
+                done();
+
+                if (result.rowCount == 1) {
+                    var articleCount = result.rows[0].articlecount;
+
+                    complete({ articleCount: articleCount });
+                }
+
+                return complete();
+            });
+
+        });
+    };
+
+    authHelper.validateSession(sessionId, validateSessionCompleteHandler);
 }
 
