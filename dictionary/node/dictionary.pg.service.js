@@ -453,13 +453,14 @@ function isEmpty(obj) {
 }
 
 function internalGetArticleById(req, res, next) {
+    var sessionId = req.headers.sessionid;
 
     if (req.params.articleId == '') {
         res.send(500, { message: 'Invalid request: articleId not supplied.' });
         return next();
     }
 
-    data.getArticleById(req.params.articleId, function(err, result) {
+    data.getArticleById(req.params.articleId, sessionId, function(err, result) {
 
         if (err) {
             res.send(500, { message: 'Failed getting article: ' + err.message} );
