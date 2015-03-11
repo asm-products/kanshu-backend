@@ -69,6 +69,7 @@ server.post('/markmastered', metricsService.markWordMastered);
 server.get('/getwords', metricsService.getWordsByUser);
 server.get('/getwordsmastered', metricsService.getWordsMasteredMetric);
 server.get('/getmasteredbylevel', metricsService.getMasteredByLevel);
+server.get('/getarticlesreadmetric', metricsService.getArticlesReadMetric);
 
 /**
  This code will start the http server.
