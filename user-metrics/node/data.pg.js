@@ -186,7 +186,7 @@ function internalLinkArticle(articleId, sessionId, complete) {
  * @param translatedTo - the language for the definition.
  * @param complete - returns an array of word objects with the addition of saveddate, ismastered, and mastereddate.
  */
-function internalGetWordsByUser(sessionId, translatedTo, complete) {
+function internalGetWordsByUser(err, sessionId, translatedTo, complete) {
 
     var validateSessionCompleteHandler = function(result) {
         if (!result.isValid) {
@@ -205,7 +205,7 @@ function internalGetWordsByUser(sessionId, translatedTo, complete) {
             }
 
             var sql = 'select w.*, sw.ismastered, sw.mastereddate, sw.saveddate FROM savedword sw ' +
-                'INNER JOIN words w on sw.wordid = w.id where sw.userid = $1 AND w.transaltedto = $2 order by hsklevel desc;';
+                'INNER JOIN words w on sw.wordid = w.id where sw.userid = $1 AND w.translatedto = $2 order by hsklevel desc;';
 
             var query = client.query(sql, [user.id, translatedTo]);
 
