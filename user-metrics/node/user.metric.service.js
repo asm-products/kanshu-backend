@@ -117,7 +117,12 @@ function internalGetWordsByUser(req, res, next) {
         return next();
     };
 
-    data.getWordsByUser( sessionId, getWordsComplete );
+    var errorHandler = function(error) {
+        res.send(500, {message: err.message});
+        return next();
+    };
+
+    data.getWordsByUser( errorHandler, sessionId, 'en', getWordsComplete );
 }
 
 function internalGetWordsMasteredMetric(req, res, next) {
