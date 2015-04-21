@@ -99,6 +99,9 @@ function internalLogin(req, res, next) {
                 user.email,
                 user.sessionId,
                 function() {
+                    delete user.salt;
+                    delete user.passwordHash;
+
                     res.send(200, {sessionId: user.sessionId, user: user});
                     return next();
                 });
