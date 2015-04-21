@@ -99,7 +99,7 @@ function internalLogin(req, res, next) {
                 user.email,
                 user.sessionId,
                 function() {
-                    res.send(200, {sessionId: user.sessionId});
+                    res.send(200, {sessionId: user.sessionId, user: user});
                     return next();
                 });
 
