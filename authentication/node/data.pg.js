@@ -231,13 +231,18 @@ function internalGetUser(err, email, complete) {
  */
 function getUserFromRow(dataRow) {
     var user = {
-        id:           dataRow.id,
-        email:        dataRow.email,
-        salt:         dataRow.salt,
-        lastLogin:    dataRow.sessionid,
-        userBio:      dataRow.userBio,
-        passwordHash: dataRow.passwordhash,
-        profileImageUrl: dataRow.profileimageurl
+        id:                    dataRow.id,
+        email:                 dataRow.email,
+        salt:                  dataRow.salt,
+        lastLogin:             dataRow.lastlogin,
+        userBio:               dataRow.userBio,
+        passwordHash:          dataRow.passwordhash,
+        profileImageUrl:       dataRow.profileimageurl,
+        hsklevel:              dataRow.hsklevel,
+        username:              dataRow.username,
+        sessionExpirationDate: dataRow.sessionexpirationdate,
+        userBio:               dataRow.userbio,
+        country:               dataRow.country
     };
 
     return user;
