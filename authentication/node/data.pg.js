@@ -55,8 +55,8 @@ function internalCreateUser(err, user, complete) {
             return;
         }
 
-        client.query('INSERT INTO users (email, passwordHash, salt, userBio, country, profileimageurl) VALUES ($1, $2, $3, $4, $5, $6)',
-            [user.email, user.passwordHash, user.salt, user.userBio, user.country, user.profileImageUrl], function (pgqerr, result) {
+        client.query('INSERT INTO users (email, passwordHash, salt, userBio, country, profileimageurl, username, hsklevel) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
+            [user.email, user.passwordHash, user.salt, user.userBio, user.country, user.profileImageUrl, user.username, user.hsklevel], function (pgqerr, result) {
                 if (!pgqerr) {
                     done();
                     complete();
@@ -87,7 +87,7 @@ function internalSetUserLoggedIn(err, email, sessionId, complete) {
             return;
         }
 
-        client.query("UPDATE users SET sessionid=$1, lastlogin=timezone('UTC', now()), sessionexpirationdate=timezone('UTC', now()) + INTERVAL '30 minutes' WHERE email=$2;",
+        client.query("UPDATE users SET sessionid=$1, lastlogin=timezone('UTC', now()), sessionexpirationdate=timezone('UTC', now()) + INTERVAL '24 hours' WHERE email=$2;",
             [sessionId, email], function (pgqerr, result) {
                 if (!pgqerr) {
                     done();
@@ -170,7 +170,7 @@ function touchUserSession(err, email, complete) {
             return;
         }
 
-        client.query("UPDATE users SET sessionexpirationdate=timezone('UTC', now()) + INTERVAL '30 minutes' WHERE email=$1;",
+        client.query("UPDATE users SET sessionexpirationdate=timezone('UTC', now()) + INTERVAL '24 hours' WHERE email=$1;",
             [email], function (pgqerr, result) {
                 if (!pgqerr) {
                     done();
@@ -314,8 +314,8 @@ function internalUpdateUser(err, user, complete) {
         }
 
         if (typeof user.passwordHash != 'undefined') { // password specified update that too.
-            client.query('UPDATE users SET passwordHash=$3, userBio=$4, country=$5, salt=$6, profileimageurl=$7 WHERE email=$1 AND sessionId=$2',
-                [user.email, user.sessionId, user.passwordHash, user.userBio, user.country, user.salt, user.profileImageUrl], function (pgqerr, result) {
+            client.query('UPDATE users SET passwordHash=$3, userBio=$4, country=$5, salt=$6, profileimageurl=$7, username=$8, hsklevel=$9 WHERE email=$1 AND sessionId=$2',
+                [user.email, user.sessionId, user.passwordHash, user.userBio, user.country, user.salt, user.profileImageUrl, user.username, user.hsklevel], function (pgqerr, result) {
                     if (!pgqerr) {
                         done();
 
