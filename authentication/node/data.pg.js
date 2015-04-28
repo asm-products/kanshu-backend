@@ -335,8 +335,8 @@ function internalUpdateUser(err, user, complete) {
                     }
                 });
         } else { // NO PASSWORD so do not update that.
-            client.query('UPDATE users SET userBio=$3, country=$4, profileImageUrl=$5 WHERE email=$1 AND sessionId=$2',
-                [user.email, user.sessionId, user.userBio, user.country, user.profileImageUrl], function (pgqerr, result) {
+            client.query('UPDATE users SET userBio=$3, country=$4, profileImageUrl=$5, hsklevel=$6 WHERE email=$1 AND sessionId=$2',
+                [user.email, user.sessionId, user.userBio, user.country, user.profileImageUrl, user.hsklevel], function (pgqerr, result) {
                     if (!pgqerr) {
                         done();
 
