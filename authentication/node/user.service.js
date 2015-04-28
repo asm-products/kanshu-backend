@@ -182,7 +182,10 @@ function internalCreateUser(req, res, next) {
                 email: req.body.email,
                 passwordHash: hashedPasswordBase64,
                 salt: salt,
-                userBio: req.body.userBio
+                userBio: req.body.userBio,
+                username: req.body.username,
+                profileImageUrl: req.body.profileImageUrl,
+                hsklevel: req.body.hsklevel
             };
 
             data.createUser(
@@ -242,7 +245,10 @@ function internalUpdateUser(req, res, next) {
     var user = {
         email: req.body.email,
         userBio: req.body.userBio,
-        country: req.body.country
+        country: req.body.country,
+        username: req.body.username,
+        profileImageUrl: req.body.profileImageUrl,
+        hsklevel: req.body.hsklevel
     };
 
     var errorHandler = function(err) {
@@ -273,7 +279,10 @@ function internalUpdateUser(req, res, next) {
                 passwordHash: hashedPasswordBase64,
                 salt: salt,
                 userBio: req.body.userBio,
-                country: req.body.country
+                country: req.body.country,
+                username: req.body.username,
+                profileImageUrl: req.body.profileImageUrl,
+                hsklevel: req.body.hsklevel
             };
 
             data.updateUser(
